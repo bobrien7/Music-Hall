@@ -13,11 +13,20 @@ function App() {
       .then(res => res.text())
       .then(resJson => {setTestString(resJson)});
 
-    let search = "guns n roses";
+    let search = "queen";
 
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=search&srsearch=${search}`)
       .then(res => res.json())
-      .then(resJson => setTitleString(resJson["query"]["search"][0]["title"]));
+      .then(resJson => {
+        for (let i = 0; i < resJson["query"]["search"].length; i++) {
+          let string = resJson["query"]["search"][i]["snippet"];
+          let title = resJson["query"]["search"][i]["title"];
+          if ((string.indexOf("band") !== -1 || string.indexOf("music") !== -1 || string.indexOf("sing") !== -1 || string.indexOf("artist") !== -1 || title.indexOf("band") !== -1) && title.indexOf("disambiguation") === -1) {
+            setTitleString(resJson["query"]["search"][i]["title"]);
+            break;
+          }
+        }
+      });
 
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&prop=extracts&titles=${titleString}&formatversion=2&exintro=1`)
       .then(res => res.json())
