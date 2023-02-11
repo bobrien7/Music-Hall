@@ -7,13 +7,14 @@ function App() {
   const [testString, setTestString] = useState("the backend is not connected!");
   const [titleString, setTitleString] = useState("");
   const [wikiString, setWikiString] = useState("");
+  const [newString, setNewString] = useState("");
 
   useEffect(() => {
     fetch(`http://${config.server_host}:${config.server_port}/test`)
       .then(res => res.text())
       .then(resJson => {setTestString(resJson)});
 
-    let search = "queen";
+    let search = "eminem";
 
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=search&srsearch=${search}`)
       .then(res => res.json())
@@ -21,7 +22,9 @@ function App() {
         for (let i = 0; i < resJson["query"]["search"].length; i++) {
           let string = resJson["query"]["search"][i]["snippet"];
           let title = resJson["query"]["search"][i]["title"];
-          if ((string.indexOf("band") !== -1 || string.indexOf("music") !== -1 || string.indexOf("sing") !== -1 || string.indexOf("artist") !== -1 || title.indexOf("band") !== -1) && title.indexOf("disambiguation") === -1) {
+          if ((string.indexOf("band") !== -1 || string.indexOf("music") !== -1 || string.indexOf("sing") !== -1
+          || string.indexOf("artist") !== -1 || title.indexOf("band") !== -1) &&
+          (title.indexOf("disambiguation") === -1 && title.indexOf("album") === -1 && title.indexOf("ography") === -1)) {
             setTitleString(resJson["query"]["search"][i]["title"]);
             break;
           }
@@ -55,6 +58,9 @@ function App() {
       <p>
       <audio controls src="https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2"></audio>
       </p>
+
+      hello
+      {newString}
 
       </div>
   );
