@@ -2,7 +2,6 @@ import requests
 import json
 import pandas as pd
 import csv
-import time
 
 # do an iteration over the input file's artist column, need file io to open excel sheet
 counter = 0
@@ -14,11 +13,23 @@ with open("bands.csv", "w", encoding='utf-8') as band_file, open("artists.csv", 
     writer_a = csv.writer(artist_file, delimiter=",")
     writer_a.writerow(["Artist", "Birth Name", "Birth Date", "Birth Place", "Years Active", "Instrument", "Page Title", "Summary"])
 
-    df = pd.read_csv("cleaned.csv", usecols=[0])
+    df = pd.read_csv("cleaned.csv", usecols=[0, 1, 2])
     artists = list(df["artist_mb"])
+    country = list(df["country_mb"])
+    tags_raw = list(df["tags_mb"])
+    tags = []
+    for i in range(len(tags_raw)):
+        try:
+            temp = tags_raw[i].split('; ')
+            tags.append(temp[0:3])
+        except AttributeError:
+            # skip if no tags
+            print(i)
+            tags.append([])
+            continue
 
     while counter < 1001:
-        for artist in artists[600::]:
+        for artist in artists[680:]:
             counter += 1
             title = ""
             content = ""
@@ -219,7 +230,7 @@ with open("bands.csv", "w", encoding='utf-8') as band_file, open("artists.csv", 
                             if index != -1:
                                 years_active_b = years_active_b[0:index]
 
-                # print(origin_b, years_active_b)
+                #print(origin_b, years_active_b)
 
             elif bool_individual:
                 index = content.find("birth_name")
@@ -304,7 +315,7 @@ with open("bands.csv", "w", encoding='utf-8') as band_file, open("artists.csv", 
                             if index != -1:
                                 years_active = years_active[0:index]
 
-                # print(birth_name, birth_date, birth_place, years_active, instrument)
+                #print(birth_name, birth_date, birth_place, years_active, instrument)
 
             if failure == 0:
                 # get extract
