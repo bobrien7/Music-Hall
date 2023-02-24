@@ -1,0 +1,1047 @@
+,artist,search_result,page_url,concert_count,l_score,rank
+0,Coldplay,Coldplay,bands/coldplay,1258,0,1
+13,Radiohead,Radiohead,bands/radiohead,1102,0,1
+22,Red Hot Chili Peppers,Red Hot Chili Peppers,bands/red-hot-chili-peppers,1697,0,1
+32,Rihanna,Rihanna,bands/rihanna,663,0,1
+37,Eminem,Eminem,bands/eminem,349,0,1
+51,The Killers,The Killers,bands/the-killers,1281,0,1
+76,Kanye West,Kanye West,bands/kanye-west,677,0,1
+81,Nirvana,Nirvana,bands/nirvana,310,0,1
+106,Muse,Muse,bands/muse,1611,0,1
+156,Foo Fighters,Foo Fighters,bands/foo-fighters--3,1552,0,1
+175,Linkin Park,Linkin Park,bands/linkin-park--4,851,0,1
+180,Lady Gaga,Lady Gaga,bands/lady-gaga,853,0,1
+187,The Rolling Stones,The Rolling Stones,bands/the-rolling-stones,1464,0,1
+212,Daft Punk,Daft Punk,bands/daft-punk,91,0,1
+225,Green Day,Green Day,bands/green-day,1189,0,1
+250,Katy Perry,Katy Perry,bands/katy-perry,781,0,1
+278,Oasis,Oasis,bands/oasis,837,0,1
+303,Gorillaz,Gorillaz,bands/gorillaz,293,0,1
+328,Beyoncé,Beyoncé,bands/beyonce,661,0,1
+331,Michael Jackson,Michael Jackson,bands/michael-jackson,392,0,1
+356,Maroon 5,Maroon 5,bands/maroon-5--2,1128,0,1
+361,Arctic Monkeys,Arctic Monkeys,bands/arctic-monkeys,1055,0,1
+363,System of a Down,System of a Down,bands/system-of-a-down--2,721,0,1
+367,U2,U2,bands/u2,1836,0,1
+392,Kings of Leon,Kings Of Leon,bands/kings-of-leon,1272,1,1
+419,David Bowie,David Bowie,bands/david-bowie,1078,0,1
+444,The Black Eyed Peas,Black Eyed Peas,bands/black-eyed-peas--3,790,4,1
+445,The Strokes,The Strokes,bands/the-strokes,716,0,1
+460,Britney Spears,Britney Spears,bands/britney-spears,871,0,1
+486,Franz Ferdinand,Franz Ferdinand,bands/franz-ferdinand,1141,0,1
+491,The Doors,The Doors,bands/the-doors,473,0,1
+516,JAY-Z,Jay-Z,bands/jay-z,690,2,1
+522,Madonna,Madonna,bands/madonna,803,0,1
+571,Weezer,Weezer,bands/weezer--2,1200,0,1
+596,Snow Patrol,Snow Patrol,bands/snow-patrol,1054,0,1
+603,blink‐182,blink-182,bands/blink-182--9,1142,1,1
+611,The White Stripes,The White Stripes,bands/the-white-stripes,324,0,1
+612,The Cure,The Cure,bands/the-cure,1586,0,1
+687,Aerosmith,Aerosmith,bands/aerosmith,2362,0,1
+707,The Offspring,The Offspring,bands/the-offspring,1513,0,1
+712,Metallica,Metallica,bands/metallica,2263,0,1
+736,R.E.M.,R.E.M.,bands/r-e-m,1561,0,1
+757,Blur,Blur,bands/blur,739,0,1
+782,Adele,Adele,bands/adele,373,0,1
+807,Rage Against the Machine,Rage Against The Machine,bands/rage-against-the-machine--3,580,1,1
+825,Death Cab for Cutie,Death Cab for Cutie,bands/death-cab-for-cutie--2,1197,0,1
+827,Nickelback,Nickelback,bands/nickelback,1063,0,1
+828,Justin Timberlake,Justin Timberlake,bands/justin-timberlake,593,0,1
+829,The Smashing Pumpkins,The Smashing Pumpkins,bands/smashing-pumpkins,1615,0,1
+833,MGMT,MGMT,bands/mgmt,707,0,1
+847,Johnny Cash,johnny cash,bands/johnny-cash,137,2,1
+872,Christina Aguilera,Christina Aguilera,bands/christina-aguilera,382,0,1
+874,David Guetta,David Guetta,bands/david-guetta,1214,0,1
+877,The Who,The Who,bands/the-who,2329,0,1
+902,Jimi Hendrix,Jimi Hendrix,bands/jimi-hendrix,312,0,1
+920,Fall Out Boy,Fall Out Boy,bands/fall-out-boy,1526,0,1
+921,Pearl Jam,Pearl Jam,bands/pearl-jam--4,1030,0,1
+971,Depeche Mode,Depeche Mode,bands/depeche-mode,1564,0,1
+982,Moby,Moby,bands/moby,889,0,1
+1007,Bob Dylan,Bob Dylan,bands/bob-dylan,3891,0,1
+1024,Usher,Usher,bands/usher,614,0,1
+1047,50 Cent,50 Cent,bands/50-cent,613,0,1
+1050,The Kooks,The Kooks,bands/the-kooks,1058,0,1
+1067,Placebo,Placebo,bands/placebo--5,1364,0,1
+1078,Avril Lavigne,Avril Lavigne,bands/avril-lavigne,687,0,1
+1083,Chris Brown,Chris Brown,bands/chris-brown,767,0,1
+1095,Incubus,Incubus,bands/incubus,1328,0,1
+1099,Massive Attack,Massive Attack,bands/massive-attack,748,0,1
+1104,Arcade Fire,Arcade Fire,bands/arcade-fire,771,0,1
+1106,Korn,Korn,bands/korn,2218,0,1
+1131,Jack Johnson,Jack Johnson,bands/jack-johnson,750,0,1
+1143,3 Doors Down,3 Doors Down,bands/3-doors-down,1398,0,1
+1144,Amy Winehouse,Amy Winehouse,bands/amy-winehouse,144,0,1
+1155,Bloc Party,Bloc Party,bands/bloc-party,1098,0,1
+1180,OutKast,OutKast,bands/outkast,173,0,1
+1197,Elton John,Elton John,bands/elton-john,4095,0,1
+1221,Yeah Yeah Yeahs,Yeah Yeah Yeahs,bands/yeah-yeah-yeahs,504,0,1
+1235,P!nk,P!nk,bands/p-nk,1145,0,1
+1244,Snoop Dogg,Snoop Dogg,bands/snoop-dogg--664467,1141,0,1
+1249,Kid Cudi,Kid Cudi,bands/kid-cudi,416,0,1
+1253,Kesha,Kesha,bands/kesha,505,0,1
+1276,Paramore,Paramore,bands/paramore--2,1194,0,1
+1281,Queens of the Stone Age,Queens of the Stone Age,bands/queens-of-the-stone-age--3,1374,0,1
+1285,Papa Roach,Papa Roach,bands/papa-roach,2034,0,1
+1291,Mariah Carey,Mariah Carey,bands/mariah-carey,510,0,1
+1293,John Mayer,John Mayer,bands/john-mayer,1130,0,1
+1307,Black Sabbath,Black Sabbath,bands/black-sabbath,1919,0,1
+1331,Kasabian,Kasabian,bands/kasabian--3,984,0,1
+1335,The Beach Boys,The Beach Boys,bands/the-beach-boys,5333,0,1
+1338,Kelly Clarkson,Kelly Clarkson,bands/kelly-clarkson,793,0,1
+1341,T.I.,T.I.,bands/t-i,524,0,1
+1366,Keane,Keane,bands/keane,814,0,1
+1391,Eric Clapton,Eric Clapton,bands/eric-clapton,2017,0,1
+1414,Florence + the Machine,Florence + the Machine,bands/florence-the-machine--3,737,0,1
+1420,Modest Mouse,Modest Mouse,bands/modest-mouse--2,1395,0,1
+1421,Elvis Presley,Elvis Presley,bands/elvis-presley,1050,0,1
+1431,Disturbed,Disturbed,bands/disturbed,1339,0,1
+1472,Evanescence,Evanescence,bands/evanescence,847,0,1
+1476,My Chemical Romance,My Chemical Romance,bands/my-chemical-romance,1024,0,1
+1482,Creedence Clearwater Revival,Creedence Clearwater Revival,bands/creedence-clearwater-revival,190,0,1
+1488,Thirty Seconds to Mars,Thirty Seconds to Mars,bands/thirty-seconds-to-mars--3,1209,0,1
+1490,Frank Sinatra,Frank Sinatra,bands/frank-sinatra,364,0,1
+1502,Bon Jovi,Bon Jovi,bands/bon-jovi,1992,0,1
+1526,Slipknot,Slipknot,bands/slipknot,1402,0,1
+1536,Shakira,Shakira,bands/shakira,516,0,1
+1549,The Shins,The Shins,bands/the-shins,590,0,1
+1555,The Clash,The Clash,bands/the-clash,571,0,1
+1599,Alicia Keys,Alicia Keys,bands/alicia-keys,628,0,1
+1603,Pixies,Pixies,bands/pixies,1276,0,1
+1625,Limp Bizkit,Limp Bizkit,bands/limp-bizkit,903,0,1
+1629,The Smiths,The Smiths,bands/the-smiths,55,0,1
+1654,OneRepublic,OneRepublic,bands/onerepublic,935,0,1
+1657,The Cranberries,The Cranberries,bands/the-cranberries,783,0,1
+1658,The Police,The Police,bands/the-police,859,0,1
+1683,Kaiser Chiefs,Kaiser Chiefs,bands/kaiser-chiefs,1113,0,1
+1690,Jason Mraz,Jason Mraz,bands/jason-mraz,1182,0,1
+1692,Interpol,Interpol,bands/interpol,1121,0,1
+1704,Beastie Boys,Beastie Boys,bands/beastie-boys,787,0,1
+1714,Nelly Furtado,Nelly Furtado,bands/nelly-furtado,362,0,1
+1717,Three Days Grace,Three Days Grace,bands/three-days-grace,1352,0,1
+1724,The Chemical Brothers,The Chemical Brothers,bands/the-chemical-brothers,365,0,1
+1729,Sum 41,Sum 41,bands/sum-41,1375,0,1
+1736,Marilyn Manson,Marilyn Manson,bands/marilyn-manson,1611,0,1
+1750,The Prodigy,The Prodigy,bands/the-prodigy,1107,0,1
+1773,Audioslave,Audioslave,bands/audioslave,169,0,1
+1776,Taylor Swift,Taylor Swift,bands/taylor-swift--2,1000,0,1
+1792,Panic! at the Disco,Panic! At the Disco,bands/panic-at-the-disco--18,1131,1,1
+1798,Calvin Harris,Calvin Harris,bands/calvin-harris,1169,0,1
+1799,Wiz Khalifa,Wiz Khalifa,bands/wiz-khalifa,1034,0,1
+1828,Vampire Weekend,Vampire Weekend,bands/vampire-weekend,742,0,1
+1830,Nine Inch Nails,Nine Inch Nails,bands/nine-inch-nails--4,1153,0,1
+1858,Lily Allen,Lily Allen,bands/lily-allen,460,0,1
+1859,Bruce Springsteen,Bruce Springsteen,bands/bruce-springsteen,2499,0,1
+1872,The Black Keys,The Black Keys,bands/the-black-keys,931,0,1
+1875,Gwen Stefani,Gwen Stefani,bands/gwen-stefani,324,0,1
+1902,Fleetwood Mac,Fleetwood Mac,bands/fleetwood-mac,1796,0,1
+1922,Stevie Wonder,Stevie Wonder,bands/stevie-wonder,474,0,1
+1935,Dire Straits,Dire Straits,bands/dire-straits,909,0,1
+1949,Flo Rida,Flo Rida,bands/flo-rida,582,0,1
+1977,Deep Purple,Deep Purple,bands/deep-purple--4,2767,0,1
+2001,Iron Maiden,Iron Maiden,bands/iron-maiden,1715,0,1
+2025,The Kinks,The Kinks,bands/the-kinks,550,0,1
+2048,Jennifer Lopez,Jennifer Lopez,bands/jennifer-lopez,339,0,1
+2049,Portishead,Portishead,bands/portishead,270,0,1
+2052,Jimmy Eat World,Jimmy Eat World,bands/jimmy-eat-world,1338,0,1
+2056,Goo Goo Dolls,Goo Goo Dolls,bands/the-goo-goo-dolls,1552,0,1
+2103,Eagles,Eagles,bands/eagles,1300,0,1
+2127,The Notorious B.I.G.,The Notorious B.I.G.,bands/the-notorious-b-i-g,4,0,1
+2128,Norah Jones,Norah Jones,bands/norah-jones,881,0,1
+2136,Nicki Minaj,Nicki Minaj,bands/nicki-minaj,361,0,1
+2138,The Pussycat Dolls,The Pussycat Dolls,bands/the-pussycat-dolls,271,0,1
+2139,James Blunt,James Blunt,bands/james-blunt,992,0,1
+2140,Rise Against,Rise Against,bands/rise-against,1662,0,1
+2145,Phoenix,Phoenix,bands/phoenix,797,0,1
+2170,Miley Cyrus,Miley Cyrus,bands/miley-cyrus,415,0,1
+2196,Lupe Fiasco,Lupe Fiasco,bands/lupe-fiasco,661,0,1
+2198,No Doubt,No Doubt,bands/no-doubt,907,0,1
+2213,Bob Marley,Bob Marley,bands/bob-marley,277,0,1
+2237,Akon,Akon,bands/akon,316,0,1
+2262,Pitbull,Pitbull,bands/pitbull,1001,0,1
+2283,Breaking Benjamin,Breaking Benjamin,bands/breaking-benjamin,1232,0,1
+2293,The All‐American Rejects,The All-American Rejects,bands/the-all-american-rejects,1013,1,1
+2299,The Velvet Underground,the velvet underground,bands/the-velvet-underground,23,3,1
+2300,Joy Division,Joy division,bands/joy-division,22,1,1
+2309,Feist,Feist,bands/feist,682,0,1
+2334,Leslie Feist,Leslie Feist,bands/leslie-feist,1,0,1
+2335,Counting Crows,Counting Crows,bands/counting-crows,1434,0,1
+2346,Kylie Minogue,Kylie Minogue,bands/kylie-minogue,626,0,1
+2350,Sufjan Stevens,Sufjan Stevens,bands/sufjan-stevens,414,0,1
+2380,Alice in Chains,Alice In Chains,bands/alice-in-chains--2,1131,1,1
+2400,Ludacris,Ludacris,bands/ludacris,671,0,1
+2402,Fatboy Slim,Fatboy Slim,bands/fatboy-slim--2,628,0,1
+2403,Ellie Goulding,Ellie Goulding,bands/ellie-goulding,711,0,1
+2407,The xx,The xx,bands/the-xx,655,0,1
+2415,Lynyrd Skynyrd,Lynyrd Skynyrd,bands/lynyrd-skynyrd,2338,0,1
+2461,Marvin Gaye,marvin gaye,bands/marvin-gaye,20,2,1
+2490,Nelly,Nelly,bands/nelly,919,0,1
+2515,M83,M83,bands/m83,547,0,1
+2534,Timbaland,Timbaland,bands/timbaland,141,0,1
+2537,Soundgarden,Soundgarden,bands/soundgarden,580,0,1
+2548,Lana Del Rey,Lana Del Rey,bands/lana-del-rey--4,335,0,1
+2549,Jason Derulo,Jason Derulo,bands/jason-derulo,556,0,1
+2554,Robbie Williams,Robbie Williams,bands/robbie-williams,551,0,1
+2557,Alanis Morissette,Alanis Morissette,bands/alanis-morissette--2,1576,0,1
+2560,Bruno Mars,Bruno Mars,bands/bruno-mars,726,0,1
+2589,Bright Eyes,Bright Eyes,bands/bright-eyes,720,0,1
+2590,Ludwig van Beethoven,Ludwig van Beethoven,bands/ludwig-van-beethoven,5,0,1
+2591,Regina Spektor,Regina Spektor,bands/regina-spektor,547,0,1
+2594,The Postal Service,The Postal Service,bands/the-postal-service,115,0,1
+2595,Train,Train,bands/train,1262,0,1
+2620,Phil Collins,Phil Collins,bands/phil-collins,734,0,1
+2635,M.I.A.,M.I.A.,bands/m-i-a--2,430,0,1
+2654,Ramones,Ramones,bands/ramones,424,0,1
+2678,Fergie,Fergie,bands/fergie,160,0,1
+2697,Michael Bublé,Michael Bublé,bands/michael-buble,1018,0,1
+2702,New Order,New Order,bands/new-order,734,0,1
+2705,Rammstein,Rammstein,bands/rammstein,912,0,1
+2710,Mumford & Sons,Mumford & Sons,bands/mumford-sons--2,896,0,1
+2725,Destiny’s Child,"""Destinys Child""",bands/destiny-s-child,250,3,1
+2726,Lenny Kravitz,Lenny Kravitz,bands/lenny-kravitz,1051,0,1
+2731,Good Charlotte,Good Charlotte,bands/good-charlotte,1124,0,1
+2735,Nina Simone,Nina Simone,bands/nina-simone,12,0,1
+2737,Bullet for My Valentine,Bullet for My Valentine,bands/bullet-for-my-valentine--8,1250,0,1
+2740,Sting,Sting,bands/sting--2,2586,0,1
+2764,Van Halen,Van Halen,bands/van-halen,1855,0,1
+2788,Hoobastank,Hoobastank,bands/hoobastank,752,0,1
+2794,Ozzy Osbourne,Ozzy Osbourne,bands/ozzy-osbourne,1304,0,1
+2807,Billy Joel,Billy Joel,bands/billy-joel--5,1362,0,1
+2830,Bryan Adams,Bryan Adams,bands/bryan-adams--2,3141,0,1
+2836,Damien Rice,Damien Rice,bands/damien-rice,485,0,1
+2839,Neil Young,Neil Young,bands/neil-young,1098,0,1
+2889,Aretha Franklin,Aretha Franklin,bands/aretha-franklin,344,0,1
+2900,John Legend,John Legend,bands/john-legend,1066,0,1
+2908,Foster the People,Foster The People,bands/foster-the-people--4,598,1,1
+2936,Deftones,Deftones,bands/deftones,1898,0,1
+2945,Band of Horses,Band of Horses,bands/band-of-horses--2,1023,0,1
+2946,The Flaming Lips,The Flaming Lips,bands/the-flaming-lips,1393,0,1
+2950,The National,The National,bands/the-national,1311,0,1
+2975,Louis Armstrong,Louis Armstrong,bands/louis-armstrong,4,0,1
+2980,Prince,Prince,bands/prince,1429,0,1
+3004,Rick Ross,Rick Ross,bands/rick-ross,661,0,1
+3009,Tenacious D,Tenacious D,bands/tenacious-d,462,0,1
+3017,Avenged Sevenfold,Avenged Sevenfold,bands/avenged-sevenfold,1176,0,1
+3027,Two Door Cinema Club,Two Door Cinema Club,bands/two-door-cinema-club,963,0,1
+3030,Blondie,Blondie,bands/blondie,1279,0,1
+3054,Journey,Journey,bands/journey,2025,0,1
+3079,Justice,Justice,bands/justice,564,0,1
+3104,Goldfrapp,Goldfrapp,bands/goldfrapp,520,0,1
+3107,Belle and Sebastian,Belle and Sebastian,bands/belle-and-sebastian,783,0,1
+3134,Ciara,Ciara,bands/ciara,260,0,1
+3159,Ray Charles,Ray Charles,bands/ray-charles,131,0,1
+3171,The Cardigans,The Cardigans,bands/the-cardigans,278,0,1
+3174,The Script,The Script,bands/the-script,824,0,1
+3183,Passion Pit,Passion Pit,bands/passion-pit,705,0,1
+3187,Leona Lewis,Leona Lewis,bands/leona-lewis,173,0,1
+3190,Elliott Smith,Elliott Smith,bands/elliott-smith,112,0,1
+3198,Simple Plan,Simple Plan,bands/simple-plan,1314,0,1
+3208,Paul McCartney,Paul McCartney,bands/paul-mccartney--2,883,0,1
+3223,Imagine Dragons,Imagine Dragons,bands/imagine-dragons,931,0,1
+3225,Editors,Editors,bands/editors,1049,0,1
+3252,Van Morrison,Van Morrison,bands/van-morrison,2685,0,1
+3261,Scorpions,Scorpions,bands/scorpions,2088,0,1
+3280,MIKA,Mika,bands/mika,565,3,1
+3305,Cat Power,Cat Power,bands/cat-power,902,0,1
+3307,Tiësto,Tiësto,bands/tiesto--2,1269,0,1
+3325,Jamiroquai,Jamiroquai,bands/jamiroquai,688,0,1
+3358,Justin Bieber,Justin Bieber,bands/justin-bieber,781,0,1
+3364,Ella Fitzgerald,Ella Fitzgerald,bands/ella-fitzgerald,18,0,1
+3367,Fleet Foxes,Fleet Foxes,bands/fleet-foxes,572,0,1
+3368,Ed Sheeran,Ed Sheeran,bands/ed-sheeran,1238,0,1
+3374,LCD Soundsystem,LCD Soundsystem,bands/lcd-soundsystem,607,0,1
+3379,KISS,KISS,bands/kiss--13,2901,0,1
+3404,Sonic Youth,Sonic Youth,bands/sonic-youth,1362,0,1
+3422,Stereophonics,Stereophonics,bands/stereophonics,924,0,1
+3429,Seether,Seether,bands/seether,1520,0,1
+3432,Gnarls Barkley,Gnarls Barkley,bands/gnarls-barkley,116,0,1
+3434,Whitney Houston,Whitney Houston,bands/whitney-houston-2026c42a-c164-45e4-8165-bec690d4d20d,171,0,1
+3443,Jeff Buckley,Jeff Buckley,bands/jeff-buckley--3,42,0,1
+3472,Duran Duran,Duran Duran,bands/duran-duran,1095,0,1
+3497,A Perfect Circle,A Perfect Circle,bands/a-perfect-circle,484,0,1
+3500,The Jimi Hendrix Experience,The Jimi Hendrix Experience,bands/the-jimi-hendrix-experience,50,0,1
+3503,James Brown,James Brown,bands/james-brown,334,0,1
+3523,Garbage,Garbage,bands/garbage,1023,0,1
+3550,Lifehouse,Lifehouse,bands/lifehouse,793,0,1
+3554,Lykke Li,Lykke Li,bands/lykke-li,414,0,1
+3556,Santana,Santana,bands/santana,3835,0,1
+3569,J. Cole,J. Cole,bands/j-cole--2,694,0,1
+3594,Tool,Tool,bands/tool,1158,0,1
+3643,Young Jeezy,Young Jeezy,bands/young-jeezy,9,0,1
+3644,B.o.B,B.o.B,bands/b-o-b--2,467,0,1
+3658,Pantera,Pantera,bands/pantera,639,0,1
+3683,Bloodhound Gang,Bloodhound Gang,bands/bloodhound-gang,294,0,1
+3685,Jefferson Airplane,Jefferson Airplane,bands/jefferson-airplane,175,0,1
+3689,Avicii,Avicii,bands/avicii,534,0,1
+3692,Enrique Iglesias,Enrique Iglesias,bands/enrique-iglesias,691,0,1
+3696,Stone Temple Pilots,Stone Temple Pilots,bands/stone-temple-pilots--4,1303,0,1
+3705,Motörhead,Motörhead,bands/motorhead,1359,0,1
+3724,The Fratellis,The Fratellis,bands/the-fratellis,466,0,1
+3727,Spoon,Spoon,bands/spoon,937,0,1
+3752,deadmau5,Deadmau5,bands/deadmau5,887,1,1
+3756,Stone Sour,Stone Sour,bands/stone-sour,786,0,1
+3759,Johann Sebastian Bach,Johann Sebastian Bach,bands/johann-sebastian-bach,3,0,1
+3761,Lou Reed,Lou Reed,bands/lou-reed,362,0,1
+3769,Crystal Castles,Crystal Castles,bands/crystal-castles,851,0,1
+3771,Aphex Twin,Aphex Twin,bands/aphex-twin,162,0,1
+3778,Ice Cube,Ice Cube,bands/ice-cube,694,0,1
+3789,Skrillex,Skrillex,bands/skrillex,804,0,1
+3797,Miles Davis,Miles Davis,bands/miles-davis,90,0,1
+3807,The Decemberists,The Decemberists,bands/the-decemberists,788,0,1
+3811,Staind,Staind,bands/staind,1075,0,1
+3836,Taio Cruz,Taio Cruz,bands/taio-cruz,137,0,1
+3837,Iggy Pop,Iggy Pop,bands/iggy-pop--2,701,0,1
+3870,The Jackson 5,The Jackson 5,bands/the-jackson-5,9,0,1
+3871,Wolfmother,Wolfmother,bands/wolfmother,823,0,1
+3873,Metric,Metric,bands/metric,991,0,1
+3894,EELS,Eels,bands/eels,963,3,1
+3924,Bonobo,Bonobo,bands/bonobo,1095,0,1
+3938,George Michael,George Michael,bands/george-michael,228,0,1
+3954,Yellowcard,Yellowcard,bands/yellowcard,1330,0,1
+3956,Cyndi Lauper,Cyndi Lauper,bands/cyndi-lauper,1207,0,1
+3957,Godsmack,Godsmack,bands/godsmack,1207,0,1
+3973,Electric Light Orchestra,Electric Light Orchestra ELO,bands/electric-light-orchestra,228,4,1
+3979,The Hives,The Hives,bands/the-hives,852,0,1
+3996,Tears for Fears,Tears For Fears,bands/tears-for-fears,547,1,1
+4007,Eurythmics,Eurythmics,bands/eurythmics,96,0,1
+4009,Kendrick Lamar,Kendrick Lamar,bands/kendrick-lamar,774,0,1
+4010,Cypress Hill,Cypress Hill,bands/cypress-hill,935,0,1
+4025,Hot Chip,Hot Chip,bands/hot-chip,891,0,1
+4034,The Ting Tings,The Ting Tings,bands/the-ting-tings,502,0,1
+4036,PJ Harvey,PJ Harvey,bands/pj-harvey--2,783,0,1
+4063,Thievery Corporation,Thievery Corporation,bands/thievery-corporation,693,0,1
+4066,Foals,Foals,bands/foals,1127,0,1
+4091,Zero 7,Zero 7,bands/zero-7,176,0,1
+4093,Tom Waits,Tom Waits,bands/tom-waits,784,0,1
+4123,Razorlight,Razorlight,bands/razorlight,459,0,1
+4129,Broken Social Scene,Broken Social Scene,bands/broken-social-scene,681,0,1
+4133,Jessie J,Jessie J,bands/jessie-j,442,0,1
+4156,James Morrison,James Morrison,bands/james-morrison,554,0,1
+4164,Big Sean,Big Sean,bands/big-sean,580,0,1
+4191,Chuck Berry,Chuck Berry,bands/chuck-berry,480,0,1
+4200,Toto,Toto,bands/toto,1496,0,1
+4225,Hans Zimmer,Hans Zimmer,bands/hans-zimmer,232,0,1
+4229,Imogen Heap,Imogen Heap,bands/imogen-heap,317,0,1
+4231,ZZ Top,ZZ Top,bands/zz-top,3070,0,1
+4254,Colbie Caillat,Colbie Caillat,bands/colbie-caillat,675,0,1
+4255,Otis Redding,Otis Redding,bands/otis-redding,6,0,1
+4257,Backstreet Boys,Backstreet Boys,bands/backstreet-boys,1439,0,1
+4259,Megadeth,Megadeth,bands/megadeth,2257,0,1
+4300,Leonard Cohen,Leonard Cohen,bands/leonard-cohen,375,0,1
+4306,Janis Joplin,janis joplin,bands/janis-joplin,121,2,1
+4316,Natasha Bedingfield,Natasha Bedingfield,bands/natasha-bedingfield,365,0,1
+4318,TV on the Radio,TV On the Radio,bands/tv-on-the-radio--2,579,1,1
+4321,Owl City,Owl City,bands/owl-city,500,0,1
+4323,Sarah McLachlan,Sarah McLachlan,bands/sarah-mclachlan,685,0,1
+4328,Klaxons,Klaxons,bands/klaxons,320,0,1
+4334,Groove Armada,Groove Armada,bands/groove-armada,415,0,1
+4339,The Roots,The Roots,bands/the-roots,1197,0,1
+4387,Sean Paul,Sean Paul,bands/sean-paul,616,0,1
+4415,Billy Talent,Billy Talent,bands/billy-talent,912,0,1
+4416,Trey Songz,Trey Songz,bands/trey-songz,690,0,1
+4417,Sara Bareilles,Sara Bareilles,bands/sara-bareilles,566,0,1
+4421,Grizzly Bear,Grizzly Bear,bands/grizzly-bear,548,0,1
+4427,Matchbox Twenty,Matchbox Twenty,bands/matchbox-twenty,855,0,1
+4430,Dave Matthews Band,Dave Matthews Band,bands/dave-matthews-band--2,2452,0,1
+4451,Faithless,Faithless,bands/faithless,291,0,1
+4462,Alice Cooper,Alice Cooper,bands/alice-cooper,2950,0,1
+4486,P.O.D.,P.O.D.,bands/p-o-d,940,0,1
+4507,Slayer,Slayer,bands/slayer,1760,0,1
+4532,Fiona Apple,Fiona Apple,bands/fiona-apple,285,0,1
+4534,Beirut,Beirut,bands/beirut,465,0,1
+4539,Gotye,Gotye,bands/gotye,190,0,1
+4564,Yann Tiersen,Yann Tiersen,bands/yann-tiersen,318,0,1
+4566,Nightwish,Nightwish,bands/nightwish,665,0,1
+4573,Lostprophets,Lostprophets,bands/lostprophets,425,0,1
+4575,Judas Priest,Judas Priest,bands/judas-priest,1426,0,1
+4599,Busta Rhymes,Busta Rhymes,bands/busta-rhymes,431,0,1
+4602,Kings of Convenience,Kings of Convenience,bands/kings-of-convenience,163,0,1
+4604,Cold War Kids,Cold War Kids,bands/cold-war-kids,1183,0,1
+4606,Pendulum,Pendulum,bands/pendulum,417,0,1
+4617,Rod Stewart,Rod Stewart,bands/rod-stewart,3080,0,1
+4627,Drowning Pool,Drowning Pool,bands/drowning-pool,1139,0,1
+4654,La Roux,La Roux,bands/la-roux,323,0,1
+4687,The Libertines,The Libertines,bands/the-libertines,277,0,1
+4718,Paul Simon,Paul Simon,bands/paul-simon,922,0,1
+4720,Ben Harper,Ben Harper,bands/ben-harper,1088,0,1
+4728,Tegan and Sara,Tegan and Sara,bands/tegan-and-sara,985,0,1
+4730,Boards of Canada,Boards of Canada,bands/boards-of-canada,5,0,1
+4731,A Tribe Called Quest,A Tribe Called Quest,bands/a-tribe-called-quest,161,0,1
+4735,Wilco,Wilco,bands/wilco,1784,0,1
+4785,Cat Stevens,Cat Stevens,bands/cat-stevens,95,0,1
+4791,Empire of the Sun,Empire of the Sun,bands/empire-of-the-sun,292,0,1
+4792,Genesis,Genesis,bands/genesis,979,0,1
+4817,AFI,AFI,bands/afi,879,0,1
+4842,Mary J. Blige,Mary J. Blige,bands/mary-j-blige,666,0,1
+4846,Mogwai,Mogwai,bands/mogwai,1391,0,1
+4848,KT Tunstall,KT Tunstall,bands/kt-tunstall,831,0,1
+4849,Foreigner,Foreigner,bands/foreigner,2352,0,1
+4863,Al Green,Al Green,bands/al-green,399,0,1
+4881,Animal Collective,Animal Collective,bands/animal-collective,853,0,1
+4885,George Harrison,George Harrison,bands/george-harrison,20,0,1
+4892,DJ Shadow,DJ Shadow,bands/dj-shadow,561,0,1
+4898,Demi Lovato,Demi Lovato,bands/demi-lovato,671,0,1
+4909,Nick Cave & The Bad Seeds,Nick Cave and The Bad Seeds,bands/nick-cave-and-the-bad-seeds,712,3,1
+4915,Tori Amos,Tori Amos,bands/tori-amos,943,0,1
+4921,Boston,Boston,bands/boston,1001,0,1
+4945,Janet Jackson,Janet Jackson,bands/janet-jackson,757,0,1
+4946,Kelis,Kelis,bands/kelis,300,0,1
+4969,Morcheeba,Morcheeba,bands/morcheeba,372,0,1
+4974,Neutral Milk Hotel,Neutral Milk Hotel,bands/neutral-milk-hotel,314,0,1
+5001,The Weeknd,The Weeknd,bands/the-weeknd,465,0,1
+5028,Dean Martin,Deana Martin,bands/deana-martin,66,1,1
+5030,LMFAO,LMFAO,bands/lmfao,454,0,1
+5037,Gucci Mane,Gucci Mane,bands/gucci-mane,402,0,1
+5041,Rob Zombie,Rob Zombie,bands/rob-zombie,1070,0,1
+5057,The Raconteurs,The Raconteurs,bands/the-raconteurs,259,0,1
+5059,The Temptations,The Temptations,bands/the-temptations,1915,0,1
+5074,Sade,Sade,bands/sade,186,0,1
+5099,Sheryl Crow,Sheryl Crow,bands/sheryl-crow,1450,0,1
+5103,Taking Back Sunday,Taking Back Sunday,bands/taking-back-sunday,1594,0,1
+5157,Pharrell Williams,Pharrell Williams,bands/pharrell-williams,218,0,1
+5158,Billy Idol,Billy Idol,bands/billy-idol,1002,0,1
+5172,Faith No More,Faith No More,bands/faith-no-more,670,0,1
+5203,The Used,The Used,bands/the-used,1382,0,1
+5211,Of Monsters and Men,Of Monsters and Men,bands/of-monsters-and-men,461,0,1
+5214,The Temper Trap,The Temper Trap,bands/the-temper-trap,576,0,1
+5216,Fort Minor,Fort Minor,bands/fort-minor,26,0,1
+5217,Peter Bjorn and John,Peter Bjorn and John,bands/peter-bjorn-and-john,344,0,1
+5219,Spice Girls,Spice Girls,bands/spice-girls,121,0,1
+5223,We Are Scientists,We Are Scientists,bands/we-are-scientists,859,0,1
+5225,Sean Kingston,Sean Kingston,bands/sean-kingston,385,0,1
+5226,Scissor Sisters,Scissor Sisters,bands/scissor-sisters,478,0,1
+5227,Major Lazer,Major Lazer,bands/major-lazer,664,0,1
+5231,Brand New,Brand New,bands/brand-new,771,0,1
+5256,All Time Low,All Time Low,bands/all-time-low--7,1892,0,1
+5284,Kate Nash,Kate Nash,bands/kate-nash,521,0,1
+5285,MARINA,Marina,bands/marina,566,5,1
+5326,Cage the Elephant,Cage The Elephant,bands/cage-the-elephant--9,1003,1,1
+5332,Pet Shop Boys,Pet Shop Boys,bands/pet-shop-boys,667,0,1
+5339,Gym Class Heroes,Gym Class Heroes,bands/gym-class-heroes,904,0,1
+5340,Bill Withers,Bill Withers,bands/bill-withers,11,0,1
+5342,Fugees,fugees,bands/fugees,28,1,1
+5348,Apocalyptica,Apocalyptica,bands/apocalyptica,929,0,1
+5357,Missy Elliott,Missy Elliott,bands/missy-elliott,98,0,1
+5367,Skillet,Skillet,bands/skillet,1753,0,1
+5406,Dashboard Confessional,Dashboard Confessional,bands/dashboard-confessional,1164,0,1
+5410,Smash Mouth,Smash Mouth,bands/smash-mouth,631,0,1
+5411,Bush,Bush,bands/bush,1267,0,1
+5436,Andrew Bird,Andrew Bird,bands/andrew-bird,1095,0,1
+5443,Beach House,Beach House,bands/beach-house,975,0,1
+5449,A Day to Remember,A Day to Remember,bands/a-day-to-remember--9,1536,0,1
+5452,Killswitch Engage,Killswitch Engage,bands/killswitch-engage,1519,0,1
+5457,Frank Ocean,Frank Ocean,bands/frank-ocean,85,0,1
+5458,Billie Holiday,The Billie Holiday Project,bands/the-billie-holiday-project,1,12,1
+5459,John Williams,John Williams,bands/john-williams,45,0,1
+5476,Mark Ronson,Mark Ronson,bands/mark-ronson,332,0,1
+5504,Explosions in the Sky,Explosions in the Sky,bands/explosions-in-the-sky--2,666,0,1
+5530,Keri Hilson,Keri Hilson,bands/keri-hilson,237,0,1
+5531,Natalie Imbruglia,Natalie Imbruglia,bands/natalie-imbruglia,88,0,1
+5532,In Flames,In Flames,bands/in-flames,1291,0,1
+5547,Corinne Bailey Rae,Corinne Bailey Rae,bands/corinne-bailey-rae,319,0,1
+5550,The Wombats,The Wombats,bands/the-wombats,1145,0,1
+5555,The Stone Roses,The Stone Roses,bands/the-stone-roses,237,0,1
+5560,Swedish House Mafia,Swedish House Mafia,bands/swedish-house-mafia,215,0,1
+5562,Basement Jaxx,Basement Jaxx,bands/basement-jaxx,451,0,1
+5564,Daughtry,Daughtry,bands/daughtry,1176,0,1
+5572,The Dandy Warhols,The Dandy Warhols,bands/the-dandy-warhols,723,0,1
+5573,Bat for Lashes,Bat For Lashes,bands/bat-for-lashes,283,1,1
+5575,Third Eye Blind,Third Eye Blind,bands/third-eye-blind,1203,0,1
+5606,Kansas,Kansas,bands/kansas,2695,0,1
+5631,The Bravery,The Bravery,bands/the-bravery,568,0,1
+5634,Tom Petty and the Heartbreakers,Tom Petty And The Heartbreakers,bands/tom-petty-and-the-heartbreakers--4,1286,2,1
+5643,Sex Pistols,Sex Pistols,bands/sex-pistols,253,0,1
+5656,Shinedown,Shinedown,bands/shinedown,1897,0,1
+5670,White Lies,White Lies,bands/white-lies,746,0,1
+5675,DJ Khaled,DJ Khaled,bands/dj-khaled,233,0,1
+5681,Kate Bush,Kate Bush,bands/kate-bush,30,0,1
+5687,Miike Snow,Miike Snow,bands/miike-snow,363,0,1
+5691,INXS,INXS,bands/inxs,1148,0,1
+5716,Cut Copy,Cut Copy,bands/cut-copy,620,0,1
+5723,Peter Gabriel,Peter Gabriel,bands/peter-gabriel,930,0,1
+5724,Edward Sharpe and the Magnetic Zeros,Edward Sharpe and the Magnetic Zeros,bands/edward-sharpe-and-the-magnetic-zeros--2,344,0,1
+5725,Static-X,Static-X,bands/static-x,971,0,1
+5729,Benny Benassi,Benny Benassi,bands/benny-benassi,758,0,1
+5730,Roxette,Roxette,bands/roxette,365,0,1
+5738,Pulp,Pulp,bands/pulp,471,0,1
+5788,David Gray,David Gray,bands/david-gray,1065,0,1
+5792,Kelly Rowland,Kelly Rowland,bands/kelly-rowland,144,0,1
+5793,Young Money,Young Money,bands/young-money,9,0,1
+5797,The Cinematic Orchestra,The Cinematic Orchestra,bands/the-cinematic-orchestra,63,0,1
+5800,Ray LaMontagne,Ray Lamontagne,bands/ray-lamontagne--2,748,1,1
+5805,Tracy Chapman,Tracy Chapman,bands/tracy-chapman,283,0,1
+5807,The Kills,The Kills,bands/the-kills,740,0,1
+5832,will.i.am,will.i.am,bands/will-i-am,127,0,1
+5835,Puddle of Mudd,Puddle of Mudd,bands/puddle-of-mudd,1516,0,1
+5836,Bombay Bicycle Club,Bombay Bicycle Club,bands/bombay-bicycle-club,661,0,1
+5839,Whitesnake,Whitesnake,bands/whitesnake,1184,0,1
+5857,Robin Thicke,Robin Thicke,bands/robin-thicke,455,0,1
+5859,Antonio Vivaldi,Antonio Vivaldi,bands/antonio-vivaldi,1,0,1
+5860,Manu Chao,Manu Chao,bands/manu-chao,188,0,1
+5865,Bad Religion,Bad Religion,bands/bad-religion,2086,0,1
+5866,Tame Impala,Tame Impala,bands/tame-impala,720,0,1
+5878,Rush,Rush,bands/rush,2008,0,1
+5901,Paolo Nutini,Paolo Nutini,bands/paolo-nutini,610,0,1
+5903,Joe Cocker,Joe Cocker,bands/joe-cocker,866,0,1
+5915,Blue Öyster Cult,Blue Öyster Cult,bands/blue-oyster-cult--2,4210,0,1
+5921,Gavin DeGraw,Gavin DeGraw,bands/gavin-degraw--2,1199,0,1
+5923,Brian Eno,Brian Eno,bands/brian-eno,9,0,1
+5926,Ennio Morricone,Ennio Morricone,bands/ennio-morricone,114,0,1
+5930,Macklemore & Ryan Lewis,Macklemore & Ryan Lewis,bands/macklemore-ryan-lewis,529,0,1
+5957,of Montreal,of Montreal,bands/of-montreal--2,1389,0,1
+5987,Armin van Buuren,Armin van Buuren,bands/armin-van-buuren,888,0,1
+6015,Simple Minds,Simple Minds,bands/simple-minds,1729,0,1
+6023,The Lumineers,The Lumineers,bands/the-lumineers,851,0,1
+6026,Yes,Yes,bands/yes--5,3034,0,1
+6051,Sugababes,Sugababes,bands/sugababes,187,0,1
+6055,Def Leppard,Def Leppard,bands/def-leppard,2319,0,1
+6076,UNKLE,Unkle,bands/unkle,105,4,1
+6101,Alien Ant Farm,Alien Ant Farm,bands/alien-ant-farm,711,0,1
+6106,Santigold,Santigold,bands/santigold,434,0,1
+6109,Mudvayne,Mudvayne,bands/mudvayne,614,0,1
+6116,Ariana Grande,Ariana Grande,bands/ariana-grande,439,0,1
+6120,Diana Krall,Diana Krall,bands/diana-krall,1047,0,1
+6121,Yo La Tengo,Yo La Tengo,bands/yo-la-tengo--2,933,0,1
+6148,alt-J,alt-J,bands/alt-j--2,859,0,1
+6173,Etta James,Etta James,bands/etta-james,231,0,1
+6179,Dusty Springfield,Dusty Springfield,bands/dusty-springfield,5,0,1
+6181,Aaliyah,Aaliyah,bands/aaliyah,12,0,1
+6188,Chevelle,Chevelle,bands/chevelle,1670,0,1
+6195,Mike Posner,Mike Posner,bands/mike-posner,450,0,1
+6247,New Found Glory,New Found Glory,bands/new-found-glory,1858,0,1
+6262,Bring Me the Horizon,Bring Me The Horizon,bands/bring-me-the-horizon--6,1444,1,1
+6264,Rufus Wainwright,Rufus Wainwright,bands/rufus-wainwright,1150,0,1
+6268,NOFX,NOFX,bands/nofx,1561,0,1
+6313,Carly Rae Jepsen,Carly Rae Jepsen,bands/carly-rae-jepsen,511,0,1
+6334,Manic Street Preachers,Manic Street Preachers,bands/manic-street-preachers,599,0,1
+6338,Mos Def,Mos Def,bands/mos-def,347,0,1
+6347,Cascada,Cascada,bands/cascada,104,0,1
+6372,Underworld,Underworld,bands/underworld,320,0,1
+6381,Supergrass,Supergrass,bands/supergrass,418,0,1
+6384,Europe,Europe,bands/europe,434,0,1
+6409,Jethro Tull,Jethro Tull,bands/jethro-tull,3091,0,1
+6434,Survivor,Survivor,bands/survivor,500,0,1
+6458,Bastille,Bastille,bands/bastille--2,961,0,1
+6480,Doves,Doves,bands/doves,334,0,1
+6505,Angus & Julia Stone,Angus & Julia Stone,bands/angus-julia-stone,591,0,1
+6532,One Direction,One Direction,bands/one-direction--2,528,0,1
+6542,Kool & The Gang,Kool & The Gang,bands/kool-the-gang,1009,0,1
+6567,The Mars Volta,The Mars Volta,bands/the-mars-volta,493,0,1
+6568,Roy Orbison,roy orbison,bands/roy-orbison--2,25,2,1
+6581,Erykah Badu,Erykah Badu,bands/erykah-badu,709,0,1
+6587,Mötley Crüe,Mötley Crüe,bands/motley-crue,1938,0,1
+6611,Jamie Cullum,Jamie Cullum,bands/jamie-cullum,576,0,1
+6637,Within Temptation,Within Temptation,bands/within-temptation,596,0,1
+6640,Laura Marling,Laura Marling,bands/laura-marling,534,0,1
+6691,Joss Stone,Joss Stone,bands/joss-stone,386,0,1
+6695,N.W.A,N.W.A.,bands/n-w-a,7,1,1
+6706,John Coltrane,"""John Coltrane International Jazz And Blues Festival""",bands/john-coltrane-international-jazz-and-blues-festival,13,40,1
+6709,Mario,Mario,bands/mario,255,0,1
+6757,Mac Miller,Mac Miller,bands/mac-miller,649,0,1
+6761,Ingrid Michaelson,Ingrid Michaelson,bands/ingrid-michaelson,734,0,1
+6764,Devendra Banhart,Devendra Banhart,bands/devendra-banhart,394,0,1
+6767,Pavement,Pavement,bands/pavement,465,0,1
+6771,Dropkick Murphys,Dropkick Murphys,bands/dropkick-murphys,1792,0,1
+6773,Glee Cast,Glee Cast,bands/glee-cast,34,0,1
+6774,Atreyu,Atreyu,bands/atreyu--3,1146,0,1
+6775,Steve Miller Band,Steve Miller Band,bands/steve-miller-band,1248,0,1
+6780,Bing Crosby,A Bing Crosby Christmas,bands/a-bing-crosby-christmas,1,12,1
+6806,Elbow,Elbow,bands/elbow,538,0,1
+6831,Carrie Underwood,Carrie Underwood,bands/carrie-underwood,1072,0,1
+6832,311,311,bands/311,1701,0,1
+6857,Digitalism,Digitalism,bands/digitalism,363,0,1
+6861,Noah and the Whale,Noah and the Whale,bands/noah-and-the-whale,284,0,1
+6862,The Yardbirds,The Yardbirds,bands/the-yardbirds,969,0,1
+6865,Dream Theater,Dream Theater,bands/dream-theater,1533,0,1
+6871,Lionel Richie,Lionel Richie,bands/lionel-richie,806,0,1
+6876,Joni Mitchell,Joni Mitchell,bands/joni-mitchell,658,0,1
+6885,Thom Yorke,Thom Yorke,bands/thom-yorke,106,0,1
+6891,RJD2,RJD2,bands/rjd2,462,0,1
+6893,Boys Like Girls,Boys Like Girls,bands/boys-like-girls,839,0,1
+6895,Barenaked Ladies,Barenaked Ladies,bands/barenaked-ladies,1389,0,1
+6917,Flyleaf,Flyleaf,bands/flyleaf,768,0,1
+6923,Echo & The Bunnymen,Echo & the Bunnymen,bands/echo-the-bunnymen--2,1398,1,1
+6947,Nancy Sinatra,nancy sinatra,bands/nancy-sinatra,16,2,1
+6957,Birdy,Birdy,bands/birdy,284,0,1
+6982,Zedd,Zedd,bands/zedd,899,0,1
+7007,Five Finger Death Punch,Five Finger Death Punch,bands/five-finger-death-punch,1287,0,1
+7014,Primal Scream,Primal Scream,bands/primal-scream,551,0,1
+7018,Trivium,Trivium,bands/trivium,1750,0,1
+7054,Lamb of God,Lamb of God,bands/lamb-of-god--5,1370,0,1
+7059,James Blake,James Blake,bands/james-blake,639,0,1
+7064,Hooverphonic,Hooverphonic,bands/hooverphonic,203,0,1
+7065,Broken Bells,Broken Bells,bands/broken-bells,121,0,1
+7067,Rilo Kiley,Rilo Kiley,bands/rilo-kiley,289,0,1
+7068,Ladytron,Ladytron,bands/ladytron,346,0,1
+7076,Sam Cooke,sam cooke,bands/sam-cooke,3,2,1
+7087,Jane’s Addiction,"""Janes Addiction""",bands/jane-s-addiction,922,3,1
+7094,Trapt,Trapt,bands/trapt,1366,0,1
+7119,My Morning Jacket,My Morning Jacket,bands/my-morning-jacket,1099,0,1
+7124,Hinder,Hinder,bands/hinder,1300,0,1
+7148,Joshua Radin,Joshua Radin,bands/joshua-radin,806,0,1
+7150,Shaggy,Shaggy,bands/shaggy,554,0,1
+7168,Nouvelle Vague,Nouvelle Vague,bands/nouvelle-vague,313,0,1
+7170,Disclosure,Disclosure,bands/disclosure,573,0,1
+7177,Jay Sean,Jay Sean,bands/jay-sean,182,0,1
+7178,Tina Turner,Tina Turner,bands/tina-turner,1036,0,1
+7198,Nicole Scherzinger,Nicole Scherzinger,bands/nicole-scherzinger,33,0,1
+7207,Selena Gomez,Selena Gomez,bands/selena-gomez,240,0,1
+7211,Lady Antebellum,Lady Antebellum,bands/lady-antebellum,350,0,1
+7214,Elvis Costello,Elvis Costello,bands/elvis-costello,2472,0,1
+7256,Far East Movement,Far East Movement,bands/far-east-movement,493,0,1
+7257,City and Colour,City and Colour,bands/city-and-colour,866,0,1
+7258,AWOLNATION,AWOLNATION,bands/awolnation--2,800,0,1
+7259,Willie Nelson,Willie Nelson,bands/willie-nelson,2591,0,1
+7282,Guano Apes,Guano Apes,bands/guano-apes,189,0,1
+7283,Eddie Vedder,Eddie Vedder,bands/eddie-vedder,241,0,1
+7298,Clap Your Hands Say Yeah,Clap Your Hands Say Yeah,bands/clap-your-hands-say-yeah,629,0,1
+7300,Herbie Hancock,Herbie Hancock,bands/herbie-hancock,624,0,1
+7324,Theory of a Deadman,Theory of a Deadman,bands/theory-of-a-deadman,1642,0,1
+7329,The Red Jumpsuit Apparatus,The Red Jumpsuit Apparatus,bands/the-red-jumpsuit-apparatus,1248,0,1
+7331,Thin Lizzy,Thin Lizzy,bands/thin-lizzy,555,0,1
+7347,Jeremih,Jeremih,bands/jeremih,366,0,1
+7386,Télépopmusik,Télépopmusik,bands/telepopmusik,9,0,1
+7387,Claude Debussy,Claude Debussy,bands/claude-debussy,4,0,1
+7388,Gossip,Gossip,bands/gossip,423,0,1
+7403,St. Vincent,St. Vincent,bands/st-vincent,831,0,1
+7408,Silverchair,Silverchair,bands/silverchair,524,0,1
+7409,Hilary Duff,Hilary Duff,bands/hilary-duff,248,0,1
+7411,Ace of Base,Ace of Base,bands/ace-of-base,20,0,1
+7416,The Subways,The Subways,bands/the-subways,649,0,1
+7421,Friendly Fires,Friendly Fires,bands/friendly-fires,440,0,1
+7423,James Taylor,James Taylor,bands/james-taylor,1485,0,1
+7434,B.B. King,B.B. King,bands/b-b-king--2,1690,0,1
+7450,Xzibit,xzibit,bands/xzibit,250,1,1
+7455,Sam Smith,Sam Smith,bands/sam-smith,461,0,1
+7460,Cobra Starship,Cobra Starship,bands/cobra-starship,689,0,1
+7488,Violent Femmes,Violent Femmes,bands/violent-femmes--2,946,0,1
+7492,Shania Twain,Shania Twain,bands/shania-twain,689,0,1
+7494,The Isley Brothers,The Isley Brothers,bands/the-isley-brothers--2,271,0,1
+7496,The Vines,The Vines,bands/the-vines,181,0,1
+7516,Children of Bodom,Children of Bodom,bands/children-of-bodom--2,976,0,1
+7517,Tony Bennett,Tony Bennett,bands/tony-bennett,1049,0,1
+7521,The Pretenders,Pretenders,bands/pretenders,1029,4,1
+7524,3OH!3,3OH!3,bands/3oh-3,780,0,1
+7533,A$AP Rocky,A$AP Rocky,bands/a-ap-rocky,532,0,1
+7534,Blind Melon,Blind Melon,bands/blind-melon,297,0,1
+7537,Chamillionaire,Chamillionaire,bands/chamillionaire,58,0,1
+7538,Babyshambles,Babyshambles,bands/babyshambles,222,0,1
+7540,Kraftwerk,Kraftwerk,bands/kraftwerk,372,0,1
+7574,Portugal. The Man,Portugal. The Man,bands/portugal-the-man--6,1537,0,1
+7575,Bowling for Soup,Bowling for Soup,bands/bowling-for-soup--4,1200,0,1
+7585,The Tallest Man on Earth,The Tallest Man On Earth,bands/the-tallest-man-on-earth--2,702,1,1
+7588,Ratatat,Ratatat,bands/ratatat,467,0,1
+7593,Gang Starr,Gang Starr,bands/gang-starr,49,0,1
+7594,Dolly Parton,Dolly Parton,bands/dolly-parton--2,483,0,1
+7626,Sixpence None the Richer,Sixpence None The Richer,bands/sixpence-none-the-richer,136,1,1
+7627,The Cars,The Cars,bands/the-cars,174,0,1
+7651,Hole,Hole,bands/hole,205,0,1
+7676,Saliva,Saliva,bands/saliva,1592,0,1
+7697,Childish Gambino,Childish Gambino,bands/childish-gambino,326,0,1
+7699,Passenger,Passenger,bands/passenger,837,0,1
+7724,The Maccabees,The Maccabees,bands/the-maccabees,479,0,1
+7726,t.A.T.u.,t.A.T.u.,bands/t-a-t-u-d1964fd7-e201-4e58-9062-fb33eab5287e,7,0,1
+7752,Buffalo Springfield,Buffalo Springfield,bands/buffalo-springfield,71,0,1
+7753,Caribou,Caribou,bands/caribou,942,0,1
+7767,Motion City Soundtrack,Motion City Soundtrack,bands/motion-city-soundtrack,1312,0,1
+7772,Howie Day,Howie Day,bands/howie-day,776,0,1
+7774,Ben Folds,Ben Folds,bands/ben-folds,1172,0,1
+7786,Collective Soul,Collective Soul,bands/collective-soul,1307,0,1
+7803,Bonnie Tyler,Bonnie Tyler,bands/bonnie-tyler,122,0,1
+7805,The Naked and Famous,The Naked and Famous,bands/the-naked-and-famous,558,0,1
+7807,Lloyd Banks,Lloyd Banks,bands/lloyd-banks,74,0,1
+7808,Toni Braxton,toni braxton,bands/toni-braxton,315,2,1
+7809,Ludovico Einaudi,Ludovico Einaudi,bands/ludovico-einaudi,264,0,1
+7812,The Last Shadow Puppets,The Last Shadow Puppets,bands/the-last-shadow-puppets,93,0,1
+7813,Four Tet,Four Tet,bands/four-tet,818,0,1
+7821,Rancid,Rancid,bands/rancid--2,804,0,1
+7832,Tinie Tempah,Tinie Tempah,bands/tinie-tempah,475,0,1
+7833,Savage Garden,Savage Garden,bands/savage-garden,48,0,1
+7835,The Presidents of the United States of America,The Presidents of The United States of America,bands/the-presidents-of-the-united-states-of-america--2,335,1,1
+7837,Everclear,Everclear,bands/everclear,1874,0,1
+7845,The Human League,The Human League,bands/the-human-league,799,0,1
+7846,Vanessa Carlton,Vanessa Carlton,bands/vanessa-carlton,390,0,1
+7847,Nada Surf,Nada Surf,bands/nada-surf,756,0,1
+7850,Soft Cell,Soft Cell,bands/soft-cell,34,0,1
+7851,CeeLo Green,Ceelo Green,bands/ceelo-green,331,1,1
+7852,My Bloody Valentine,My Bloody Valentine,bands/my-bloody-valentine,178,0,1
+7855,The Zombies,The Zombies,bands/the-zombies,842,0,1
+7892,Curren$y,Curren$y,bands/curren-y,422,0,1
+7894,Jordin Sparks,Jordin Sparks,bands/jordin-sparks,283,0,1
+7896,The Streets,The Streets,bands/the-streets,336,0,1
+7920,The Calling,The Calling,bands/the-calling,145,0,1
+7928,Biffy Clyro,Biffy Clyro,bands/biffy-clyro--2,959,0,1
+7931,Nightmares on Wax,Nightmares On Wax,bands/nightmares-on-wax,211,1,1
+7936,Switchfoot,Switchfoot,bands/switchfoot,1674,0,1
+7945,Christina Perri,Christina Perri,bands/christina-perri,313,0,1
+7947,Local Natives,Local Natives,bands/local-natives,865,0,1
+7961,Architecture in Helsinki,Architecture In Helsinki,bands/architecture-in-helsinki,271,1,1
+7963,Amy Macdonald,Amy Macdonald,bands/amy-macdonald,385,0,1
+7965,Velvet Revolver,Velvet Revolver,bands/velvet-revolver,292,0,1
+7968,Diana Ross,Diana Ross,bands/diana-ross,588,0,1
+7971,Grateful Dead,Grateful Dead,bands/grateful-dead,2419,0,1
+7996,Hozier,Hozier,bands/hozier,500,0,1
+8012,Katie Melua,Katie Melua,bands/katie-melua,475,0,1
+8013,Patti Smith,Patti Smith,bands/patti-smith,914,0,1
+8030,Hot Hot Heat,Hot Hot Heat,bands/hot-hot-heat,449,0,1
+8037,Sepultura,Sepultura,bands/sepultura,1505,0,1
+8041,Crossfade,Crossfade,bands/crossfade,435,0,1
+8047,Fuel,Fuel,bands/fuel--2,795,0,1
+8072,The Rapture,The Rapture,bands/the-rapture,397,0,1
+8086,Franz Schubert,Franz Schubert,bands/franz-schubert,1,0,1
+8087,Styx,Styx,bands/styx,2967,0,1
+8110,Misfits,Misfits,bands/misfits,1046,0,1
+8134,Machine Head,Machine Head,bands/machine-head,1289,0,1
+8139,Parov Stelar,Parov Stelar,bands/parov-stelar,263,0,1
+8143,Howard Shore,Howard Shore,bands/howard-shore,3,0,1
+8178,Public Enemy,Public Enemy,bands/public-enemy,617,0,1
+8180,Annie Lennox,Annie Lennox,bands/annie-lennox,114,0,1
+8184,Mobb Deep,Mobb Deep,bands/mobb-deep,447,0,1
+8189,Coolio,Coolio,bands/coolio,514,0,1
+8208,The Darkness,The Darkness,bands/the-darkness,690,0,1
+8219,Frank Wilson,Frankie C. Wilson Jr.,bands/frankie-c-wilson-jr,1,9,1
+8220,Grimes,Grimes,bands/grimes,350,0,1
+8245,Mando Diao,Mando Diao,bands/mando-diao,383,0,1
+8296,Anthrax,Anthrax,bands/anthrax,1526,0,1
+8315,Hollywood Undead,Hollywood Undead,bands/hollywood-undead,920,0,1
+8321,Silversun Pickups,Silversun Pickups,bands/silversun-pickups,930,0,1
+8353,Chris Cornell,Chris Cornell,bands/chris-cornell,579,0,1
+8359,Peggy Lee,Peggy Lee,bands/peggy-lee,1,0,1
+8411,Donna Summer,Donna Summer,bands/donna-summer--2,141,0,1
+8424,America,America,bands/america,1432,0,1
+8443,Philip Glass,Philip Glass,bands/philip-glass,169,0,1
+8448,Escape the Fate,Escape the Fate,bands/escape-the-fate--2,1451,0,1
+8451,De La Soul,De La Soul,bands/de-la-soul,877,0,1
+8452,Waka Flocka Flame,Waka Flocka Flame,bands/waka-flocka-flame,613,0,1
+8453,Rascal Flatts,Rascal Flatts,bands/rascal-flatts--2,1459,0,1
+8455,Chet Baker,Chet Baker,bands/chet-baker,3,0,1
+8456,Athlete,Athlete,bands/athlete,320,0,1
+8478,Finger Eleven,Finger Eleven,bands/finger-eleven,778,0,1
+8480,The Album Leaf,The Album Leaf,bands/the-album-leaf,355,0,1
+8483,Amon Tobin,Amon Tobin,bands/amon-tobin,199,0,1
+8513,The Monkees,The Monkees,bands/the-monkees,449,0,1
+8531,Ashlee Simpson,Ashlee Simpson,bands/ashlee-simpson,131,0,1
+8533,Jack White,Jack White,bands/jack-white--2,410,0,1
+8547,Eagle‐Eye Cherry,Eagle-Eye Cherry,bands/eagle-eye-cherry,25,1,1
+8550,Anberlin,Anberlin,bands/anberlin,1264,0,1
+8579,JoJo,JoJo,bands/jojo,323,0,1
+8604,As I Lay Dying,As I Lay Dying,bands/as-i-lay-dying,1169,0,1
+8605,The Veronicas,The Veronicas,bands/the-veronicas,309,0,1
+8610,Simply Red,Simply Red,bands/simply-red,565,0,1
+8637,UB40,UB40,bands/ub40,1141,0,1
+8647,Grouplove,Grouplove,bands/grouplove,740,0,1
+8648,Semisonic,Semisonic,bands/semisonic,99,0,1
+8649,Fever Ray,Fever Ray,bands/fever-ray,109,0,1
+8650,Ben Howard,Ben Howard,bands/ben-howard,627,0,1
+8653,Men at Work,Men At Work,bands/men-at-work--2,96,1,1
+8655,Donovan,Donovan,bands/donovan--2,284,0,1
+8680,Craig David,Craig David,bands/craig-david,292,0,1
+8688,Metronomy,Metronomy,bands/metronomy,669,0,1
+8699,Bob Sinclar,Bob Sinclar,bands/bob-sinclar,68,0,1
+8701,Brad Paisley,Brad Paisley,bands/brad-paisley,1546,0,1
+8709,The Crystal Method,The Crystal Method,bands/the-crystal-method,879,0,1
+8711,Danny Elfman,Danny Elfman,bands/danny-elfman,41,0,1
+8714,Story of the Year,Story of the Year,bands/story-of-the-year--3,866,0,1
+8715,Clint Mansell,Clint Mansell,bands/clint-mansell,12,0,1
+8716,The Vaccines,The Vaccines,bands/the-vaccines,810,0,1
+8719,Curtis Mayfield,curtis mayfield,bands/curtis-mayfield,14,2,1
+8721,Clean Bandit,Clean Bandit,bands/clean-bandit,459,0,1
+8724,Everything but the Girl,Everything But The Girl,bands/everything-but-the-girl--3,32,2,1
+8727,Sneaker Pimps,Sneaker Pimps,bands/sneaker-pimps,81,0,1
+8755,Pixie Lott,Pixie Lott,bands/pixie-lott,130,0,1
+8782,Kenny Chesney,Kenny Chesney,bands/kenny-chesney,1267,0,1
+8784,Yeasayer,Yeasayer,bands/yeasayer,641,0,1
+8786,The Jesus and Mary Chain,The Jesus and Mary Chain,bands/the-jesus-and-mary-chain--2,834,0,1
+8813,The Lonely Island,The Lonely Island,bands/the-lonely-island,18,0,1
+8814,Deerhunter,Deerhunter,bands/deerhunter,702,0,1
+8819,The Bangles,The Bangles,bands/the-bangles,178,0,1
+8829,Simian Mobile Disco,Simian Mobile Disco,bands/simian-mobile-disco,432,0,1
+8835,Barry White,Barry White,bands/barry-white-b006b1cb-af1f-499f-82fb-ffdf7f070f4b,22,0,1
+8841,Mazzy Star,Mazzy Star,bands/mazzy-star,120,0,1
+8843,Ra Ra Riot,Ra Ra Riot,bands/ra-ra-riot,810,0,1
+8886,M. Ward,M. Ward,bands/m-ward,601,0,1
+8911,Camera Obscura,Camera Obscura,bands/camera-obscura,257,0,1
+8912,Hard‐Fi,Hard-Fi,bands/hard-fi,187,1,1
+8918,Take That,Take That,bands/take-that,495,0,1
+8935,Kavinsky,Kavinsky,bands/kavinsky,73,0,1
+8940,Johannes Brahms,Johannes Brahms,bands/johannes-brahms,4,0,1
+8941,Roxy Music,Roxy Music,bands/roxy-music,151,0,1
+8946,Eric Prydz,Eric Prydz,bands/eric-prydz,321,0,1
+8949,Neil Diamond,Neil Diamond,bands/neil-diamond,699,0,1
+8965,Alphaville,Alphaville,bands/alphaville,58,0,1
+8966,Thrice,Thrice,bands/thrice,1206,0,1
+8983,Phantom Planet,Phantom Planet,bands/phantom-planet,360,0,1
+8984,Coheed and Cambria,Coheed and Cambria,bands/coheed-and-cambria,1807,0,1
+8985,Alkaline Trio,Alkaline Trio,bands/alkaline-trio,1196,0,1
+8986,CocoRosie,CocoRosie,bands/cocorosie,343,0,1
+8988,Flogging Molly,Flogging Molly,bands/flogging-molly,1877,0,1
+8994,Martin Solveig,Martin Solveig,bands/martin-solveig,471,0,1
+8996,The Corrs,The Corrs,bands/the-corrs,129,0,1
+9002,Tokyo Police Club,Tokyo Police Club,bands/tokyo-police-club,822,0,1
+9028,The Coral,The Coral,bands/the-coral,324,0,1
+9045,Alter Bridge,Alter Bridge,bands/alter-bridge,842,0,1
+9046,Mike Oldfield,Mike Oldfield,bands/mike-oldfield,44,0,1
+9055,Mastodon,Mastodon,bands/mastodon,1432,0,1
+9060,hellogoodbye,Hellogoodbye,bands/hellogoodbye,872,1,1
+9063,Daniel Powter,Daniel Powter,bands/daniel-powter,43,0,1
+9064,Wolf Parade,Wolf Parade,bands/wolf-parade,402,0,1
+9066,Built to Spill,Built to Spill,bands/built-to-spill,1409,0,1
+9071,Tom Jones,Tom Jones,bands/tom-jones,1251,0,1
+9080,Little Dragon,Little Dragon,bands/little-dragon,695,0,1
+9083,Ginuwine,Ginuwine,bands/ginuwine,600,0,1
+9090,The Wallflowers,The Wallflowers,bands/the-wallflowers,1049,0,1
+9093,All That Remains,All That Remains,bands/all-that-remains,1522,0,1
+9094,Omarion,Omarion,bands/omarion,272,0,1
+9119,Orbital,Orbital,bands/orbital,264,0,1
+9127,Serj Tankian,Serj Tankian,bands/serj-tankian,206,0,1
+9128,Suede,Suede,bands/suede,910,0,1
+9178,Blonde Redhead,Blonde Redhead,bands/blonde-redhead,540,0,1
+9204,Dinosaur Jr.,Dinosaur Jr.,bands/dinosaur-jr,1393,0,1
+9209,Derek and the Dominos,Derek and the Dominos,bands/derek-and-the-dominos,32,0,1
+9210,Macy Gray,Macy Gray,bands/macy-gray,582,0,1
+9215,Erasure,Erasure,bands/erasure,570,0,1
+9222,Chromeo,Chromeo,bands/chromeo,787,0,1
+9272,Goldfinger,Goldfinger,bands/goldfinger--3,598,0,1
+9281,Stevie Ray Vaughan,Stevie Ray Vaughan,bands/stevie-ray-vaughan,218,0,1
+9297,Dead Kennedys,Dead Kennedys,bands/dead-kennedys,566,0,1
+9299,Talib Kweli,Talib Kweli,bands/talib-kweli,1351,0,1
+9305,Opeth,Opeth,bands/opeth,1022,0,1
+9321,The Stranglers,The Stranglers,bands/the-stranglers,1852,0,1
+9346,Young the Giant,Young the Giant,bands/young-the-giant--2,946,0,1
+9373,Muddy Waters,Muddy Waters,bands/muddy-waters,1343,0,1
+9379,Crowded House,Crowded House,bands/crowded-house,469,0,1
+9382,Adema,Adema,bands/adema,643,0,1
+9439,Starsailor,Starsailor,bands/starsailor--2,335,0,1
+9442,Aloe Blacc,Aloe Blacc,bands/aloe-blacc,391,0,1
+9444,Anti‐Flag,Anti-Flag,bands/anti-flag,1766,1,1
+9452,Ashanti,Ashanti,bands/ashanti--2,269,0,1
+9477,Obie Trice,Obie Trice,bands/obie-trice,70,0,1
+9478,Matisyahu,Matisyahu,bands/matisyahu,1637,0,1
+9483,Bone Thugs‐n‐Harmony,Bone Thugs-N-Harmony,bands/bone-thugs-n-harmony,929,3,1
+9485,Boyz II Men,Boyz II Men,bands/boyz-ii-men,1611,0,1
+9514,The Chainsmokers,The Chainsmokers,bands/the-chainsmokers,902,0,1
+9516,Lacuna Coil,Lacuna Coil,bands/lacuna-coil,1121,0,1
+9519,Spin Doctors,Spin Doctors,bands/spin-doctors,453,0,1
+9523,Suzanne Vega,Suzanne vega,bands/suzanne-vega,749,1,1
+9525,The Walkmen,The Walkmen,bands/the-walkmen,601,0,1
+9527,Porcupine Tree,Porcupine Tree,bands/porcupine-tree,440,0,1
+9532,Miguel,Miguel,bands/miguel,584,0,1
+9556,Twisted Sister,Twisted Sister,bands/twisted-sister,334,0,1
+9569,Olly Murs,Olly Murs,bands/olly-murs,582,0,1
+9570,The Neighbourhood,The Neighbourhood,bands/the-neighbourhood,537,0,1
+9588,The Pogues,The Pogues,bands/the-pogues,331,0,1
+9603,The Futureheads,The Futureheads,bands/the-futureheads,474,0,1
+9606,Matt Nathanson,Matt Nathanson,bands/matt-nathanson,1143,0,1
+9610,Chris Isaak,Chris Isaak,bands/chris-isaak,1257,0,1
+9615,Amos Lee,Amos Lee,bands/amos-lee,912,0,1
+9618,Tycho,Tycho,bands/tycho,542,0,1
+9668,Icona Pop,Icona Pop,bands/icona-pop,408,0,1
+9673,Cheap Trick,Cheap Trick,bands/cheap-trick,2302,0,1
+9697,Eagles of Death Metal,Eagles of Death Metal,bands/eagles-of-death-metal,760,0,1
+9700,Max Richter,Max Richter,bands/max-richter,34,0,1
+9701,Gary Jules,Gary Jules,bands/gary-jules,131,0,1
+9703,Dizzee Rascal,Dizzee Rascal,bands/dizzee-rascal,426,0,1
+9706,Lindsay Lohan,Lindsay Lohan,bands/lindsay-lohan,6,0,1
+9749,Washed Out,Washed Out,bands/washed-out,551,0,1
+9756,Keith Urban,Keith Urban,bands/keith-urban,1414,0,1
+9763,Sugarcult,Sugarcult,bands/sugarcult,407,0,1
+9766,Infected Mushroom,Infected Mushroom,bands/infected-mushroom,835,0,1
+9798,Meat Loaf,Meat Loaf,bands/meat-loaf,663,0,1
+9803,Jamie Foxx,Jamie Foxx,bands/jamie-foxx,181,0,1
+9817,Chiddy Bang,Chiddy Bang,bands/chiddy-bang,248,0,1
+9820,Alexi Murdoch,Alexi Murdoch,bands/alexi-murdoch,94,0,1
+9821,The Moody Blues,The Moody Blues,bands/the-moody-blues,2595,0,1
+9854,Poison,Poison,bands/poison,1268,0,1
+9879,Vance Joy,Vance Joy,bands/vance-joy,675,0,1
+9885,The Rasmus,The Rasmus,bands/the-rasmus,333,0,1
+9886,John Denver,John Denver,bands/john-denver,1200,0,1
+9895,Charli XCX,Charli XCX,bands/charli-xcx,748,0,1
+9903,Michelle Branch,Michelle Branch,bands/michelle-branch,472,0,1
+9906,Antony and the Johnsons,Antony and the Johnsons,bands/antony-and-the-johnsons,3,0,1
+9915,Aqualung,Aqualung,bands/aqualung,174,0,1
+9916,Madeleine Peyroux,Madeleine Peyroux,bands/madeleine-peyroux,718,0,1
+9918,Flying Lotus,Flying Lotus,bands/flying-lotus,596,0,1
+9921,twenty one pilots,Twenty One Pilots,bands/twenty-one-pilots--15,1018,3,1
+9933,Adam Lambert,Adam Lambert,bands/adam-lambert,568,0,1
+9937,Method Man,Method Man,bands/method-man,560,0,1
+9941,Estelle,Estelle,bands/estelle,284,0,1
+0,Paul Oakenfold,Paul Oakenfold,bands/paul-oakenfold,569,0,1
+3,Steely Dan,Steely Dan,bands/steely-dan,1021,0,1
+28,Kenny Loggins,Kenny Loggins,bands/kenny-loggins,851,0,1
+30,Daughter,Daughter,bands/daughter,413,0,1
+56,Andy Williams,andy williams,bands/andy-williams,80,2,1
+61,Sick Puppies,Sick Puppies,bands/sick-puppies,912,0,1
+63,Ja Rule,Ja Rule,bands/ja-rule,402,0,1
+66,Skid Row,Skid Row,bands/skid-row,1240,0,1
+110,The B‐52s,"""The B-52s""",bands/the-b-52-s,981,3,1
+114,Plies,Plies,bands/plies,81,0,1
+137,Feeder,Feeder,bands/feeder,545,0,1
+187,Orchestral Manoeuvres in the Dark,Orchestral Manoeuvres in the Dark,bands/orchestral-manoeuvres-in-the-dark--4,276,0,1
+192,Neon Trees,Neon Trees,bands/neon-trees,615,0,1
+194,Aimee Mann,Aimee Mann,bands/aimee-mann,675,0,1
+204,Tim McGraw,Tim McGraw,bands/tim-mcgraw,1328,0,1
+231,Rogue Wave,Rogue Wave,bands/rogue-wave,461,0,1
+247,Five for Fighting,Five For Fighting,bands/five-for-fighting,309,1,1
+248,Walk the Moon,Walk the Moon,bands/walk-the-moon--4,908,0,1
+252,Sarah Vaughan,Sarah Vaughan,bands/sarah-vaughan,7,0,1
+254,LL Cool J,LL Cool J,bands/ll-cool-j,230,0,1
+284,Scooter,Scooter,bands/scooter,149,0,1
+309,Ben Folds Five,Ben Folds Five,bands/ben-folds-five,264,0,1
+314,CHVRCHΞS,CHVRCHES,bands/chvrches,715,1,1
+317,Mr. Scruff,Mr. Scruff,bands/mr-scruff,151,0,1
+320,The Pretty Reckless,The Pretty Reckless,bands/the-pretty-reckless,666,0,1
+322,The Wanted,The Wanted,bands/the-wanted,350,0,1
+342,Thelonious Monk,Thelonius Monk,bands/thelonius-monk,2,1,1
+344,REO Speedwagon,REO Speedwagon,bands/reo-speedwagon,2155,0,1
+346,Reel Big Fish,Reel Big Fish,bands/reel-big-fish,2139,0,1
+348,Jurassic 5,Jurassic 5,bands/jurassic-5,449,0,1
+352,The Magnetic Fields,The Magnetic Fields,bands/the-magnetic-fields,246,0,1
+359,The Cribs,The Cribs,bands/the-cribs,677,0,1
+392,Don McLean,Don McLean,bands/don-mclean,698,0,1
+393,Blake Shelton,Blake Shelton,bands/blake-shelton,1238,0,1
+398,Róisín Murphy,Róisín Murphy,bands/roisin-murphy,207,0,1
+400,Underoath,Underoath,bands/underoath,1310,0,1
+406,The New Pornographers,The New Pornographers,bands/the-new-pornographers,614,0,1
+432,Don Henley,Don Henley,bands/don-henley,290,0,1
+435,Ricky Martin,Ricky Martin,bands/ricky-martin,751,0,1
+438,Fat Joe,Fat Joe,bands/fat-joe,180,0,1
+448,Daddy Yankee,Daddy Yankee,bands/daddy-yankee,405,0,1
+452,Peaches,Peaches,bands/peaches,517,0,1
+477,A Fine Frenzy,A Fine Frenzy,bands/a-fine-frenzy,169,0,1
+478,John Mellencamp,John Mellencamp,bands/john-mellencamp,912,0,1
+484,Kaskade,Kaskade,bands/kaskade,1236,0,1
+491,House of Pain,House of Pain,bands/house-of-pain,192,0,1
+519,Atmosphere,Atmosphere,bands/atmosphere,1247,0,1
+544,Mayday Parade,Mayday Parade,bands/mayday-parade--5,1716,0,1
+545,Ben E. King,Ben E. King,bands/ben-e-king,27,0,1
+549,Three 6 Mafia,Three 6 Mafia,bands/three-6-mafia,157,0,1
+561,Kid Rock,Kid Rock,bands/kid-rock,1199,0,1
+586,Martin Garrix,Martin Garrix,bands/martin-garrix,564,0,1
+587,Jackson Browne,Jackson Browne,bands/jackson-browne,1858,0,1
+607,Haddaway,Haddaway,bands/haddaway,23,0,1
+614,Dirty Pretty Things,Dirty Pretty Things,bands/dirty-pretty-things,141,0,1
+615,MSTRKRFT,MSTRKRFT,bands/mstrkrft,372,0,1
+618,The Whitest Boy Alive,The Whitest Boy Alive,bands/the-whitest-boy-alive,88,0,1
+619,Buzzcocks,Buzzcocks,bands/buzzcocks,555,0,1
+624,Iggy Azalea,Iggy Azalea,bands/iggy-azalea,356,0,1
+630,Girls Aloud,Girls Aloud,bands/girls-aloud,143,0,1
+634,Paul van Dyk,Paul van Dyk,bands/paul-van-dyk,468,0,1
+637,Culture Club,Culture Club,bands/culture-club,305,0,1
+642,Thousand Foot Krutch,Thousand Foot Krutch,bands/thousand-foot-krutch,744,0,1
+648,Relient K,Relient K,bands/relient-k,913,0,1
+650,The Dead Weather,The Dead Weather,bands/the-dead-weather,101,0,1
+676,12 Stones,12 Stones,bands/12-stones,433,0,1
+677,Capital Cities,Capital Cities,bands/capital-cities,409,0,1
+678,Hurts,Hurts,bands/hurts,282,0,1
+703,Toby Keith,Toby Keith,bands/toby-keith,1291,0,1
+729,William Fitzsimmons,William Fitzsimmons,bands/william-fitzsimmons,582,0,1
+730,Mat Kearney,Mat Kearney,bands/mat-kearney,896,0,1
+732,Silverstein,Silverstein,bands/silverstein,2101,0,1
+737,Crazy Town,Crazy Town,bands/crazy-town,168,0,1
+738,Leftfield,Leftfield,bands/leftfield,121,0,1
+743,Sophie Ellis‐Bextor,Sophie Ellis-Bextor,bands/sophie-ellis-bextor,233,1,1
+746,Badly Drawn Boy,Badly Drawn Boy,bands/badly-drawn-boy,299,0,1
+747,Ladyhawke,Ladyhawke,bands/ladyhawke,212,0,1
+776,Bad Company,Bad Company,bands/bad-company,673,0,1
+806,Jason Aldean,Jason Aldean,bands/jason-aldean,1487,0,1
+810,Ace Hood,Ace Hood,bands/ace-hood,109,0,1
+812,Brett Dennen,Brett Dennen,bands/brett-dennen,936,0,1
+813,Kygo,Kygo,bands/kygo,388,0,1
+858,The Ataris,The Ataris,bands/the-ataris,954,0,1
+882,Asher Roth,Asher Roth,bands/asher-roth,186,0,1
+883,Rudimental,Rudimental,bands/rudimental,577,0,1
+888,The Horrors,The Horrors,bands/the-horrors,617,0,1
+900,Metro Station,Metro Station,bands/metro-station,664,0,1
+902,Iyaz,Iyaz,bands/iyaz,67,0,1
+918,James Vincent McMorrow,James Vincent McMorrow,bands/james-vincent-mcmorrow,372,0,1
+938,Zebrahead,Zebrahead,bands/zebrahead,853,0,1
+966,Anastacia,Anastacia,bands/anastacia,349,0,1
+988,Tech N9ne,Tech N9ne,bands/tech-n9ne,1920,0,1
+1024,Antonín Dvořák,Antonin Dvorak,bands/antonin-dvorak,2,3,1
+1025,Édith Piaf,Édith Piaf,bands/edith-piaf,4,0,1
+1027,The Specials,The Specials,bands/the-specials,514,0,1
+1043,Basshunter,Basshunter,bands/basshunter,57,0,1
+1069,The Antlers,The Antlers,bands/the-antlers,427,0,1
+1072,John Frusciante,John Frusciante,bands/john-frusciante,7,0,1
+1074,DragonForce,Dragonforce,bands/dragonforce,773,1,1
+1082,Phantogram,Phantogram,bands/phantogram,744,0,1
+1087,Charles Mingus,Charles Mingus,bands/charles-mingus,9,0,1
+1090,Dexys Midnight Runners,Dexys Midnight Runners,bands/dexys-midnight-runners,25,0,1
+1119,Little Boots,Little Boots,bands/little-boots,201,0,1
+1123,Primus,Primus,bands/primus,1282,0,1
+1141,Senses Fail,Senses Fail,bands/senses-fail,1461,0,1
+1142,Carla Bruni,Carla Bruni,bands/carla-bruni,17,0,1
+1145,Black Kids,Black Kids,bands/black-kids,220,0,1
+1177,Gotan Project,Gotan Project,bands/gotan-project,94,0,1
+1179,First Aid Kit,First Aid Kit,bands/first-aid-kit,747,0,1
+1180,Dixie Chicks,Dixie Chicks,bands/dixie-chicks,170,0,1
+1182,Stan Getz,Stan Getz,bands/stan-getz,5,0,1
+1185,At the Drive‐In,At the Drive-In,bands/at-the-drive-in--2,271,1,1
+1188,Keyshia Cole,Keyshia Cole,bands/keyshia-cole,334,0,1
+1195,Frankie Goes to Hollywood,Frankie Goes To Hollywood,bands/frankie-goes-to-hollywood,41,1,1
+1222,Ashley Tisdale,Ashley Tisdale,bands/ashley-tisdale,19,0,1
+1223,Sleigh Bells,Sleigh Bells,bands/sleigh-bells,486,0,1
+1224,The Mountain Goats,The Mountain Goats,bands/the-mountain-goats,1192,0,1
+1226,Le Tigre,Le Tigre,bands/le-tigre,144,0,1
+1230,“Weird Al” Yankovic,"""Weird Al"" Yankovic",bands/weird-al-yankovic,1115,2,1
+1231,God Is an Astronaut,God Is An Astronaut,bands/god-is-an-astronaut,172,1,1
+1232,Madvillain,Madvillain,bands/madvillain,2,0,1
+1233,Isaac Hayes,isaac hayes,bands/isaac-hayes,46,2,1
+1241,They Might Be Giants,They Might Be Giants,bands/they-might-be-giants--2,2186,0,1
+1243,Rita Ora,Rita Ora,bands/rita-ora,276,0,1
+1245,Eve 6,Eve 6,bands/eve-6,618,0,1
+1255,Bobby Darin,bobby darin,bands/bobby-darin,1,2,1
+1257,Stromae,Stromae,bands/stromae,220,0,1
+1264,Something Corporate,Something Corporate,bands/something-corporate,328,0,1
+1265,The Go! Team,The Go! Team,bands/the-go-team,371,0,1
+1267,Say Anything,Say Anything,bands/say-anything,860,0,1
+1273,Minus the Bear,Minus the Bear,bands/minus-the-bear--2,981,0,1
+1274,Perry Como,Perry Como,bands/perry-como,1,0,1
+1275,Brenda Lee,brenda lee,bands/brenda-lee,69,2,1
+1277,HAIM,HAIM,bands/haim--2,549,0,1
+1301,Flux Pavilion,Flux Pavilion,bands/flux-pavilion,435,0,1
+1306,Solange,Solange,bands/solange,294,0,1
+1317,Jonas Brothers,Jonas Brothers,bands/jonas-brothers,834,0,1
+1325,The Head and the Heart,The Head and the Heart,bands/the-head-and-the-heart--2,919,0,1
+1329,Gary Moore,Gary Moore,bands/gary-moore,239,0,1
+1350,Funeral for a Friend,Funeral for a Friend,bands/funeral-for-a-friend--3,736,0,1
+1351,The Weepies,The Weepies,bands/the-weepies,235,0,1
+1352,The Rakes,The Rakes,bands/the-rakes,215,0,1
+1365,Donavon Frankenreiter,Donavon Frankenreiter,bands/donavon-frankenreiter,1339,0,1
+1368,Pennywise,Pennywise,bands/pennywise,1172,0,1
+1376,Mystery Jets,Mystery Jets,bands/mystery-jets,404,0,1
+1381,Neon Indian,Neon Indian,bands/neon-indian,427,0,1
+1383,The Alan Parsons Project,The Alan Parsons Project,bands/the-alan-parsons-project,14,0,1
+1385,Spandau Ballet,Spandau Ballet,bands/spandau-ballet,139,0,1
+1388,Yo Gotti,Yo Gotti,bands/yo-gotti,393,0,1
+1390,MC Hammer,MC Hammer,bands/mc-hammer,168,0,1
+1391,Okkervil River,Okkervil River,bands/okkervil-river,665,0,1
+1409,Jimmy Cliff,Jimmy Cliff,bands/jimmy-cliff,365,0,1
+1440,Juelz Santana,Juelz Santana,bands/juelz-santana,69,0,1
+1441,Sugar Ray,Sugar Ray,bands/sugar-ray,625,0,1
+1454,Buena Vista Social Club,Buena Vista Social Club,bands/buena-vista-social-club,95,0,1
+1459,4 Non Blondes,4 Non Blondes,bands/4-non-blondes--2,27,0,1
+1460,Dierks Bentley,Dierks Bentley,bands/dierks-bentley,1778,0,1
+1463,Sevendust,Sevendust,bands/sevendust,1855,0,1
+1469,Panda Bear,Panda Bear,bands/panda-bear,194,0,1
+1473,Cocteau Twins,Cocteau Twins,bands/cocteau-twins--2,61,0,1
+1474,Them Crooked Vultures,Them Crooked Vultures,bands/them-crooked-vultures,78,0,1
+1500,Toro y Moi,Toro Y Moi,bands/toro-y-moi,605,1,1
+1503,Diplo,Diplo,bands/diplo,1314,0,1
+1528,Rachael Yamagata,Rachael Yamagata,bands/rachael-yamagata,571,0,1
+1530,The Raveonettes,The Raveonettes,bands/the-raveonettes,515,0,1
+1531,Best Coast,Best Coast,bands/best-coast,593,0,1
+1534,The Avett Brothers,The Avett Brothers,bands/the-avett-brothers,1573,0,1
+1556,Boys Noize,Boys Noize,bands/boys-noize,595,0,1
+1561,Godspeed You! Black Emperor,Godspeed You! Black Emperor,bands/godspeed-you-black-emperor,764,0,1
+1563,Death in Vegas,Death In Vegas,bands/death-in-vegas,91,1,1
+1564,Blue Foundation,Blue Foundation,bands/blue-foundation,11,0,1
+1570,Less Than Jake,Less Than Jake,bands/less-than-jake--3,2028,0,1
+1578,Manchester Orchestra,Manchester Orchestra,bands/manchester-orchestra,974,0,1
+1581,Janelle Monáe,Janelle Monáe,bands/janelle-monae--2,464,0,1
+1585,Helloween,Helloween,bands/helloween,470,0,1
+1610,We the Kings,We The Kings,bands/we-the-kings--6,1213,1,1
+1627,The Zutons,The Zutons,bands/the-zutons,247,0,1
+1628,Fear Factory,Fear Factory,bands/fear-factory,1081,0,1
+1632,Arch Enemy,Arch Enemy,bands/arch-enemy,939,0,1
+1689,Matt Costa,Matt Costa,bands/matt-costa,549,0,1
