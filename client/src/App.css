@@ -1,3 +1,43 @@
+:root {
+  --bg-color: #373232;
+  --dark-accent: #241C1C;
+  --light-accent: #2D2626;
+  --text-light: #FFFFFF;
+  --text-dark: #AFABAA;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  height: 100vh;
+  width: 100vw;
+  color: var(--text-dark);
+  font-family: "Inter";
+}
+
 .App {
   text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.topBar {
+  background-color: var(--light-accent);
+  min-height: 70px;
+  height: 5vh;
+  width: 100%;
+}
+
+.routePanel {
+  margin: 30px;
 }
