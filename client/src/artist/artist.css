@@ -1,0 +1,48 @@
+.top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 30px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.accordionTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordionMainTitle {
+    font-size: 18px;
+    margin: 0px;
+}
+
+.accordionSecondTitle {
+    margin: 0px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.albumAccordion {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.horizontalAccordionTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
