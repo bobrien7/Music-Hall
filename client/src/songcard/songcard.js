@@ -1,15 +1,15 @@
 import './songcard.css';
 
-function SongCard() {
+function SongCard(props) {
 
-    // will this.props for these
-    let title = "Top Song";
-    let album = ""
-    let song = "Placeholder test tesetest";
-    let albumTitle = "Album test test test test";
-    let player = "";
+    // pass in props (see artist.js for example)
+    let title = props.title;
+    let album = props.songInfo.album_image;
+    let song = props.songInfo.track_name;
+    let albumTitle = props.songInfo.album_title;
+    let player = props.songInfo.track_preview_url;
+    let year = props.songInfo.release_date;
 
-    // for audio: can do something like click on song card = play 30s preview, will figure out later
     return (
         <div className="base">
             <h3>{title}</h3>

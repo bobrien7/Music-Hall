@@ -46,3 +46,10 @@
     flex-direction: row;
     align-items: center;
 }
+
+.listContainer {
+    border-radius: 10px;
+    background-color: var(--light-accent);
+    padding: 10px;
+    width: 100%;
+}

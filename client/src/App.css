@@ -79,12 +79,17 @@ p {
   text-align: left;
 }
 
+hr {
+  background-color: var(--bg-color);
+  height: 1px;
+}
+
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
   background-color: var(--light-accent);
   color: var(--text-light);
   width: calc(100% - 40px);
   padding: 5px 20px;
-  border-radius: 10px;
+  box-shadow: none;
 }
 
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
