@@ -53,3 +53,27 @@
     padding: 10px;
     width: 100%;
 }
+
+.outerSongContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.song {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 85%;
+    margin: 20px 0px;
+}
+
+.songInfo {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.musicAccordion {
+    min-width: 50%;
+}

@@ -8,10 +8,15 @@
 
 html, body {
   background-color: var(--bg-color);
+  min-height: 100vh;
   height: 100vh;
   width: 100vw;
   color: var(--text-dark);
   font-family: "Inter";
+}
+
+#root {
+  height: 100%;
 }
 
 .App {
@@ -24,18 +29,23 @@ html, body {
 
 .contain {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: flex-end;
   width: 100%;
   height: 100%;
+}
+
+.contain-2 {
+  width: 85%;
+  margin-top: 70px;
 }
 
 .topBar {
   background-color: var(--light-accent);
   min-height: 70px;
-  height: 5vh;
   width: 100%;
+  position: fixed;
+  z-index: 1;
 }
 
 .routePanel {
@@ -82,6 +92,26 @@ p {
 hr {
   background-color: var(--bg-color);
   height: 1px;
+}
+
+button {
+  background-color: var(--text-dark);
+  color: var(--light-accent);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 25px;
+  margin: 0px 3px;
+  font-weight: bold;
+  font-family: "Inter";
+  font-size: 16px;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+button:hover, button:active {
+  background-color: var(--text-light);
+  color: var(--dark-accent);
+  transition: all 0.25s;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {

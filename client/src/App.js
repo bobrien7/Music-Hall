@@ -13,20 +13,23 @@ function App() {
 
   return (
     <div className="App">
+      <div className="topBar"></div>
       <NavBar />
       <div className="contain">
-        <div className="topBar"></div>
-        <div className="routePanel">
-          <Routes>
-            <Route exact path="/" element={<Main />} />
-            <Route exact path="/timeline" element={<Timeline />} />
-            <Route exact path="/search" element={<Search />} />
-            <Route path="/playlist" element={<Playlist />} />
-            <Route path="/artist" element={<Artist />} />
-            <Route path="/concert" element={<Concert />} />
-            <Route path="*" element={<Main />} />
-          </Routes>
+        <div className="contain-2">
+          <div className="routePanel">
+            <Routes>
+              <Route exact path="/" element={<Main />} />
+              <Route exact path="/timeline" element={<Timeline />} />
+              <Route exact path="/search" element={<Search />} />
+              <Route path="/playlist" element={<Playlist />} />
+              <Route path="/artist" element={<Artist />} />
+              <Route path="/concert" element={<Concert />} />
+              <Route path="*" element={<Main />} />
+            </Routes>
+          </div>
         </div>
+
       </div>
     </div>
   );

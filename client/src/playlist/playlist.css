@@ -1,0 +1,79 @@
+.active {
+    background-color: var(--text-light);
+    color: var(--dark-accent);
+    transition: all 0.25s;
+}
+
+.buttons {
+    margin: 60px 0px;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mainDiv {
+    width: 100%;
+}
+
+.startButton {
+font-size: 25px;
+padding: 20px 60px;
+background-color: var(--text-light);
+color: var(--dark-accent);
+}
+
+.startButtonDiv {
+    width: 100%;
+    margin: 60px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    margin: 10px;
+    width: 80%;
+}
+
+.MuiSlider-track {
+    background-color: var(--text-dark);
+    border: none;
+}
+
+.MuiSlider-rail {
+    background-color: var(--dark-accent);
+    opacity: 100%;
+}
+
+.MuiSlider-thumb {
+    background-color: var(--text-light);
+}
+
+.MuiSlider-marked {
+    color: var(--dark-accent);
+}
+
+.MuiSlider-colorPrimary {
+    color: var(--dark-accent);
+}
+
+.MuiSlider-markLabel {
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.MuiSlider-valueLabel {
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--dark-accent);
+}
+
+.MuiSlider-thumb:hover {
+    box-shadow: none;
+}

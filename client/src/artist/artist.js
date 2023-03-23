@@ -4,10 +4,9 @@ import Accordion from '@mui/material/Accordion';
 import { Divider } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-function Artist() {
+function Artist(props) {
     let link = "";
     let summary = "Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié ...";
     let title = "Artist placeholder";
@@ -62,7 +61,7 @@ function Artist() {
                             id="panel1a-header"
                             >
                             <div className="horizontalAccordionTitle">
-                                <img className="albumAccordion" src={album.album_image}></img>
+                                <img className="albumAccordion" src={album.album_image} alt="album art"></img>
                                 <div className="accordionTitle">
                                     <p className="accordionMainTitle">test1</p>
                                     <p className="accordionSecondTitle">test2</p>
@@ -70,15 +69,18 @@ function Artist() {
                             </div>
 
                             </AccordionSummary>
-                            <AccordionDetails>
+                            <AccordionDetails className="outerSongContainer">
                                 {album.song_list.map(song => (
-                                    <div>
-                                        <img className="album" src={song.album_image}></img>
-                                        {song.track_name}
-                                        {song.duration}
-                                        <audio className="music" controls="controls">
-                                            <source src={song.track_preview_url} type="audio/mpeg"/>
-                                        </audio>
+                                    <div className="song">
+                                        <div className="songInfo">
+                                            <p className="accordionMainTitle">{song.track_name}</p>
+                                            <p className="accordionSecondTitle">{song.duration}</p>
+                                        </div>
+                                        <div className="songInfo">
+                                            <audio className="musicAccordion" controls="controls">
+                                                <source src={song.track_preview_url} type="audio/mpeg"/>
+                                            </audio>
+                                        </div>
                                     </div>
                                 ))}
                             </AccordionDetails>
