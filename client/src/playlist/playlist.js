@@ -33,6 +33,7 @@ function Playlist() {
                 </div>
                 <div className="slider">
                     <Slider
+                        className="sliderBody"
                         aria-label="Always visible"
                         value={year}
                         valueLabelDisplay="on"

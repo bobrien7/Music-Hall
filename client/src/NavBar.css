@@ -10,6 +10,10 @@
     z-index: 2;
 }
 
+a.active {
+    background-color: transparent;
+}
+
 .navBox {
     color: var(--text-dark);
     text-decoration: none;

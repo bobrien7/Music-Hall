@@ -1,4 +1,5 @@
 import './songcard.css';
+import defaultAlbum from '../assets/default_album.png';
 
 function SongCard(props) {
 
@@ -10,12 +11,13 @@ function SongCard(props) {
     let player = props.songInfo.track_preview_url;
     let year = props.songInfo.release_date;
 
+
     return (
         <div className="base">
             <h3>{title}</h3>
             <div className="centerContainer">
                 <div className="songcardContainer">
-                    <img className="album" src={album}></img>
+                    <img onError={(e) => e.target.src = defaultAlbum} className="album" src={album} alt="album art"></img>
                     <h3>{song}</h3>
                     <h4>{albumTitle}</h4>
                 </div>

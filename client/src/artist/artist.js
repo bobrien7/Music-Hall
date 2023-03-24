@@ -5,6 +5,7 @@ import { Divider } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import defaultAlbum from '../assets/default_album.png';
 
 function Artist(props) {
     let link = "";
@@ -61,7 +62,7 @@ function Artist(props) {
                             id="panel1a-header"
                             >
                             <div className="horizontalAccordionTitle">
-                                <img className="albumAccordion" src={album.album_image} alt="album art"></img>
+                                <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={album.album_image} alt="album art"></img>
                                 <div className="accordionTitle">
                                     <p className="accordionMainTitle">test1</p>
                                     <p className="accordionSecondTitle">test2</p>
@@ -70,8 +71,8 @@ function Artist(props) {
 
                             </AccordionSummary>
                             <AccordionDetails className="outerSongContainer">
-                                {album.song_list.map(song => (
-                                    <div className="song">
+                                {album.song_list.map((song, albumIndex) => (
+                                    <div className="song" key={albumIndex}>
                                         <div className="songInfo">
                                             <p className="accordionMainTitle">{song.track_name}</p>
                                             <p className="accordionSecondTitle">{song.duration}</p>
