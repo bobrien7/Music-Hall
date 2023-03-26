@@ -5,7 +5,7 @@
 .base {
     height: 341px;
     width: 260px;
-    background-color: var(--dark-accent);
+    background-color: var(--light-accent);
     border-radius: 15px;
     padding: 20px;
 }

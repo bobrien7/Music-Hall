@@ -4,6 +4,8 @@
   --light-accent: #2D2626;
   --text-light: #FFFFFF;
   --text-dark: #AFABAA;
+  --green: #77D886;
+  --red: #D87777;
 }
 
 html, body {
@@ -13,6 +15,7 @@ html, body {
   width: 100vw;
   color: var(--text-dark);
   font-family: "Inter";
+  overflow-x: hidden;
 }
 
 #root {
@@ -36,6 +39,7 @@ html, body {
 }
 
 .contain-2 {
+  max-width: calc(100vw - 250px);
   width: 85%;
   margin-top: 70px;
 }
