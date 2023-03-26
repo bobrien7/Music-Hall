@@ -14,7 +14,12 @@ function SongCard(props) {
 
     return (
         <div className="base">
+            {title &&
             <h3>{title}</h3>
+            }
+            {!title &&
+            <h3>{year}</h3>
+            }
             <div className="centerContainer">
                 <div className="songcardContainer">
                     <img onError={(e) => e.target.src = defaultAlbum} className="album" src={album} alt="album art"></img>

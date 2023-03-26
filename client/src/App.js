@@ -23,7 +23,7 @@ function App() {
               <Route exact path="/timeline" element={<Timeline />} />
               <Route exact path="/search" element={<Search />} />
               <Route path="/playlist" element={<Playlist />} />
-              <Route path="/artist" element={<Artist />} />
+              <Route path="/artist/:artist_id" element={<Artist artist_id={'123'}/>} />
               <Route path="/concert" element={<Concert />} />
               <Route path="*" element={<Main />} />
             </Routes>

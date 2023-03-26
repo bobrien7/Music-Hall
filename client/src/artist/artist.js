@@ -6,12 +6,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import defaultAlbum from '../assets/default_album.png';
+import { useEffect, useState } from "react";
+
+const config = require('../config.json');
 
 function Artist(props) {
-    let link = "";
-    let summary = "Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié ...";
-    let title = "Artist placeholder";
-    let topSong = {
+    const [link, setWikiLink] = useState("");
+    const [summary, setSummary] = useState("Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié ...");
+    const [title, setTitle] = useState("Artist");
+    const [topSong, setTopSong] = useState({
         "track_name": "Test song name",
         "artist_name": "Guns N Roses",
         "release_date": "date",
@@ -19,8 +22,8 @@ function Artist(props) {
         "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
         "album_title": "album title",
         "duration": "10:10"
-    };
-    let albums = [
+    });
+    const [albums, setAlbums] = useState([
         {"album": "test album",
         "release_date": "1960",
         "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
@@ -36,7 +39,20 @@ function Artist(props) {
             topSong,
             topSong
         ]}
-    ];
+    ]);
+
+    // useEffect(() => {
+    //     fetch(`http://${config.server_host}:${config.server_port}/artist/${props.artistId}`)
+    //       .then(res => res.text())
+    //       .then(resJson => {
+    //         console.log(resJson);
+    //         setWikiLink(props.page_name);
+    //         setSummary(props.summary);
+    //         setTitle(props.artist_name);
+    //         setTopSong(props.top_song);
+    //         setAlbums(props.albums);
+    //     });
+    //   }, [props]);
 
     return (
         <div>
