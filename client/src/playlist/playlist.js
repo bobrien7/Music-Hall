@@ -12,7 +12,74 @@ function Playlist() {
     const [start, setStart] = useState(false);
     const [end, setEnd] = useState(false);
     const [year, setYear] = useState([1910, 1980]);
-    const [funk, setFunk] = useState(false);
+
+    const [genres, setGenres] = useState({
+        'Rock': {
+            'value': false,
+            'search': 'rock'
+        },
+        'Pop': {
+            'value': false,
+            'search': 'pop'
+        },
+        'Metal': {
+            'value': false,
+            'search': 'metal'
+        },
+        'Dance': {
+            'value': false,
+            'search': 'dance'
+        },
+        'Hip Hop': {
+            'value': false,
+            'search': 'hip hop'
+        },
+        'Rap': {
+            'value': false,
+            'search': 'rap'
+        },
+        'Electro': {
+            'value': false,
+            'search': 'electr'
+        },
+        'Indie': {
+            'value': false,
+            'search': 'indie'
+        },
+        'Folk': {
+            'value': false,
+            'search': 'folk'
+        },
+        'Grunge': {
+            'value': false,
+            'search': 'grunge'
+        },
+        'Blues': {
+            'value': false,
+            'search': 'blues'
+        },
+        'Soul': {
+            'value': false,
+            'search': 'soul'
+        },
+        'R&B': {
+            'value': false,
+            'search': 'r&b'
+        },
+        'Wave': {
+            'value': false,
+            'search': 'wave'
+        },
+        'Mellow': {
+            'value': false,
+            'search': 'mellow'
+        },
+        'Punk': {
+            'value': false,
+            'search': 'punk'
+        },
+    });
+
     const [givenSongList, setGivenSongList] = useState([{
         "track_name": "Test song name",
         "artist_name": "Guns N Roses",
@@ -66,7 +133,12 @@ function Playlist() {
         <div className="controls">
             <div className={(!start && !end) ? "transition" : "transparent"}>
                 <div className="buttons">
-                    <button className={funk ? "active" : ""} onClick={() => setFunk(!funk)}>Funk</button>
+                    {Object.keys(genres).map((key, index) => {
+                        return(
+                            <button key={index} className={genres[key]['value'] ? "active genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': [key]['search'], 'value': ![key]['value']}})}>{key}</button>
+                        )
+                    })}
+
                 </div>
                 <div className="slider">
                     <Slider
