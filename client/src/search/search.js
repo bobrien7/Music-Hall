@@ -7,33 +7,41 @@ function Search() {
 
     const [pageSize, setPageSize] = useState(10);
     const [data, setData] = useState([]);
+    const [columns, setColumns] = useState([]);
     const [searchType, setSearchType] = useState("CONCERT")
 
     const [selectedConcertId, setSelectedConcertId] = useState(null);
     const [selectedArtistId, setSelectedArtistId] = useState(null);
 
-    const columnsConcert = [
+    /* DUMMY DATA */
+    const columnsVenue = [
         { 
-            field: 'name', 
+            field: 'venueName', 
             headerName: 'Venue name', 
-            width: 300, renderCell: (params) => (
-                <Link onClick={() => setSelectedConcertId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link> 
-        )},
+            width: 300, 
+            // renderCell: (params) => (
+            //     <Link onClick={() => setSelectedConcertId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link> )
+        },
         { 
             field: 'location', 
             headerName: 'Location',
             width: 100
         },
         { 
-            field: 'concert',
+            field: 'totalConcert',
             headerName: 'Total Concerts',
             width: 100
         },
     ];
 
+    const dummyVenue = [
+        { id: 1, venueName: "Venue1", location: "Location1", totalConcert: 1 },
+        { id: 2, venueName: "Venue2", location: "Location2", totalConcert: 2 }
+    ];
+
     const columnsCreator = [
         { 
-            field: 'name', 
+            field: 'creatorName', 
             headerName: 'Creator name', 
             width: 300, renderCell: (params) => (
                 <Link onClick={() => setSelectedArtistId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link>
@@ -50,14 +58,25 @@ function Search() {
         },
     ];
 
+    const dummyCreator = [
+        { id: 1, creatorName: "Name1", popularity: "Popularity1", performances: 3 },
+        { id: 2, creatorName: "Name2", popularity: "Popularity2", performances: 4 }
+    ];
+    /* DUMMY DATA */
+
     const handleSearchTypeChange = (event, newSearchType) => {
         setSearchType(newSearchType);
-        console.log(newSearchType);
+        if (newSearchType === "CONCERT") {
+            setData(dummyVenue);
+            setColumns(columnsVenue);
+        } else {
+            setData(dummyCreator);
+            setColumns(columnsCreator);
+        }
     }
 
     return (
         <div>
-            
             <Grid 
                 container
                 rowSpacing={2}
@@ -88,10 +107,10 @@ function Search() {
                 <Grid item xs={12}>
                     <DataGrid
                         rows={data}
-                        columns={columnsConcert}
-                        pageSize={pageSize}
+                        columns={columns}
+                        // pageSize={pageSize}
                         rowsPerPageOptions={[5, 10, 25]}
-                        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                        // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                         autoHeight
                     />
                 </Grid>
