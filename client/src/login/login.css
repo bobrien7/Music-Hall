@@ -1,0 +1,55 @@
+.loginButtons {
+    margin: 10px;
+    width: 40%;
+}
+
+.buttonsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 0;
+}
+
+input {
+    border-radius: 10px;
+    border: 1px solid var(--text-dark);
+    height: 2.5rem;
+    width: 80%;
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 18px;
+    background: transparent;
+    color: var(--text-light);
+}
+
+h2 {
+    font-size: 40px;
+    margin: 0px 10px 30px 10px;
+}
+
+input:focus {
+    border: 1px solid var(--text-light);
+    outline: none;
+}
+
+input:hover {
+    background: var(--bg-color);
+    transition: all 0.2s;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 70px 30px;
+    height: 50%;
+    width: 25%;
+}

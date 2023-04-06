@@ -6,14 +6,21 @@ import Concert from './concert/concert';
 import Timeline from './timeline/timeline';
 import Playlist from './playlist/playlist';
 import Search from './search/search';
+import Login from  './login/login';
 import { Route, Routes } from "react-router-dom";
 import "@fontsource/inter"
+import { useState } from "react";
 
 function App() {
+  const [viewLogIn, setViewLogIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className="App">
-      <div className="topBar"></div>
+      <Login open={viewLogIn} onClose={() => setViewLogIn(false)}/>
+      <div className="topBar">
+        <button className="login" onClick={() => setViewLogIn(true)}>Login</button>
+      </div>
       <NavBar />
       <div className="contain">
         <div className="contain-2">

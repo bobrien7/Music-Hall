@@ -6,6 +6,11 @@
 
 .buttons {
     margin: 60px 0px;
+    text-align: center;
+}
+
+.genres {
+    margin: 5px;
 }
 
 .controls {
@@ -48,7 +53,7 @@
 .startButton {
     font-size: 25px;
     padding: 20px 60px;
-    background-color: var(--text-light);
+    background-color: var(--text-dark);
     color: var(--dark-accent);
 }
 
