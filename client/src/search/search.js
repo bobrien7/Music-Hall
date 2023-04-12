@@ -1,6 +1,6 @@
 import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 function Search() {
