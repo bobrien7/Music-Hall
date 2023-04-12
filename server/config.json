@@ -2,7 +2,7 @@
     "host": "music-hall.c0eu8oebrqqe.us-east-1.rds.amazonaws.com",
     "port": "3306",
     "user": "guest_user",
-    "pass": "cis5500$guest%user&23",
+    "pass": "",
     "db": "music_hall_db",
     "server_host": "localhost",
     "server_port": "8080"
