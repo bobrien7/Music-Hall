@@ -1,7 +1,7 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { Grid, Slider } from '@mui/material';
+import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useState } from 'react';
 import SongCard from '../songcard/songcard.js';
 import './timeline.css';
@@ -92,7 +92,58 @@ function Timeline() {
         "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
         "album_title": "album title",
         "duration": "10:10"
+    },
+    {
+        "track_name": "Test song name",
+        "artist_name": "Guns N Roses",
+        "release_date": "date",
+        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
+        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+        "album_title": "album title",
+        "duration": "10:10"
+    },
+    {
+        "track_name": "Test song name",
+        "artist_name": "Guns N Roses",
+        "release_date": "date",
+        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
+        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+        "album_title": "album title",
+        "duration": "10:10"
+    },
+    {
+        "track_name": "Test song name",
+        "artist_name": "Guns N Roses",
+        "release_date": "date",
+        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
+        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+        "album_title": "album title",
+        "duration": "10:10"
     }]);
+
+    const handleChange = (event, newYears) => {
+        setYear(newYears);
+    }
+
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 5
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
+
     const marks = [
         {
           value: 1900,
@@ -102,33 +153,10 @@ function Timeline() {
           value: 2000,
           label: '2000',
         }
-      ];
-
-    const handleChange = (event, newYears) => {
-        setYear(newYears);
-    }
-
-    const responsive = {
-        superLargeDesktop: {
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1
-        }
-        };
+    ];
 
     return (
-        <div>
+        <div className="timelineParent">
             <h1>Timeline</h1>
             <Grid 
                 container
@@ -156,16 +184,22 @@ function Timeline() {
                         />
                     </div>
                 </Grid>
+                <Grid item xs={12}>
+                    <Carousel 
+                        responsive={responsive}
+                        showDots={true}
+                        partialVisbile
+                        draggable
+                    >
+                        {givenSongList.map((item) => {
+                            return <div>
+                                    <SongCard songInfo={item} title="Test"/>
+                                </div>
+                        })}
+                    </Carousel>
+                </Grid>
             </Grid>
-            <Carousel 
-                responsive={responsive}
-                showDots={true}
-            >
-                {givenSongList.map((item) => {
-                    return <SongCard songInfo={item} title="Test"/>
-                })}
-                
-            </Carousel>
+            
         </div>
     );
 }
