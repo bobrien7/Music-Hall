@@ -45,7 +45,7 @@ input:hover {
     transition: all 0.2s;
 }
 
-.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiDialog-paper {
     display: flex;
     justify-content: center;
     border-radius: 20px;

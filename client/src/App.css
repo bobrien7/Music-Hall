@@ -43,6 +43,8 @@ html, body {
   max-width: calc(100vw - 250px);
   width: 85%;
   margin-top: 70px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .topBar {

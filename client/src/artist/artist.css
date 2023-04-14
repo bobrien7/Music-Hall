@@ -21,17 +21,26 @@
 .accordionTitle {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .accordionMainTitle {
     font-size: 18px;
     margin: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .accordionSecondTitle {
     margin: 0px;
     font-size: 14px;
     color: var(--text-dark);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .albumAccordion {
@@ -76,4 +85,36 @@
 
 .musicAccordion {
     min-width: 50%;
+}
+
+.simAlbumBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 270px;
+    min-width: 100px;
+    margin: 0px 20px;
+}
+
+.simAlbums {
+    display: flex;
+    width: calc(100% - 40px);
+    margin: 20px;
+    flex-direction: column;
+}
+
+.simAlbumLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.textSimAlbums {
+    width: 200px;
+}
+
+.simAlbumContainer {
+    margin-top: 10px;
+    display: flex;
 }

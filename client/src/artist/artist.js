@@ -7,6 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import defaultAlbum from '../assets/default_album.png';
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const config = require('../config.json');
 
@@ -41,6 +42,19 @@ function Artist(props) {
         ]}
     ]);
 
+    const [simAlbums, setSimAlbums] = useState([
+        [{
+        "album": "test album2 2324 23413 34",
+        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+        "album_artist": "Guns N Roses",
+        "artist_id": "1234"},
+        {
+            "album": "test album2 2324 23413 34",
+            "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+            "album_artist": "Guns N Roses",
+            "artist_id": "1234"}], []
+    ]);
+
     // useEffect(() => {
     //     fetch(`http://${config.server_host}:${config.server_port}/artist/${props.artistId}`)
     //       .then(res => res.text())
@@ -52,6 +66,14 @@ function Artist(props) {
     //         setTopSong(props.top_song);
     //         setAlbums(props.albums);
     //     });
+    //     let arr;
+    //     for (let album in albums) {
+    //         fetch(`http://${config.server_host}:${config.server_port}/album/${album.album_uri}`)
+    //         .then(res => res.text())
+    //         .then(resJson => {
+    //             arr.push(resJson);
+    //         });
+    //     }
     //   }, [props]);
 
     return (
@@ -100,6 +122,25 @@ function Artist(props) {
                                         </div>
                                     </div>
                                 ))}
+                                {true && simAlbums[index].length > 0 &&
+                                    <div className="simAlbums">
+                                    <p className="accordionMainTitle">Similar Albums:</p>
+                                    <div className="simAlbumContainer">
+                                    {simAlbums[index].map((alb, ind) => (
+                                        <div className="simAlbumBox" key={ind}>
+                                            <a className="simAlbumLink" href={"/artist/" + alb.artist_id} exact>
+                                            <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={alb.album_image} alt="album art"></img>
+                                            <div className="textSimAlbums">
+                                            <p className="accordionMainTitle">{alb.album}</p>
+                                            <p className="accordionSecondTitle">{alb.album_artist}</p>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    ))}
+                                    </div>
+                                    </div>
+                                }
+
                             </AccordionDetails>
                         </Accordion>
                         {index !== albums.length-1 ? <Divider variant="middle"/> : null}
