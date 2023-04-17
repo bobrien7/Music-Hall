@@ -8,8 +8,8 @@ const app = express();
 app.use(cors({
   origin: '*',
 }));
-app.use(bp.json())
-app.use(bp.urlencoded({ extended: true }))
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 // routes here
 app.get('/test', routes.test);

@@ -7,7 +7,7 @@ function SongCard(props) {
     let title = props.title;
     let album = props.songInfo.album_image;
     let song = props.songInfo.track_name;
-    let albumTitle = props.songInfo.album_title;
+    let albumTitle = props.songInfo.album_name;
     let player = props.songInfo.track_preview_url;
     let year = props.songInfo.release_date;
 

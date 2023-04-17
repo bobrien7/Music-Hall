@@ -46,7 +46,7 @@ const song = async function(req, res) {
 
 // GET /artist/:artist_id
 const artist = async function(req, res) {
-  console.log(req.params.artist_id);
+  console.log("artist endpoint params", JSON.stringify(req.params.artist_id));
   artistId = req.params.artist_id;
 
   const query1 = `
@@ -71,7 +71,7 @@ const artist = async function(req, res) {
   LIMIT 1`
 
   const query3 = `
-  SELECT name AS artist_name, summary, years_active_begin AS year_begin, 
+  SELECT name AS artist_name, summary, years_active_begin AS year_begin,
     years_active_end AS year_end, image_url AS image, birth_name, genres
   FROM Creators
   WHERE Creators.creator_id="${artistId}"`
@@ -79,58 +79,70 @@ const artist = async function(req, res) {
   var artistTopSong = [];
 
   /*
-  { artist_name: string, summary :string, year_begin: integer, year_end: integer, image: string, 
-    birth_name: string, genres: {string, string, string}, top_song : {track_name : string, 
-      album_name : string, release_date : date, track_preview_url : string, album_image : string}, 
-      album_list : [ { album_id : string, release_date : date, 
+  { artist_name: string, summary :string, year_begin: integer, year_end: integer, image: string,
+    birth_name: string, genres: {string, string, string}, top_song : {track_name : string,
+      album_name : string, release_date : date, track_preview_url : string, album_image : string},
+      album_list : [ { album_id : string, release_date : date,
         song_list : {track_name : string, duration : integer, track_preview_url : string, track_uri: string}
   */
 
   connection.query(query3,
     (err, data) => {
-      if (err || data.length === 0){
-        console.log(err);
-        res.json({});
-      }
-      else{
-        let artist_info = [];
+      // if (err || data.length === 0) {
+      //   console.log("Artist endpoint data", data.length);
+      //   console.log("Error in artist endpoint:", err);
+      //   res.json({});
+      // }
+      //else{
+        let artist_info = {
+          "artist_name": "test artist",
+          "summary": "summary info",
+        };
         for (var i = 0; i < data.length; i++){
           artist_info.push(data[i]);
         }
 
-        let top_song = {"top_song": {"track_name" : "Sensitive", "album_name" : "The Heavy Entertainment Show (Deluxe)", 
-        "release_date" : "2016-11-04", "track_preview_url" : "https://p.scdn.co/mp3-preview/076a94c30fc2c3f6d2840bb3582022f0722e39bc?cid=774b29d4f13844c495f206cafdad9c86", 
-        "album_image" : "https://i.scdn.co/image/ab67616d00001e020f7ea7d45b75a3dabac59140"}};
+        let top_song = {"track_name" : "Sensitive", "album_name" : "The Heavy Entertainment Show (Deluxe)",
+        "release_date" : "2016-11-04", "track_preview_url" : "https://p.scdn.co/mp3-preview/076a94c30fc2c3f6d2840bb3582022f0722e39bc?cid=774b29d4f13844c495f206cafdad9c86",
+        "album_image" : "https://i.scdn.co/image/ab67616d00001e020f7ea7d45b75a3dabac59140",
+        "duration": 1000};
 
-        let album_list = {"album_list" : [ { "album_id" : "00ao0DAIYS0BNEbnbH0UCf", "release_date" : "2019-10-25", 
+        let album_list = [ { "album_id" : "00ao0DAIYS0BNEbnbH0UCf", "release_date" : "2019-10-25", "album_name" : "The Heavy Entertainment Show (Deluxe)", "album_image" : "https://i.scdn.co/image/ab67616d00001e020f7ea7d45b75a3dabac59140",
         "song_list" : [{"track_name" : "Mr. Churchill Says - 2019 Remaster", "duration" : 282889, "track_preview_url" : "https://p.scdn.co/mp3-preview/64a1a8c6802273d9b05bb4d588f7bc78566b64c2?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "5IN85J8Zi6uAVgnyDpGbcH"},
                        {"track_name" : "Australia - 2019 Remaster", "duration" : 405583, "track_preview_url" : "https://p.scdn.co/mp3-preview/c9208f7ed22e9bcefa9f657686123957aa2cf7de?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "5jqasTlmERm4xXg22iN9Ii"},
-                       {"track_name" : "The Future (with Ray Davies) - Doo-Wop Version", "duration" : 145773, "track_preview_url" : "https://p.scdn.co/mp3-preview/b9881a32da25a57e7d32b75d2d4ba23a5d06d272?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "6T2AKQcMdWYhyfKvjPmB58"}]}]};
+                       {"track_name" : "The Future (with Ray Davies) - Doo-Wop Version", "duration" : 145773, "track_preview_url" : "https://p.scdn.co/mp3-preview/b9881a32da25a57e7d32b75d2d4ba23a5d06d272?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "6T2AKQcMdWYhyfKvjPmB58"}]}];
 
         //let artist_details = {"artist_info" : artist_info}
         let response = {
-          ...artist_info,
-          ...top_song,
-          ...album_list
-      };
-        
-        res.json(response);
+          "artist_info": artist_info,
+          "top_song": top_song,
+          "album_list": album_list
+        };
+        //console.log("serve test", response);
+        //if (res.headersSent !== true) {
+          res.json(response);
+        //}
+
       }
-    })
+    //}
+    )
 }
 
 // GET /album/:album_id
 const album = async function (req, res) {
   //console.log(req.params);
-  cannedAlbum = {"albumId":"55", "name":"Abbey Road"};
+  cannedAlbum = {"album_name": "test album2 2324 23413 34",
+        "album_image": "https://i.scdn.co/image/ab67616d00001e020f7ea7d45b75a3dabac59140",
+        "album_artist": "Guns N Roses",
+        "artist_id": "1234"};
   res.send(cannedAlbum);
 }
 
 // GET /concert/:concert_id
 const concert = async function(req, res) {
   //console.log(req.params);
-  cannedConcert = {"concertId":"777", 
-                   "name":"The Beatles World Tour", 
+  cannedConcert = {"concertId":"777",
+                   "name":"The Beatles World Tour",
                    "date":"3-10-1980",
                    "venue":"Madison Square Garden"};
   res.send(cannedConcert);
@@ -141,13 +153,13 @@ const concertsearch = async function(req, res) {
   console.log(req.query);
   const query = `
   SELECT
-    v.name                          AS venue_name, 
-    v.location                      AS venue_location, 
+    v.name                          AS venue_name,
+    v.location                      AS venue_location,
     COUNT(DISTINCT c.concert_id)    AS number_of_concerts
   FROM Concerts c
   JOIN Venue v
     ON c.venue_id = v.venue_id
-  WHERE (v.name LIKE '%${req.query.search}%') OR 
+  WHERE (v.name LIKE '%${req.query.search}%') OR
         (v.location LIKE '%${req.query.search}%')
   GROUP BY v.venue_id
   ORDER BY number_of_concerts DESC`
@@ -174,10 +186,10 @@ const creatorsearch = async function(req, res) {
   console.log(req.query);
   const query = `
   SELECT
-    cr.name                       AS creator_name, 
-    cr.popularity                 AS creator_popularity, 
+    cr.name                       AS creator_name,
+    cr.popularity                 AS creator_popularity,
     COUNT(DISTINCT co.concert_id) AS count_of_concerts
-  FROM Concerts co    
+  FROM Concerts co
   JOIN Creators cr
     ON co.creators_id = cr.creator_id
   WHERE (cr.name LIKE '%${req.query.search}%')
@@ -206,8 +218,8 @@ const venuetopcreator = async function(req, res) {
   const query = `
   SELECT
     co.concert      AS concert_name,
-    cr.name         AS creator_name, 
-    cr.popularity   AS creator_popularity, 
+    cr.name         AS creator_name,
+    cr.popularity   AS creator_popularity,
     COUNT(cr.name)  AS count_of_concerts
   FROM Creators cr
   JOIN Concerts co
@@ -276,17 +288,17 @@ const randomsongs = async function(req, res) {
   console.log(genres);
   let query = `
   SELECT
-   a.image_url       AS image_url, 
-   c.name            AS creator_name, 
-   t.name            AS track_name, 
-   a.release_date    AS album_release_date, 
+   a.image_url       AS image_url,
+   c.name            AS creator_name,
+   t.name            AS track_name,
+   a.release_date    AS album_release_date,
    t.preview_url     AS track_preview
   FROM Tracks t
   JOIN Albums a
     ON t.album_id = a.album_id
   JOIN Creators c
     ON a.creator_id = c.creator_id
-  WHERE 
+  WHERE
     (a.release_date > "${req.query.year_start}-01-01")
     AND
     (a.release_date < "${req.query.year_end}-12-31")`
@@ -301,8 +313,8 @@ const randomsongs = async function(req, res) {
       {
         query += ` (c.genres LIKE '%${genres[i]}%') OR`
         i++;
-      } 
-      else 
+      }
+      else
       {
         query += ` (c.genres LIKE '%${genres[i]}%')`
         i++;
@@ -337,7 +349,7 @@ const playlists = async function(req, res) {
   console.log(req.body.songs_required);
   console.log(req.body.liked_songs);
   console.log(req.body.unliked_songs);
-  
+
   const likedSongs = req.body.liked_songs.split(",");
   const unlikedSongs = req.body.unliked_songs.split(",");
 
@@ -345,7 +357,7 @@ const playlists = async function(req, res) {
   console.log(unlikedSongs);
 
   let query = `
-  WITH 
+  WITH
     liked_songs AS
          (SELECT Tracks.track_id, popularity, acousticness, danceability, energy, instrumentalness,
                  track_key, liveness, loudness, speechiness, valence, tempo
@@ -356,9 +368,9 @@ const playlists = async function(req, res) {
           query += `
           "000wxXa9qv55sAp5YNH4TK",
           "001X6Bxouj5gvpiyiJSobk"    `
-          
+
   query += `        )),
-  
+
   unliked_artists AS
          (SELECT C.name
           FROM Tracks
@@ -371,13 +383,13 @@ const playlists = async function(req, res) {
     query += `      "002zygf5KBABh8Q40gmxRu",
                     "003kbs1V2S3Mokl3nXF1PV",
                     "003z7jJLt6uHFL7MXNoiFG"`
-                    
+
   query += `)),
-  
+
   averages AS (
         SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
         FROM liked_songs)
-  
+
   SELECT *, COUNT(album_name) as counts, group_concat(track_id separator ', ')
   FROM (
   SELECT *
@@ -398,25 +410,25 @@ const playlists = async function(req, res) {
       GROUP BY creator_name
       ORDER BY counts DESC`
 
-      let song1 = 
-      {"track_name" : "Summertime Sadness", 
-      "track_uri" : "1Ist6PR2BZR3n2z2Y5R6S1", 
-      "artist_name" : "Lana Del Rey", 
-      "release_date" : "2012-01-01", 
-      "track_preview_url" : "https://p.scdn.co/mp3-preview/c2417b9b977404dfc4a3c6b6ef5ac8f7abccee54?cid=774b29d4f13844c495f206cafdad9c86", 
+      let song1 =
+      {"track_name" : "Summertime Sadness",
+      "track_uri" : "1Ist6PR2BZR3n2z2Y5R6S1",
+      "artist_name" : "Lana Del Rey",
+      "release_date" : "2012-01-01",
+      "track_preview_url" : "https://p.scdn.co/mp3-preview/c2417b9b977404dfc4a3c6b6ef5ac8f7abccee54?cid=774b29d4f13844c495f206cafdad9c86",
       "album_image" : "https://i.scdn.co/image/ab67616d00001e02f894be72a77b1488292672c7"};
 
-      let song2 = {"track_name" : "Honeymoon", 
-      "track_uri" : "4X5zaUdlRhvBWYnyQIKmH8", 
-      "artist_name" : "Lana Del Rey", 
-      "release_date" : "2015-09-18", 
+      let song2 = {"track_name" : "Honeymoon",
+      "track_uri" : "4X5zaUdlRhvBWYnyQIKmH8",
+      "artist_name" : "Lana Del Rey",
+      "release_date" : "2015-09-18",
       "track_preview_url" : "https://p.scdn.co/mp3-preview/612e02d96d7fdaa4c2e2228d9f58924c0445fe30?cid=774b29d4f13844c495f206cafdad9c86",
       "album_image" : ""};
 
-      let song3 = {"track_name" : "Buddy's Rendezvous", 
-      "track_uri" : "6WAu9T5MC9QvtTwkmx6fkg", 
-      "artist_name" : "Lana Del Rey", 
-      "release_date" : "2015-09-10", 
+      let song3 = {"track_name" : "Buddy's Rendezvous",
+      "track_uri" : "6WAu9T5MC9QvtTwkmx6fkg",
+      "artist_name" : "Lana Del Rey",
+      "release_date" : "2015-09-10",
       "track_preview_url" : "https://p.scdn.co/mp3-preview/880d9c4b8e7736f49366d55d561bd84d69c4b982?cid=774b29d4f13844c495f206cafdad9c86",
       "album_image" : "https://i.scdn.co/image/ab67616d00001e02c210a1bace4b8731308775a9"};
 

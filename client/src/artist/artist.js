@@ -7,35 +7,29 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import defaultAlbum from '../assets/default_album.png';
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const config = require('../config.json');
 
 function Artist(props) {
+    const params = useParams();
     const [link, setWikiLink] = useState("");
-    const [summary, setSummary] = useState("Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié ...");
+    const [summary, setSummary] = useState("Loading...");
     const [title, setTitle] = useState("Artist");
     const [topSong, setTopSong] = useState({
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
+        "track_name": "",
+        "artist_name": "",
+        "release_date": "",
         "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
+        "album_image": "",
+        "album_title": "",
+        "duration": ""
     });
     const [albums, setAlbums] = useState([
-        {"album": "test album",
-        "release_date": "1960",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "song_list": [
-            topSong,
-            topSong
-        ]},
-        {
-        "album": "test album2",
-        "release_date": "1970",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+        {"album_name": "Loading...",
+        "album_id": "00ao0DAIYS0BNEbnbH0UCf",
+        "release_date": "",
+        "album_image": "",
         "song_list": [
             topSong,
             topSong
@@ -44,40 +38,50 @@ function Artist(props) {
 
     const [simAlbums, setSimAlbums] = useState([
         [{
-        "album": "test album2 2324 23413 34",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_artist": "Guns N Roses",
-        "artist_id": "1234"},
+        "album_name": "Loading...",
+        "album_image": "",
+        "album_artist": "",
+        "artist_id": ""},
         {
-            "album": "test album2 2324 23413 34",
-            "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-            "album_artist": "Guns N Roses",
-            "artist_id": "1234"}], []
+        "album": "Loading...",
+        "album_image": "",
+        "album_artist": "",
+        "artist_id": ""}],
+        []
     ]);
 
-    // useEffect(() => {
-    //     fetch(`http://${config.server_host}:${config.server_port}/artist/${props.artistId}`)
-    //       .then(res => res.text())
-    //       .then(resJson => {
-    //         console.log(resJson);
-    //         setWikiLink(props.page_name);
-    //         setSummary(props.summary);
-    //         setTitle(props.artist_name);
-    //         setTopSong(props.top_song);
-    //         setAlbums(props.albums);
-    //     });
-    //     let arr;
-    //     for (let album in albums) {
-    //         fetch(`http://${config.server_host}:${config.server_port}/album/${album.album_uri}`)
-    //         .then(res => res.text())
-    //         .then(resJson => {
-    //             arr.push(resJson);
-    //         });
-    //     }
-    //   }, [props]);
+    useEffect(() => {
+        fetch(`http://${config.server_host}:${config.server_port}/artist/${params.artist_id}`)
+          .then(res => res.json())
+          .then(data => {
+            setWikiLink("https://en.wikipedia.org/wiki/" + data.artist_info.artist_name);
+            setSummary(data.artist_info.summary);
+            setTitle(data.artist_info.artist_name);
+            setTopSong(data.top_song);
+            setAlbums(data.album_list);
+        });
+        let mainArr = [];
+        for (let album in albums) {
+            let arr = [];
+            fetch(`http://${config.server_host}:${config.server_port}/similaralbums/${album.album_id}`)
+            .then(res => res.json())
+            .then(resJson => {
+                for (let item in resJson.similar_albums) {
+                    fetch(`http://${config.server_host}:${config.server_port}/album/${item}`)
+                    .then(res => res.json())
+                    .then(result => {
+                        arr.push(result);
+                    });
+                }
+            });
+            mainArr.push(arr);
+        }
+        setSimAlbums([...mainArr]);
+      }, [params.artist_id]);
+
 
     return (
-        <div>
+        <div className="main">
             <div className="top">
                 <div className="text">
                     <h1>{title}</h1>
@@ -100,10 +104,10 @@ function Artist(props) {
                             id="panel1a-header"
                             >
                             <div className="horizontalAccordionTitle">
-                                <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={album.album_image} alt="album art"></img>
+                                <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={album.album_image ? album.album_image : defaultAlbum} alt="album art"></img>
                                 <div className="accordionTitle">
-                                    <p className="accordionMainTitle">test1</p>
-                                    <p className="accordionSecondTitle">test2</p>
+                                    <p className="accordionMainTitle">{album.album_name ? album.album_name : "Loading..."}</p>
+                                    <p className="accordionSecondTitle">{album.release_date ? album.release_date : "Loading..."}</p>
                                 </div>
                             </div>
 
@@ -113,7 +117,7 @@ function Artist(props) {
                                     <div className="song" key={albumIndex}>
                                         <div className="songInfo">
                                             <p className="accordionMainTitle">{song.track_name}</p>
-                                            <p className="accordionSecondTitle">{song.duration}</p>
+                                            <p className="accordionSecondTitle">{"Duration: " + Math.floor(song.duration / 60000) + ":" + ((song.duration % 60000) / 1000).toFixed(0)}</p>
                                         </div>
                                         <div className="songInfo">
                                             <audio className="musicAccordion" controls="controls">
@@ -122,16 +126,16 @@ function Artist(props) {
                                         </div>
                                     </div>
                                 ))}
-                                {true && simAlbums[index].length > 0 &&
+                                {true && simAlbums[index] &&
                                     <div className="simAlbums">
                                     <p className="accordionMainTitle">Similar Albums:</p>
                                     <div className="simAlbumContainer">
                                     {simAlbums[index].map((alb, ind) => (
                                         <div className="simAlbumBox" key={ind}>
-                                            <a className="simAlbumLink" href={"/artist/" + alb.artist_id} exact>
+                                            <a className="simAlbumLink" href={"/artist/" + alb.artist_id}>
                                             <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={alb.album_image} alt="album art"></img>
                                             <div className="textSimAlbums">
-                                            <p className="accordionMainTitle">{alb.album}</p>
+                                            <p className="accordionMainTitle">{alb.album_name}</p>
                                             <p className="accordionSecondTitle">{alb.album_artist}</p>
                                             </div>
                                             </a>

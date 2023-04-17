@@ -173,7 +173,7 @@ function Playlist() {
                         console.log(savedSongList, song);
                         return (
                             <div key={index}>
-                            <div className="song">
+                            <div className="songPlaylist">
                                 <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={song.album_image} alt="album art"></img>
                                 <div className="songInfo">
                                     <p className="accordionMainTitle">{song.track_name}</p>

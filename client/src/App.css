@@ -15,7 +15,7 @@ html, body {
   width: 100vw;
   color: var(--text-dark);
   font-family: "Inter";
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #root {

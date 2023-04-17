@@ -44,6 +44,7 @@
     justify-content: center;
     flex-direction: row;
     margin-top: 40px;
+    position: relative;
 }
 
 .mainDiv {
@@ -216,7 +217,7 @@
     margin-right: 20px;
 }
 
-.song {
+.songPlaylist {
     display: flex;
     justify-content: flex-end;
     align-items: center;

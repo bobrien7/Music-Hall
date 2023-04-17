@@ -30,7 +30,7 @@ function App() {
               <Route exact path="/timeline" element={<Timeline />} />
               <Route exact path="/search" element={<Search />} />
               <Route path="/playlist" element={<Playlist />} />
-              <Route path="/artist/:artist_id" element={<Artist artist_id={'123'}/>} />
+              <Route path="/artist/:artist_id" element={<Artist/>} />
               <Route path="/venue" element={<Venue />} />
               <Route path="*" element={<Main />} />
             </Routes>

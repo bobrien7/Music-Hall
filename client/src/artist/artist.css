@@ -4,11 +4,16 @@
     width: 100%;
 }
 
+.main {
+    width: 100%;
+}
+
 .text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-right: 30px;
+    width: 100%;
 }
 
 .bottom {
@@ -98,8 +103,8 @@
 
 .simAlbums {
     display: flex;
-    width: calc(100% - 40px);
-    margin: 20px;
+    width: 85%;
+    margin: 20px 0px 0px 0px;
     flex-direction: column;
 }
 
@@ -117,4 +122,5 @@
 .simAlbumContainer {
     margin-top: 10px;
     display: flex;
+    justify-content: center;
 }
