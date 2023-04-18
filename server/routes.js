@@ -283,16 +283,23 @@ const recentconcert = async function(req, res) {
 
 // GET /randomsongs
 const randomsongs = async function(req, res) {
-  console.log(req.body.genres);
-  const genres = req.body.genres.split(",");
-  console.log(genres);
+  //console.log("req", req);
+  console.log("genres", req.body.genres);
+  const genres = req.body.genres;
+  const songs_required = req.body.songs_required;
+  // if (req.body.genres.length > 0) {
+  //   genres = req.body.genres.split(",");
+  // }
+
+  //console.log(genres);
   let query = `
   SELECT
-   a.image_url       AS image_url,
-   c.name            AS creator_name,
+   a.image_url       AS album_image,
+   c.name            AS artist_name,
    t.name            AS track_name,
-   a.release_date    AS album_release_date,
-   t.preview_url     AS track_preview
+   a.release_date    AS release_date,
+   t.preview_url     AS track_preview_url,
+   t.track_id        AS track_uri
   FROM Tracks t
   JOIN Albums a
     ON t.album_id = a.album_id
@@ -336,9 +343,12 @@ const randomsongs = async function(req, res) {
       }
       else{
         let random_songs = [];
-        for (var i = 0; i < data.length; i++){
-          random_songs.push(data[i]);
+        for (var i = 0; i < songs_required; i++){
+          let rand = Math.floor(Math.random() * data.length);
+          //console.log(rand);
+          random_songs.push(data[rand]);
         }
+        console.log(random_songs);
         res.json(random_songs);
       }
     })
@@ -350,8 +360,8 @@ const playlists = async function(req, res) {
   console.log(req.body.liked_songs);
   console.log(req.body.unliked_songs);
 
-  const likedSongs = req.body.liked_songs.split(",");
-  const unlikedSongs = req.body.unliked_songs.split(",");
+  const likedSongs = req.body.liked_songs;
+  const unlikedSongs = req.body.unliked_songs;
 
   console.log(likedSongs);
   console.log(unlikedSongs);
@@ -432,7 +442,7 @@ const playlists = async function(req, res) {
       "track_preview_url" : "https://p.scdn.co/mp3-preview/880d9c4b8e7736f49366d55d561bd84d69c4b982?cid=774b29d4f13844c495f206cafdad9c86",
       "album_image" : "https://i.scdn.co/image/ab67616d00001e02c210a1bace4b8731308775a9"};
 
-      let tracks = {"song_recs" : [song1, song2, song3, song1, song2, song3, song1, song2, song3,]};
+      let tracks = {"song_recs" : [song1, song2, song3, song1, song2, song3, song1, song2, song3]};
 
       res.json(tracks);
 }

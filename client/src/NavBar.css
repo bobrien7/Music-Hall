@@ -87,3 +87,11 @@ a.active {
 .playlist {
     mask-image: url('./assets/9104257_shuffle_random_mix_icon.png');
 }
+
+.artistRand {
+    mask-image: url('./assets/8665642_microphone_lines_icon.png');
+}
+
+.venueRand {
+    mask-image: url('./assets/6613237_classic_concert_instrument_music_orchestra_icon.png');
+}

@@ -4,14 +4,17 @@ import { useState } from "react";
 import SongCard from '../songcard/songcard.js';
 import defaultAlbum from '../assets/default_album.png';
 import { Divider } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+
+const config = require('../config.json');
 
 function Playlist() {
     const [counter, setCounter] = useState(0);
-    // temporary
-    let maxCount = 2;
+    let maxCount = 15;
     const [start, setStart] = useState(false);
+    const [load, setLoad] = useState(false);
     const [end, setEnd] = useState(false);
-    const [year, setYear] = useState([1910, 1980]);
+    const [year, setYear] = useState([1934, 2023]);
 
     const [genres, setGenres] = useState({
         'Rock': {
@@ -80,35 +83,27 @@ function Playlist() {
         },
     });
 
-    const [givenSongList, setGivenSongList] = useState([{
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    },
-    {
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    }
-]);
+    const placeholderSong = {
+        "track_name": "Loading...",
+        "artist_name": "Loading...",
+        "release_date": "",
+        "track_preview_url": "",
+        "album_image": "",
+        "album_name": "",
+        "track_uri": ""
+    };
+
+    const [givenSongList, setGivenSongList] = useState([placeholderSong]);
     const [savedSongList, setSavedSongList] = useState([]);
-    let rejectedSongList = [];
+    const [rejectedSongList, setRejectedSongList] = useState([]);
     const marks = [
         {
-          value: 1900,
-          label: '1900',
+          value: 1934,
+          label: '1934',
         },
         {
-          value: 2000,
-          label: '2000',
+          value: 2023,
+          label: '2023',
         }
       ];
 
@@ -116,26 +111,108 @@ function Playlist() {
         setYear(newYears);
     }
 
+    const handleStart = () => {
+        setLoad(true);
+        let arr = [];
+        for (let key of Object.keys(genres)) {
+            if (genres[key].value) {
+                arr.push(genres[key].search);
+            }
+        }
+        if (arr.length === 0) {
+            // get all genres if nothing selected...
+            for (let key of Object.keys(genres)) {
+                arr.push(genres[key].search);
+            }
+        }
+        //console.log(arr);
+        fetch(`http://${config.server_host}:${config.server_port}/randomsongs/?year_start=${year[0]}&year_end=${year[1]}`, {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "songs_required": 15,
+                "genres": arr
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+          setGivenSongList(data);
+          setLoad(false);
+          setStart(true);
+      });
+    }
+
+    const handleMoreSongs = () => {
+        if (savedSongList.length < 15) {
+            console.log("testing!");
+            setLoad(true);
+            let liked = [];
+            let unliked = [];
+
+            if (savedSongList.length > 0) {
+                for (let item of savedSongList) {
+                    liked.push(item.track_uri);
+                }
+            }
+            //console.log("rej", rejectedSongList);
+            if (rejectedSongList.length > 0) {
+                for (let item of rejectedSongList) {
+                    unliked.push(item.track_uri);
+                }
+            }
+            //console.log("test", liked, unliked);
+
+            fetch(`http://${config.server_host}:${config.server_port}/playlists`, {
+                method: "POST",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "songs_required": 15,
+                    "liked_songs": liked,
+                    "unliked_songs": unliked
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+              setGivenSongList(data.song_recs);
+              setLoad(false);
+              setStart(true);
+          });
+        }
+    }
+
     const acceptDeny = (bool) => {
         if (bool) {
             setSavedSongList(savedSongList => [...savedSongList, givenSongList[counter]]);
         } else {
-            rejectedSongList.push(givenSongList[counter]);
+            setRejectedSongList(rejectedSongList => [...rejectedSongList, givenSongList[counter]]);
         }
         setCounter(counter+1);
-        if (counter === maxCount - 1) {
+        if (savedSongList.length === maxCount) {
+            //console.log("test");
             setEnd(true);
+            return;
+        }
+        if (counter === givenSongList.length - 1) {
+            setCounter(0);
+            handleMoreSongs();
         }
     }
 
     const renderPage = () => {
         return (
+
         <div className="controls">
             <div className={(!start && !end) ? "transition" : "transparent"}>
                 <div className="buttons">
                     {Object.keys(genres).map((key, index) => {
                         return(
-                            <button key={index} className={genres[key]['value'] ? "active genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': [key]['search'], 'value': ![key]['value']}})}>{key}</button>
+                            <button key={index} className={genres[key]['value'] ? "active genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': genres[key]['search'], 'value': !genres[key]['value']}})}>{key}</button>
                         )
                     })}
 
@@ -147,12 +224,12 @@ function Playlist() {
                         valueLabelDisplay="on"
                         onChange={handleChange}
                         marks={marks}
-                        min={1900}
-                        max={2000}
+                        min={1934}
+                        max={2023}
                     />
                 </div>
                 <div className="startButtonDiv">
-                    <button className="startButton" onClick={() => setStart(true)}>Start</button>
+                    <button className="startButton" onClick={() => handleStart()}>Start</button>
                 </div>
             </div>
             <div className={start && !end ? "transition" : "transparent"}>
@@ -161,16 +238,15 @@ function Playlist() {
                         <div className="backCardLight"></div>
                         <div className="backCard"></div>
                         <div className="card ">
-                            <SongCard songInfo={counter < givenSongList.length ? givenSongList[counter] : givenSongList[0]} title="Top Song"/>
+                            <SongCard songInfo={counter < givenSongList.length ? givenSongList[counter] : placeholderSong} artist={true}/>
                         </div>
                         <button className="choice green" onClick={() => acceptDeny(true)}><div className="accept"></div></button>
                     </div>
-                    <div className="count">{counter}/{maxCount}</div>
+                    <div className="count">{savedSongList.length}/{maxCount}</div>
             </div>
             <div className={start && end ? "transition" : "transparent"}>
                 <div className="listContainer">
                     {savedSongList.map((song, index) => {
-                        console.log(savedSongList, song);
                         return (
                             <div key={index}>
                             <div className="songPlaylist">
@@ -200,7 +276,7 @@ function Playlist() {
                 <h1>Playlist</h1>
                 <p>Select song genres and time periods to get started, then accept or reject song selections to create a playlist!</p>
             </div>
-            {renderPage()}
+            {load ? <div className="loadContainer"><CircularProgress /></div> : renderPage()}
         </div>
     );
 }

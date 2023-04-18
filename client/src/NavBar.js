@@ -34,6 +34,21 @@ function NavBar() {
               exact="true" to="/playlist">
                 <div className="navIcon playlist"></div>Playlist
           </NavLink>
+
+          <NavLink
+              className={({ isActive }) =>
+              isActive ? 'isactive navBox': 'inactive navBox'}
+              exact="true" to="/artist/1234">
+                <div className="navIcon artistRand"></div>Random Artist
+          </NavLink>
+
+          <NavLink
+              className={({ isActive }) =>
+              isActive ? 'isactive navBox': 'inactive navBox'}
+              exact="true" to="/venue">
+                <div className="navIcon venueRand"></div>Random Venue
+          </NavLink>
+
         </div>
 
       </nav>
