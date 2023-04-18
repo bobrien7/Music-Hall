@@ -140,3 +140,7 @@ button:hover, button:active {
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
   color: var(--text-dark);
 }
+
+audio {
+  width: 100%;
+}

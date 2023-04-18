@@ -1,6 +1,6 @@
 import { Slider } from "@mui/material";
 import './playlist.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SongCard from '../songcard/songcard.js';
 import defaultAlbum from '../assets/default_album.png';
 import { Divider } from '@mui/material';
@@ -81,6 +81,10 @@ function Playlist() {
             'value': false,
             'search': 'punk'
         },
+        'Synth': {
+            'value': false,
+            'search': 'synth'
+        }
     });
 
     const placeholderSong = {
@@ -147,7 +151,6 @@ function Playlist() {
 
     const handleMoreSongs = () => {
         if (savedSongList.length < 15) {
-            console.log("testing!");
             setLoad(true);
             let liked = [];
             let unliked = [];
@@ -186,15 +189,22 @@ function Playlist() {
         }
     }
 
+    useEffect(() => {
+        if (savedSongList.length === maxCount) {
+            setEnd(true);
+        }
+    }, [savedSongList]);
+
     const acceptDeny = (bool) => {
+        console.log("clicked", savedSongList.length);
         if (bool) {
             setSavedSongList(savedSongList => [...savedSongList, givenSongList[counter]]);
         } else {
             setRejectedSongList(rejectedSongList => [...rejectedSongList, givenSongList[counter]]);
         }
         setCounter(counter+1);
+
         if (savedSongList.length === maxCount) {
-            //console.log("test");
             setEnd(true);
             return;
         }
@@ -203,7 +213,7 @@ function Playlist() {
             handleMoreSongs();
         }
     }
-
+    //TODO: fix bug where playing music and changing track_preview_url doesn't update properly
     const renderPage = () => {
         return (
 

@@ -36,7 +36,7 @@ function Timeline() {
         },
         'Electro': {
             'value': false,
-            'search': 'electro'
+            'search': 'electr'
         },
         'Indie': {
             'value': false,
@@ -74,9 +74,15 @@ function Timeline() {
             'value': false,
             'search': 'punk'
         },
+        'Synth': {
+            'value': false,
+            'search': 'synth'
+        }
     });
-    const [year, setYear] = useState([1910, 1980]);
+    const [year, setYear] = useState([1934, 2023]);
     const [givenSongList, setGivenSongList] = useState([]);
+    // can allow user to pick how many songs they want to see maybe
+    const [songNumber, setSongNumber] = useState(30);
 
     const handleChange = (event, newYears) => {
         setYear(newYears);
@@ -95,28 +101,34 @@ function Timeline() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({genres: genre_data.join(",")})
+            body: JSON.stringify({
+                "songs_required": songNumber,
+                "genres": genre_data
+            })
         })
             .then((res) => res.json())
             .then((res_data) => {
-                const shuffled = res_data.sort(() => 0.5 - Math.random());
-                const song_slice = shuffled.slice(0, 10);
+                // const shuffled = res_data.sort(() => 0.5 - Math.random());
+                // const song_slice = shuffled.slice(0, 10);
 
-                const return_data = []
-                for (let index in song_slice) {
-                    const entry = song_slice[index];
-                    const new_entry = {
-                        "track_name": entry["track_name"],
-                        "artist_name": entry["creator_name"],
-                        "release_date": entry["album_release_date"],
-                        "track_preview_url": entry["track_preview"],
-                        "album_image": entry["image_url"],
-                        "album_title": "",
-                        "duration": "0"
-                    }
-                    return_data.push(new_entry);
-                }
-                setGivenSongList(return_data);
+                // const return_data = []
+                // for (let index in song_slice) {
+                //     const entry = song_slice[index];
+                //     const new_entry = {
+                //         "track_name": entry["track_name"],
+                //         "artist_name": entry["creator_name"],
+                //         "release_date": entry["album_release_date"],
+                //         "track_preview_url": entry["track_preview"],
+                //         "album_image": entry["image_url"],
+                //         "album_title": "",
+                //         "duration": "0"
+                //     }
+                //     return_data.push(new_entry);
+                // }
+                let sorted = res_data.sort((a, b) => {
+                    return a.release_date.localeCompare(b.release_date)
+                  });
+                setGivenSongList(sorted);
             })
     }
 
@@ -141,19 +153,19 @@ function Timeline() {
 
     const marks = [
         {
-          value: 1900,
-          label: '1900',
+          value: 1934,
+          label: '1934',
         },
         {
-          value: 2000,
-          label: '2000',
+          value: 2023,
+          label: '2023',
         }
     ];
 
     return (
         <div className="timelineParent">
             <h1>Timeline</h1>
-            <Grid 
+            <Grid
                 container
                 rowSpacing={2}
                 align="center"
@@ -162,7 +174,7 @@ function Timeline() {
                     <div className="buttons">
                         {Object.keys(genres).map((key, index) => {
                             return(
-                                <button key={index} className={genres[key]['value'] ? "active genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': [key]['search'], 'value': ![key]['value']}})}>{key}</button>
+                                <button key={index} className={genres[key]['value'] ? "active genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': genres[key]['search'], 'value': !genres[key]['value']}})}>{key}</button>
                             )
                         })}
                     </div>
@@ -175,8 +187,8 @@ function Timeline() {
                             valueLabelDisplay="on"
                             onChange={handleChange}
                             marks={marks}
-                            min={1900}
-                            max={2000}
+                            min={1934}
+                            max={2023}
                         />
                     </div>
                 </Grid>
@@ -184,7 +196,7 @@ function Timeline() {
                     <button onClick={() => fetchTracks(year[0], year[1], genres)}>Search</button>
                 </Grid>
                 <Grid item xs={12}>
-                    <Carousel 
+                    <Carousel
                         responsive={responsive}
                         showDots={true}
                         partialVisbile
@@ -192,13 +204,13 @@ function Timeline() {
                     >
                         {givenSongList.map((item) => {
                             return <div>
-                                    <SongCard songInfo={item} title="Test"/>
+                                    <SongCard songInfo={item} artist={true}/>
                                 </div>
                         })}
                     </Carousel>
                 </Grid>
             </Grid>
-            
+
         </div>
     );
 }
