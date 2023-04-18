@@ -153,6 +153,7 @@ const concertsearch = async function(req, res) {
   console.log(req.query);
   const query = `
   SELECT
+    v.venue_id                      AS venue_id,
     v.name                          AS venue_name,
     v.location                      AS venue_location,
     COUNT(DISTINCT c.concert_id)    AS number_of_concerts
@@ -186,6 +187,7 @@ const creatorsearch = async function(req, res) {
   console.log(req.query);
   const query = `
   SELECT
+    cr.creator_id                 AS creator_id,
     cr.name                       AS creator_name,
     cr.popularity                 AS creator_popularity,
     COUNT(DISTINCT co.concert_id) AS count_of_concerts
