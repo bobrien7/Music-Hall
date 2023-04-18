@@ -1,10 +1,11 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Grid, Slider } from '@mui/material';
 import { useState } from 'react';
 import SongCard from '../songcard/songcard.js';
 import './timeline.css';
+const config = require('../config.json')
 
 function Timeline() {
 
@@ -35,7 +36,7 @@ function Timeline() {
         },
         'Electro': {
             'value': false,
-            'search': 'electr'
+            'search': 'electro'
         },
         'Indie': {
             'value': false,
@@ -75,54 +76,48 @@ function Timeline() {
         },
     });
     const [year, setYear] = useState([1910, 1980]);
-    const [givenSongList, setGivenSongList] = useState([{
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    },
-    {
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    },
-    {
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    },
-    {
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    },
-    {
-        "track_name": "Test song name",
-        "artist_name": "Guns N Roses",
-        "release_date": "date",
-        "track_preview_url": "https://p.scdn.co/mp3-preview/80a49eba7f6517d4f1364e5b0a96d5dd08cff4ef?cid=4253f1c121cd47208ee35324d5b090b2",
-        "album_image": "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
-        "album_title": "album title",
-        "duration": "10:10"
-    }]);
+    const [givenSongList, setGivenSongList] = useState([]);
 
     const handleChange = (event, newYears) => {
         setYear(newYears);
+    }
+
+    const fetchTracks = (year_start, year_end, genres) => {
+        const genre_data = [];
+        for (let key in genres) {
+            const item = genres[key];
+            if (item['value'] === true) {
+                genre_data.push(key);
+            }
+        };
+        fetch(`http://${config.server_host}:${config.server_port}/randomsongs/?year_start=${year_start}&year_end=${year_end}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({genres: genre_data.join(",")})
+        })
+            .then((res) => res.json())
+            .then((res_data) => {
+                const shuffled = res_data.sort(() => 0.5 - Math.random());
+                const song_slice = shuffled.slice(0, 10);
+
+                const return_data = []
+                for (let index in song_slice) {
+                    const entry = song_slice[index];
+                    const new_entry = {
+                        "track_name": entry["track_name"],
+                        "artist_name": entry["creator_name"],
+                        "release_date": entry["album_release_date"],
+                        "track_preview_url": entry["track_preview"],
+                        "album_image": entry["image_url"],
+                        "album_title": "",
+                        "duration": "0"
+                    }
+                    return_data.push(new_entry);
+                }
+                setGivenSongList(return_data);
+            })
     }
 
     const responsive = {
@@ -132,7 +127,7 @@ function Timeline() {
         },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 3
+            items: 4
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
@@ -161,6 +156,7 @@ function Timeline() {
             <Grid 
                 container
                 rowSpacing={2}
+                align="center"
             >
                 <Grid item xs={12}>
                     <div className="buttons">
@@ -183,6 +179,9 @@ function Timeline() {
                             max={2000}
                         />
                     </div>
+                </Grid>
+                <Grid item xs={12}>
+                    <button onClick={() => fetchTracks(year[0], year[1], genres)}>Search</button>
                 </Grid>
                 <Grid item xs={12}>
                     <Carousel 
