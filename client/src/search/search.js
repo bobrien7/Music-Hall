@@ -1,78 +1,110 @@
-import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { Grid, Link, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { useState } from 'react';
+const config = require("../config.json");
 
 
 function Search() {
 
     const [pageSize, setPageSize] = useState(10);
+    const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
-    const [columns, setColumns] = useState([]);
-    const [searchType, setSearchType] = useState("CONCERT")
+    const [columns, setColumns] = useState([{ 
+        field: 'venueName', 
+        headerName: 'Venue name', 
+        width: 300, 
+        // renderCell: (params) => (
+        //     <Link onClick={() => setSelectedConcertId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link> )
+    },
+    { 
+        field: 'location', 
+        headerName: 'Location',
+        width: 100
+    },
+    { 
+        field: 'totalConcert',
+        headerName: 'Total Concerts',
+        width: 100
+    }]);
+    const [searchType, setSearchType] = useState("CONCERT");
 
     const [selectedConcertId, setSelectedConcertId] = useState(null);
-    const [selectedArtistId, setSelectedArtistId] = useState(null);
+    const [selectedCreatorId, setSelectedCreatorId] = useState(null);
 
-    /* DUMMY DATA */
     const columnsVenue = [
         { 
-            field: 'venueName', 
+            field: 'venue_name', 
             headerName: 'Venue name', 
             width: 300, 
-            // renderCell: (params) => (
-            //     <Link onClick={() => setSelectedConcertId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link> )
+            renderCell: (row) => (<Link onClick={() => setSelectedConcertId(row.song_id)}>{row.venue_name}</Link>)
         },
         { 
-            field: 'location', 
+            field: 'venue_location', 
             headerName: 'Location',
             width: 100
         },
         { 
-            field: 'totalConcert',
+            field: 'number_of_concerts',
             headerName: 'Total Concerts',
             width: 100
         },
     ];
 
-    const dummyVenue = [
-        { id: 1, venueName: "Venue1", location: "Location1", totalConcert: 1 },
-        { id: 2, venueName: "Venue2", location: "Location2", totalConcert: 2 }
-    ];
-
     const columnsCreator = [
         { 
-            field: 'creatorName', 
+            field: 'creator_name', 
             headerName: 'Creator name', 
-            width: 300, renderCell: (params) => (
-                <Link onClick={() => setSelectedArtistId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link>
-        )},
+            width: 300,
+            renderCell: (row) => (<Link onClick={() => setSelectedCreatorId(row.creator_id)}>{row.creator_name}</Link>)
+        },
         { 
-            field: 'popularity', 
+            field: 'creator_popularity', 
             headerName: 'Popularity',
             width: 100
         },
         { 
-            field: 'performances',
+            field: 'count_of_concerts',
             headerName: 'Concert(s) Performed',
             width: 100
         },
     ];
 
-    const dummyCreator = [
-        { id: 1, creatorName: "Name1", popularity: "Popularity1", performances: 3 },
-        { id: 2, creatorName: "Name2", popularity: "Popularity2", performances: 4 }
-    ];
-    /* DUMMY DATA */
+    const handleSearch = (search) => {
+        if (searchType === "CONCERT") {
+            fetch(`http://${config.server_host}:${config.server_port}/concertsearch/?search=${search}`)
+                .then(res => res.json())
+                .then(res_json => setData(res_json));
+        } else {
+            fetch(`http://${config.server_host}:${config.server_port}/creatorsearch/?search=${search}`)
+                .then(res => res.json())
+                .then(res_json => setData(res_json));
+        }
+    }
 
-    const handleSearchTypeChange = (event, newSearchType) => {
-        setSearchType(newSearchType);
-        if (newSearchType === "CONCERT") {
-            setData(dummyVenue);
+    const handleSearchTypeChange = (new_value) => {
+        setSearchType(new_value);
+        if (new_value === "CONCERT") {
             setColumns(columnsVenue);
         } else {
-            setData(dummyCreator);
             setColumns(columnsCreator);
         }
+        setData([]);
+    }
+
+    const handleChangePage = (e, newPage) => {
+        return;
+    }
+
+    const handleChangePageSize = (e) => {
+        setPageSize(e.target.value);
+        setPage(1);
+    }
+
+    const defaultRenderCell = (col, row) => {
+        console.log(col, row);
+        return <div>
+            {row[col.field]}
+        </div>;
     }
 
     return (
@@ -80,39 +112,90 @@ function Search() {
             <Grid 
                 container
                 rowSpacing={2}
+                alignItems={"center"}
             >
                 <Grid item xs={12}>
                     <h1>Concerts & Artist Searchs</h1>
                 </Grid>
                 <Grid item xs={8}>
-                    <TextField label="Enter text here..."/>
+                    <input type="text" id="searchInputField" placeholder="Enter text here..."/>
                 </Grid>
                 <Grid item xs={2}>
-                    <Button>Search</Button>
+                    <button onClick={() => handleSearch(document.getElementById("searchInputField").value)}>Search</button>
                 </Grid>
                 <Grid item xs={2}>
                     <ToggleButtonGroup
                         value={searchType}
                         exclusive
-                        onChange={handleSearchTypeChange}
+                        sx={{
+                            color: "white"
+                        }}
                     >
-                        <ToggleButton value="ARTIST">
-                            <div>Artists</div>
+                        <ToggleButton 
+                            value="ARTIST"
+                            sx={{
+                                color: "white"
+                            }}
+                            onClick={() => handleSearchTypeChange("ARTIST")}
+                        >
+                            <div color="white">Artists</div>
                         </ToggleButton>
-                        <ToggleButton value="CONCERT">
+                        <ToggleButton 
+                            value="CONCERT"
+                            onClick={() => handleSearchTypeChange("CONCERT")}
+                            sx={{
+                                color: "white"
+                            }}
+                        >
                             <div>Concerts</div>
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </Grid>
                 <Grid item xs={12}>
-                    <DataGrid
-                        rows={data}
-                        columns={columns}
-                        // pageSize={pageSize}
-                        rowsPerPageOptions={[5, 10, 25]}
-                        // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        autoHeight
-                    />
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    {columns.map(col => 
+                                        <TableCell 
+                                            key={col.headerName}
+                                            sx={{
+                                                color: "white",
+                                                fontWeight: "bold"
+                                            }}
+                                        >
+                                            {col.headerName}
+                                        </TableCell>
+                                    )}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {data.map((row, idx) =>
+                                    <TableRow key={idx}>
+                                    {
+                                        columns.map(col => 
+                                            <TableCell 
+                                                key={col.headerName}
+                                                sx={{
+                                                    color: "white"
+                                                }}
+                                            >
+                                                {col.renderCell ? col.renderCell(row) : defaultRenderCell(col, row)}
+                                            </TableCell>
+                                    )}
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 25]}
+                                count={-1}
+                                rowsPerPage={pageSize}
+                                page={page - 1}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangePageSize}
+                            />
+                        </Table>
+                    </TableContainer>
                 </Grid>
             </Grid>
         </div>
