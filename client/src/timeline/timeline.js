@@ -108,23 +108,6 @@ function Timeline() {
         })
             .then((res) => res.json())
             .then((res_data) => {
-                // const shuffled = res_data.sort(() => 0.5 - Math.random());
-                // const song_slice = shuffled.slice(0, 10);
-
-                // const return_data = []
-                // for (let index in song_slice) {
-                //     const entry = song_slice[index];
-                //     const new_entry = {
-                //         "track_name": entry["track_name"],
-                //         "artist_name": entry["creator_name"],
-                //         "release_date": entry["album_release_date"],
-                //         "track_preview_url": entry["track_preview"],
-                //         "album_image": entry["image_url"],
-                //         "album_title": "",
-                //         "duration": "0"
-                //     }
-                //     return_data.push(new_entry);
-                // }
                 let sorted = res_data.sort((a, b) => {
                     return a.release_date.localeCompare(b.release_date)
                   });
