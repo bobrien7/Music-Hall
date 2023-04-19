@@ -1,6 +1,9 @@
 import { Grid, Link, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Route, Routes } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { useState } from 'react';
+import Venue from '../venue/venue';
 const config = require("../config.json");
 
 
@@ -10,33 +13,10 @@ function Search() {
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
     const [columns, setColumns] = useState([{ 
-        field: 'venueName', 
-        headerName: 'Venue name', 
-        width: 300, 
-        // renderCell: (params) => (
-        //     <Link onClick={() => setSelectedConcertId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link> )
-    },
-    { 
-        field: 'location', 
-        headerName: 'Location',
-        width: 100
-    },
-    { 
-        field: 'totalConcert',
-        headerName: 'Total Concerts',
-        width: 100
-    }]);
-    const [searchType, setSearchType] = useState("CONCERT");
-
-    const [selectedConcertId, setSelectedConcertId] = useState(null);
-    const [selectedCreatorId, setSelectedCreatorId] = useState(null);
-
-    const columnsVenue = [
-        { 
             field: 'venue_name', 
             headerName: 'Venue name', 
             width: 300, 
-            renderCell: (row) => (<Link onClick={() => setSelectedConcertId(row.song_id)}>{row.venue_name}</Link>)
+            renderCell: (row) => (<NavLink to={`/venue/${row.venue_id}`}>{row.venue_name}</NavLink>)
         },
         { 
             field: 'venue_location', 
@@ -47,7 +27,26 @@ function Search() {
             field: 'number_of_concerts',
             headerName: 'Total Concerts',
             width: 100
+        }]);
+    const [searchType, setSearchType] = useState("CONCERT");
+
+    const columnsVenue = [
+        { 
+            field: 'venue_name', 
+            headerName: 'Venue name', 
+            width: 300, 
+            renderCell: (row) => (<NavLink to={`/venue/${row.venue_id}`}>{row.venue_name}</NavLink>)
         },
+        { 
+            field: 'venue_location', 
+            headerName: 'Location',
+            width: 100
+        },
+        { 
+            field: 'number_of_concerts',
+            headerName: 'Total Concerts',
+            width: 100
+        }
     ];
 
     const columnsCreator = [
@@ -55,7 +54,7 @@ function Search() {
             field: 'creator_name', 
             headerName: 'Creator name', 
             width: 300,
-            renderCell: (row) => (<Link onClick={() => setSelectedCreatorId(row.creator_id)}>{row.creator_name}</Link>)
+            renderCell: (row) => (<NavLink to={`/artist/${row.creator_id}`}>{row.creator_name}</NavLink>)
         },
         { 
             field: 'creator_popularity', 
