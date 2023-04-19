@@ -1,9 +1,7 @@
-import { Grid, Link, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { Route, Routes } from "react-router-dom";
+import { Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { NavLink } from "react-router-dom";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { useState } from 'react';
-import Venue from '../venue/venue';
 const config = require("../config.json");
 
 
@@ -91,7 +89,7 @@ function Search() {
     }
 
     const handleChangePage = (e, newPage) => {
-        return;
+        return; // TODO
     }
 
     const handleChangePageSize = (e) => {

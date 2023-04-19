@@ -1,32 +1,35 @@
-import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Grid, Link } from '@mui/material';
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
+import { NavLink } from "react-router-dom";
 import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
-
 const config = require('../config.json');
 
 
 function Venue() {
 
     const [pageSize, setPageSize] = useState(10);
-    const [selectedArtistId, setSelectedArtistId] = useState(null);
-
+    const [page, setPage] = useState(1);
     const [creatorData, setCreatorData] = useState([]);
-    const [creatorColumns, setCreatorColumns] = useState([]);
     const [concertData, setConcertData] = useState([]);
-    const [concertColumns, setConcertColumns] = useState([]);
 
     const columnsCreator = [
         { 
-            field: 'rank', 
-            headerName: 'Rank',
-            width: 100
+            field: 'creator_name', 
+            headerName: 'Creator name', 
+            width: 300,
+            renderCell: (row) => (<NavLink to={`/artist/${row.creator_id}`}>{row.creator_name}</NavLink>)
         },
         { 
-            field: 'creatorName', 
-            headerName: 'Creator name', 
-            width: 300, renderCell: (params) => (
-                <Link onClick={() => setSelectedArtistId(params.row.song_id)}>{params.value}{/* UPDATE THIS */}</Link>
-        )},
+            field: 'creator_popularity', 
+            headerName: 'Popularity', 
+            width: 300
+        },
+        { 
+            field: 'count_of_concerts', 
+            headerName: 'Total Concerts', 
+            width: 300
+        }
     ];
 
     const columnsConcert = [
@@ -42,27 +45,33 @@ function Venue() {
         }
     ]
 
-    /* DUMMY DATA */
-    const dummyCreator = [
-        { id: 1, rank: 1, creatorName: "Name1" },
-        { id: 2, rank: 2, creatorName: "Name2" }
-    ];
-    /* DUMMY DATA */
+    const handleChangePage = (e, newPage) => {
+        return; // TODO
+    }
 
-    useEffect(() => { // Fetch artist data TODO
-        // fetch(`http://${config.server_host}:${config.server_port}/random`)
+    const handleChangePageSize = (e) => {
+        setPageSize(e.target.value);
+        setPage(1);
+    }
+
+    useEffect(() => {
+        const venue_id = document.URL.split("/").pop();
+        // fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}`)
         //     .then(res => res.json())
-        //     .then(resJson => setSongOfTheDay(resJson));
+        //     .then(resJson => setCreatorData(resJson));
+        // console.log(creatorData);
 
-        // Set table columns
-        setCreatorColumns(columnsCreator);
-        setConcertColumns(columnsConcert);
-
-        // Set creator data
-        setCreatorData(dummyCreator)
-
-        // Default set concerts data to top ranked artist
+        // fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}`)
+        //     .then(res => res.json())
+        //     .then(resJson => setConcertData(resJson));
+        // console.log(concertData);
     })
+
+    const defaultRenderCell = (col, row) => {
+        return <div>
+            {row[col.field]}
+        </div>;
+    }
 
     return (
         <div>
@@ -74,28 +83,102 @@ function Venue() {
                     <h1>Venue</h1>
                 </Grid>
                 <Grid item xs={12}>
-                    <div>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-totam rem aperiam eaque ipsa.</div>
+                    <h3>Top Creators</h3>
                 </Grid>
                 <Grid item xs={12}>
-                    <DataGrid
-                        rows={creatorData}
-                        columns={creatorColumns}
-                        // pageSize={pageSize}
-                        rowsPerPageOptions={[5, 10, 25]}
-                        // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        autoHeight
-                    />
+                    <TableContainer>
+                        <Table>
+                            <TableHead> {/* Top most popular artists */}
+                                <TableRow>
+                                    {columnsCreator.map(col => 
+                                        <TableCell 
+                                            key={col.headerName}
+                                            sx={{
+                                                color: "white",
+                                                fontWeight: "bold"
+                                            }}
+                                        >
+                                            {col.headerName}
+                                        </TableCell>
+                                    )}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {creatorData.map((row, idx) =>
+                                    <TableRow key={idx}>
+                                    {
+                                        columnsCreator.map(col => 
+                                            <TableCell 
+                                                key={col.headerName}
+                                                sx={{
+                                                    color: "white"
+                                                }}
+                                            >
+                                                {col.renderCell ? col.renderCell(row) : defaultRenderCell(col, row)}
+                                            </TableCell>
+                                    )}
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 25]}
+                                count={-1}
+                                rowsPerPage={pageSize}
+                                page={page - 1}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangePageSize}
+                            />
+                        </Table>
+                    </TableContainer>
                 </Grid>
                 <Grid item xs={12}>
-                    {/* <DataGrid
-                        rows={data}
-                        columns={columns}
-                        // pageSize={pageSize}
-                        rowsPerPageOptions={[5, 10, 25]}
-                        // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        autoHeight
-                    /> */}
+                    <h3>Most Recent Concerts</h3>
+                </Grid>
+                <Grid item xs={12}>
+                    <TableContainer>
+                        <Table>
+                            <TableHead> {/* Most recent concerts */}
+                                <TableRow>
+                                    {columnsConcert.map(col => 
+                                        <TableCell 
+                                            key={col.headerName}
+                                            sx={{
+                                                color: "white",
+                                                fontWeight: "bold"
+                                            }}
+                                        >
+                                            {col.headerName}
+                                        </TableCell>
+                                    )}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {concertData.map((row, idx) =>
+                                    <TableRow key={idx}>
+                                    {
+                                        columnsConcert.map(col => 
+                                            <TableCell 
+                                                key={col.headerName}
+                                                sx={{
+                                                    color: "white"
+                                                }}
+                                            >
+                                                {col.renderCell ? col.renderCell(row) : defaultRenderCell(col, row)}
+                                            </TableCell>
+                                    )}
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 25]}
+                                count={-1}
+                                rowsPerPage={pageSize}
+                                page={page - 1}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangePageSize}
+                            />
+                        </Table>
+                    </TableContainer>
                 </Grid>
             </Grid>
         </div>
