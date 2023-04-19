@@ -117,12 +117,8 @@ const artist = async function(req, res) {
                     for (var i = 0; i < data.length; i++){
                       track_list.push(data[i]);
                     }
-                    let album_list = new Set();
-                    for (var i = 0; i < track_list.length; i++){
-                      album_list.add(track_list[i].album_id);
-                    }
-                    console.log(album_list);
-                    res.json({...artist_info[0], top_song: top_song[0], album_list: album_list});
+
+                    res.json({...artist_info[0], top_song: top_song[0], track_list: track_list});
                   }});
             }
           });
@@ -366,12 +362,7 @@ const playlists = async function(req, res) {
           JOIN TrackFeatures ON Tracks.track_id=TrackFeatures.track_id
           WHERE Tracks.track_id IN (`
 
-<<<<<<< Updated upstream
   let liked = req.body.liked_songs;
-=======
-  let liked = JSON.stringify(req.body.liked_songs).replace("[","").replace("]","").split(",");
-  console.log(liked);
->>>>>>> Stashed changes
 
   for (let i = 0; i < liked.length-1; i++){
       query += `'${liked[i]}',`
@@ -403,7 +394,6 @@ const playlists = async function(req, res) {
                                   JOIN Albums A
                                       on Tracks.album_id = A.album_id
                                   JOIN Creators C
-<<<<<<< Updated upstream
                                       on A.creator_id = C.creator_id
                                   WHERE Tracks.track_id IN (`
 
@@ -419,30 +409,6 @@ const playlists = async function(req, res) {
       LIMIT ${parseInt(req.body.songs_required)}
   `
 
-=======
-                                      on A.creator_id = C.creator_id`
-
-  let unliked = JSON.stringify(req.body.unliked_songs).replace("[","").replace("]","").split(",");
-  console.log(unliked.length);
-  if (unliked.length > 5){
-    query += ` WHERE Tracks.track_id in (`
-    for (let i = 0; i < unliked.length-1; i++){
-      query += `${unliked[i]},`
-      }
-      query += `${unliked.pop()}`
-      query += `))`
-  }
-  else {
-    query += `)`
-  }
-  query += `
-  GROUP BY artist_name
-  ORDER BY counts DESC
-  LIMIT ${parseInt(req.body.songs_required)}
-`
-
-  
->>>>>>> Stashed changes
   connection.query(query,
     (err, data) => {
       if (err || data.length === 0){
