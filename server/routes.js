@@ -6,7 +6,8 @@ const connection = mysql.createConnection({
   user: config.user,
   password: config.pass,
   port: config.port,
-  database: config.db
+  database: config.db,
+  multipleStatements : true
 });
 connection.connect((err) => err && console.log(err));
 
@@ -46,11 +47,12 @@ const song = async function(req, res) {
 
 // GET /artist/:artist_id
 const artist = async function(req, res) {
-  console.log("artist endpoint params", JSON.stringify(req.params.artist_id));
   artistId = req.params.artist_id;
-
+  //album_id : string, release_date : date, song_list : {track_name : string, duration : integer, 
+  //  track_preview_url : string, track_uri: string
   const query1 = `
-  SELECT *
+  SELECT A.album_id as album_id, A.release_date as release_date , T.name as track_name,
+         T.duration_ms as duration, T.preview_url as track_preview_url, T.track_id as track_uri, T.track_number as track_number
   FROM Creators
   JOIN Albums A
     on Creators.creator_id = A.creator_id
@@ -60,7 +62,8 @@ const artist = async function(req, res) {
   ORDER BY A.album_id, track_number`
 
   const query2 = `
-  SELECT *
+  SELECT T.name as track_name, A.name as album_name, A.release_date as release_date, 
+         T.preview_url as track_preview_url, A.image_url as album_image, T.duration_ms as duration
   FROM Creators
   JOIN Albums A
      on Creators.creator_id = A.creator_id
@@ -78,54 +81,49 @@ const artist = async function(req, res) {
 
   var artistTopSong = [];
 
-  /*
-  { artist_name: string, summary :string, year_begin: integer, year_end: integer, image: string,
-    birth_name: string, genres: {string, string, string}, top_song : {track_name : string,
-      album_name : string, release_date : date, track_preview_url : string, album_image : string},
-      album_list : [ { album_id : string, release_date : date,
-        song_list : {track_name : string, duration : integer, track_preview_url : string, track_uri: string}
-  */
-
   connection.query(query3,
     (err, data) => {
-      // if (err || data.length === 0) {
-      //   console.log("Artist endpoint data", data.length);
-      //   console.log("Error in artist endpoint:", err);
-      //   res.json({});
-      // }
-      //else{
-        let artist_info = {
-          "artist_name": "test artist",
-          "summary": "summary info",
-        };
+      if (err || data.length === 0) {
+        console.log("Error in artist endpoint:", err);
+        res.json({});
+      }
+      else{
+        let artist_info = [];
         for (var i = 0; i < data.length; i++){
           artist_info.push(data[i]);
         }
+        //res.json(artist_info[0]);
+        
+        connection.query(query2,
+          (err, data) => {
+            if (err || data.length === 0) {
+              console.log("Error in artist endpoint:", err);
+              res.json({});
+            }
+            else {
+              let top_song = [];
+              for (var i = 0; i < data.length; i++){
+                top_song.push(data[i]);
+              }
 
-        let top_song = {"track_name" : "Sensitive", "album_name" : "The Heavy Entertainment Show (Deluxe)",
-        "release_date" : "2016-11-04", "track_preview_url" : "https://p.scdn.co/mp3-preview/076a94c30fc2c3f6d2840bb3582022f0722e39bc?cid=774b29d4f13844c495f206cafdad9c86",
-        "album_image" : "https://i.scdn.co/image/ab67616d00001e020f7ea7d45b75a3dabac59140",
-        "duration": 1000};
+              connection.query(query1,
+                (err, data) => {
+                  if (err || data.length === 0) {
+                    console.log("Error in artist endpoint:", err);
+                    res.json({});
+                  }
+                  else {
+                    let track_list = [];
+                    for (var i = 0; i < data.length; i++){
+                      track_list.push(data[i]);
+                    }
 
-        let album_list = [ { "album_id" : "00ao0DAIYS0BNEbnbH0UCf", "release_date" : "2019-10-25", "album_name" : "The Heavy Entertainment Show (Deluxe)", "album_image" : "https://i.scdn.co/image/ab67616d00001e020f7ea7d45b75a3dabac59140",
-        "song_list" : [{"track_name" : "Mr. Churchill Says - 2019 Remaster", "duration" : 282889, "track_preview_url" : "https://p.scdn.co/mp3-preview/64a1a8c6802273d9b05bb4d588f7bc78566b64c2?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "5IN85J8Zi6uAVgnyDpGbcH"},
-                       {"track_name" : "Australia - 2019 Remaster", "duration" : 405583, "track_preview_url" : "https://p.scdn.co/mp3-preview/c9208f7ed22e9bcefa9f657686123957aa2cf7de?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "5jqasTlmERm4xXg22iN9Ii"},
-                       {"track_name" : "The Future (with Ray Davies) - Doo-Wop Version", "duration" : 145773, "track_preview_url" : "https://p.scdn.co/mp3-preview/b9881a32da25a57e7d32b75d2d4ba23a5d06d272?cid=774b29d4f13844c495f206cafdad9c86", "track_uri": "6T2AKQcMdWYhyfKvjPmB58"}]}];
-
-        //let artist_details = {"artist_info" : artist_info}
-        let response = {
-          "artist_info": artist_info,
-          "top_song": top_song,
-          "album_list": album_list
-        };
-        //console.log("serve test", response);
-        //if (res.headersSent !== true) {
-          res.json(response);
-        //}
-
+                    res.json({...artist_info[0], top_song: top_song[0], track_list: track_list});
+                  }});
+            }
+          });
       }
-    //}
-    )
+    });
 }
 
 // GET /album/:album_id
@@ -179,7 +177,7 @@ const concertsearch = async function(req, res) {
         }
         res.json(concerts);
       }
-    })
+  })
 }
 
 // GET /creatorsearch/?search="Blues Brothers"
@@ -211,7 +209,7 @@ const creatorsearch = async function(req, res) {
         }
         res.json(creators);
       }
-    })
+  })
 }
 
 // GET /venuetopcreator/
@@ -335,8 +333,6 @@ const randomsongs = async function(req, res) {
 
   query += ` ORDER BY a.release_date;`
 
-  console.log(query);
-
   connection.query(query,
     (err, data) => {
       if (err || data.length === 0){
@@ -353,61 +349,38 @@ const randomsongs = async function(req, res) {
         console.log(random_songs);
         res.json(random_songs);
       }
-    })
+  })
 }
 
 // POST /playlists
 const playlists = async function(req, res) {
-  console.log(req.body.songs_required);
-  console.log(req.body.liked_songs);
-  console.log(req.body.unliked_songs);
-
-  const likedSongs = req.body.liked_songs;
-  const unlikedSongs = req.body.unliked_songs;
-
-  console.log(likedSongs);
-  console.log(unlikedSongs);
 
   let query = `
-  WITH
-    liked_songs AS
+          WITH liked_songs AS
          (SELECT Tracks.track_id, popularity, acousticness, danceability, energy, instrumentalness,
                  track_key, liveness, loudness, speechiness, valence, tempo
           FROM Tracks
           JOIN TrackFeatures ON Tracks.track_id=TrackFeatures.track_id
           WHERE Tracks.track_id in (`
 
-          query += `
-          "000wxXa9qv55sAp5YNH4TK",
-          "001X6Bxouj5gvpiyiJSobk"    `
+  let liked = req.body.liked_songs.replace("[","").replace("]","").split(","); 
 
-  query += `        )),
+  for (let i = 0; i < liked.length-1; i++){
+      query += `${liked[i]},`
+  }
+  query += `${liked.pop()}))`
 
-  unliked_artists AS
-         (SELECT C.name
-          FROM Tracks
-          JOIN Albums A
-              on Tracks.album_id = A.album_id
-          JOIN Creators C
-              on A.creator_id = C.creator_id
-          WHERE Tracks.track_id in (   `
+  query += `
+  SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
+  FROM liked_songs;
 
-    query += `      "002zygf5KBABh8Q40gmxRu",
-                    "003kbs1V2S3Mokl3nXF1PV",
-                    "003z7jJLt6uHFL7MXNoiFG"`
-
-  query += `)),
-
-  averages AS (
-        SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
-        FROM liked_songs)
-
-  SELECT *, COUNT(album_name) as counts, group_concat(track_id separator ', ')
+  SELECT *, COUNT(album_name) as counts, group_concat(track_uri separator ', ')
   FROM (
   SELECT *
   FROM
-      (SELECT T.name as track_name, T.track_id as track_id, A.name as album_name,
-            C.name as creator_name, TF.acousticness, TF.danceability, TF.tempo
+      (SELECT T.name as track_name, T.track_id as track_uri, A.name as album_name,
+            C.name as artist_name, A.release_date, T.preview_url as track_preview_url, 
+            A.image_url as album_image, TF.acousticness, TF.danceability, TF.tempo
           FROM TrackFeatures TF
           JOIN Tracks T
             on TF.track_id = T.track_id
@@ -418,42 +391,26 @@ const playlists = async function(req, res) {
           WHERE abs(TF.acousticness-@v1) < .5) x
       WHERE abs(x.danceability-@v2) < .5) y
       WHERE abs(y.tempo-@v3) < 100
-        AND creator_name NOT IN (SELECT * FROM unliked_artists)
-      GROUP BY creator_name
-      ORDER BY counts DESC`
+        AND artist_name NOT IN  (SELECT C.name
+                                  FROM Tracks
+                                  JOIN Albums A
+                                      on Tracks.album_id = A.album_id
+                                  JOIN Creators C
+                                      on A.creator_id = C.creator_id
+                                  WHERE Tracks.track_id in (`
 
-      let song1 =
-      {"track_name" : "Summertime Sadness",
-      "track_uri" : "1Ist6PR2BZR3n2z2Y5R6S1",
-      "artist_name" : "Lana Del Rey",
-      "release_date" : "2012-01-01",
-      "track_preview_url" : "https://p.scdn.co/mp3-preview/c2417b9b977404dfc4a3c6b6ef5ac8f7abccee54?cid=774b29d4f13844c495f206cafdad9c86",
-      "album_image" : "https://i.scdn.co/image/ab67616d00001e02f894be72a77b1488292672c7"};
+  let unliked = req.body.unliked_songs.replace("[","").replace("]","").split(",");    
+  for (let i = 0; i < unliked.length-1; i++){
+      query += `${unliked[i]},`
+  }
+  query += `${unliked.pop()}`
 
-      let song2 = {"track_name" : "Honeymoon",
-      "track_uri" : "4X5zaUdlRhvBWYnyQIKmH8",
-      "artist_name" : "Lana Del Rey",
-      "release_date" : "2015-09-18",
-      "track_preview_url" : "https://p.scdn.co/mp3-preview/612e02d96d7fdaa4c2e2228d9f58924c0445fe30?cid=774b29d4f13844c495f206cafdad9c86",
-      "album_image" : ""};
-
-      let song3 = {"track_name" : "Buddy's Rendezvous",
-      "track_uri" : "6WAu9T5MC9QvtTwkmx6fkg",
-      "artist_name" : "Lana Del Rey",
-      "release_date" : "2015-09-10",
-      "track_preview_url" : "https://p.scdn.co/mp3-preview/880d9c4b8e7736f49366d55d561bd84d69c4b982?cid=774b29d4f13844c495f206cafdad9c86",
-      "album_image" : "https://i.scdn.co/image/ab67616d00001e02c210a1bace4b8731308775a9"};
-
-      let tracks = {"song_recs" : [song1, song2, song3, song1, song2, song3, song1, song2, song3]};
-
-      res.json(tracks);
-}
-
-// GET /similaralbums/:
-const similaralbums = async function(req, res) {
-  console.log(req.params);
-  const query = ``;
-  /*
+  query += `))
+      GROUP BY artist_name
+      ORDER BY counts DESC
+      LIMIT ${parseInt(req.body.songs_required)}
+  `
+  
   connection.query(query,
     (err, data) => {
       if (err || data.length === 0){
@@ -461,18 +418,62 @@ const similaralbums = async function(req, res) {
         res.json({});
       }
       else{
-        let recent_concerts = [];
-        for (var i = 0; i < data.length; i++){
-          recent_concerts.push(data[i]);
+        let playlist = [];
+        for (var i = 0; i < data[1].length; i++){
+          playlist.push(data[1][i]);
           console.log(data[i]);
         }
-        res.json(recent_concerts);
+        res.json({song_recs: playlist});
       }
     })
-    */
-   let similaralbums = {"similar_albums" : ["6mkLpQbCgXvhpcXZGE5DJn", "6KY2voufuen4nldrrHBkgH", "11oR0ZuqB3ucZwb5TGbZxb"]};
+}
 
-   res.json(similaralbums);
+// GET /similaralbums/:
+const similaralbums = async function(req, res) {
+  const query = `
+  SELECT @x1:=AVG(acousticness), @x2:=AVG(danceability), @x3:=AVG(energy), @x4:=AVG(instrumentalness),
+  @x5:=AVG(liveness), @x6:=AVG(speechiness), @x7:=AVG(valence), @x8:=AVG(tempo)
+  FROM Albums A
+  JOIN Tracks T
+  on A.album_id = T.album_id
+  JOIN TrackFeatures TF
+  on T.track_id = TF.track_id
+  WHERE A.album_id="${req.params.album_id}"
+  GROUP BY A.album_id;
+
+  SELECT A.album_id, A.name, A.creator_id, abs(AVG(acousticness)-@x1) + abs(AVG(danceability)-@x2) +
+  abs(AVG(energy)-@x3) + abs(AVG(instrumentalness)-@x4) + abs(AVG(liveness)-@x5) +
+  abs(AVG(speechiness)-@x6) + abs(AVG(valence)-@x7) + 0.3 * abs(AVG(tempo)-@x8) as total_diff
+  FROM Albums A
+  JOIN Tracks T
+  on A.album_id = T.album_id
+  JOIN TrackFeatures TF
+  on T.track_id = TF.track_id
+  WHERE A.album_id!="${req.params.album_id}"
+  GROUP BY A.album_id
+  
+  ORDER BY total_diff
+  LIMIT ${parseInt(req.query.number_of_albums)}`;
+
+  connection.query(query,
+    (err, data) => {
+      if (err || data.length === 0){
+        console.log(err);
+        res.json({});
+      }
+      else{
+        let response = [];
+        for (var i = 1; i < data.length; i++){
+          // drop first two results. 1st is matching metrics and second is the album requested
+          response.push(data[i]);
+        }
+        let similar_albums = [];
+        for (let i = 0; i < response[0].length; i++) {
+          similar_albums.push(response[0][i].album_id);
+        }
+        res.json({"similar_albums" : similar_albums});
+      }
+    })
 }
 
 module.exports = {
