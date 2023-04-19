@@ -48,7 +48,7 @@ const song = async function(req, res) {
 // GET /artist/:artist_id
 const artist = async function(req, res) {
   artistId = req.params.artist_id;
-  //album_id : string, release_date : date, song_list : {track_name : string, duration : integer, 
+  //album_id : string, release_date : date, song_list : {track_name : string, duration : integer,
   //  track_preview_url : string, track_uri: string
   const query1 = `
   SELECT A.album_id as album_id, A.release_date as release_date , T.name as track_name,
@@ -62,7 +62,7 @@ const artist = async function(req, res) {
   ORDER BY A.album_id, track_number`
 
   const query2 = `
-  SELECT T.name as track_name, A.name as album_name, A.release_date as release_date, 
+  SELECT T.name as track_name, A.name as album_name, A.release_date as release_date,
          T.preview_url as track_preview_url, A.image_url as album_image, T.duration_ms as duration
   FROM Creators
   JOIN Albums A
@@ -93,7 +93,7 @@ const artist = async function(req, res) {
           artist_info.push(data[i]);
         }
         //res.json(artist_info[0]);
-        
+
         connection.query(query2,
           (err, data) => {
             if (err || data.length === 0) {
@@ -355,23 +355,21 @@ const randomsongs = async function(req, res) {
 // POST /playlists
 const playlists = async function(req, res) {
 
-  let query = `
-          WITH liked_songs AS
+  let query = `WITH liked_songs AS
          (SELECT Tracks.track_id, popularity, acousticness, danceability, energy, instrumentalness,
                  track_key, liveness, loudness, speechiness, valence, tempo
           FROM Tracks
           JOIN TrackFeatures ON Tracks.track_id=TrackFeatures.track_id
-          WHERE Tracks.track_id in (`
+          WHERE Tracks.track_id IN (`
 
-  let liked = req.body.liked_songs.replace("[","").replace("]","").split(","); 
+  let liked = req.body.liked_songs;
 
   for (let i = 0; i < liked.length-1; i++){
-      query += `${liked[i]},`
+      query += `'${liked[i]}',`
   }
-  query += `${liked.pop()}))`
+  query += `'${liked.pop()}'))`
 
-  query += `
-  SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
+  query += `SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
   FROM liked_songs;
 
   SELECT *, COUNT(album_name) as counts, group_concat(track_uri separator ', ')
@@ -379,7 +377,7 @@ const playlists = async function(req, res) {
   SELECT *
   FROM
       (SELECT T.name as track_name, T.track_id as track_uri, A.name as album_name,
-            C.name as artist_name, A.release_date, T.preview_url as track_preview_url, 
+            C.name as artist_name, A.release_date, T.preview_url as track_preview_url,
             A.image_url as album_image, TF.acousticness, TF.danceability, TF.tempo
           FROM TrackFeatures TF
           JOIN Tracks T
@@ -397,20 +395,20 @@ const playlists = async function(req, res) {
                                       on Tracks.album_id = A.album_id
                                   JOIN Creators C
                                       on A.creator_id = C.creator_id
-                                  WHERE Tracks.track_id in (`
+                                  WHERE Tracks.track_id IN (`
 
-  let unliked = req.body.unliked_songs.replace("[","").replace("]","").split(",");    
+  let unliked = req.body.unliked_songs;
   for (let i = 0; i < unliked.length-1; i++){
-      query += `${unliked[i]},`
+      query += `'${unliked[i]}',`
   }
-  query += `${unliked.pop()}`
+  query += `'${unliked.pop()}'`
 
   query += `))
       GROUP BY artist_name
       ORDER BY counts DESC
       LIMIT ${parseInt(req.body.songs_required)}
   `
-  
+
   connection.query(query,
     (err, data) => {
       if (err || data.length === 0){
@@ -451,7 +449,7 @@ const similaralbums = async function(req, res) {
   on T.track_id = TF.track_id
   WHERE A.album_id!="${req.params.album_id}"
   GROUP BY A.album_id
-  
+
   ORDER BY total_diff
   LIMIT ${parseInt(req.query.number_of_albums)}`;
 

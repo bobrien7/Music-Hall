@@ -182,6 +182,7 @@ function Playlist() {
             })
             .then(res => res.json())
             .then(data => {
+                console.log("data", data);
               setGivenSongList(data.song_recs);
               setLoad(false);
               setStart(true);

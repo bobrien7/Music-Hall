@@ -54,6 +54,7 @@ function Artist(props) {
         fetch(`http://${config.server_host}:${config.server_port}/artist/${params.artist_id}`)
           .then(res => res.json())
           .then(data => {
+            console.log("data", data);
             setWikiLink("https://en.wikipedia.org/wiki/" + data.artist_info.artist_name);
             setSummary(data.artist_info.summary);
             setTitle(data.artist_info.artist_name);
