@@ -118,8 +118,32 @@ const artist = async function(req, res) {
                       track_list.push(data[i]);
                     }
 
-                    res.json({...artist_info[0], top_song: top_song[0], track_list: track_list});
-                  }});
+                    let response = {...artist_info[0], top_song: top_song[0], album_list: []}
+
+                    for (let i=0; i<track_list.length; i++){
+                        let index = response.album_list.findIndex(element=> 
+                                  element.album_id===track_list[i].album_id);
+                        if (index < 0){
+                          response.album_list.push(
+                             {album_id:track_list[i].album_id,
+                              release_date:track_list[i].release_date,
+                              song_list:[{track_uri:track_list[i].track_uri,
+                                          track_name:track_list[i].track_name,
+                                          duration:track_list[i].duration,
+                                          track_preview_url:track_list[i].track_preview_url,
+                                          track_number:track_list[i].track_number}]});
+                        }
+                        else{
+                          response.album_list[index].song_list.push(
+                                          {track_uri:track_list[i].track_uri,
+                                          track_name:track_list[i].track_name,
+                                          duration:track_list[i].duration,
+                                          track_preview_url:track_list[i].track_preview_url,
+                                          track_number:track_list[i].track_number});
+                        }
+                    }
+                    res.json(response);
+              }});
             }
           });
       }
