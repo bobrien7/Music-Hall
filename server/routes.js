@@ -324,9 +324,10 @@ const randomsongs = async function(req, res) {
   console.log("genres", req.body.genres);
   let genres = [];
   if (req.body.genres){
-    genres = req.body.genres.split(",");
+    genres = JSON.stringify(req.body.genres).replaceAll('"','').replaceAll("'","")
+                .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
   }
-
+  
   const songs_required = req.body.songs_required;
 
   let query = `
@@ -346,7 +347,7 @@ const randomsongs = async function(req, res) {
     (a.release_date > "${req.query.year_start}-01-01")
     AND
     (a.release_date < "${req.query.year_end}-12-31")`
-    console.log(genres.length);
+
     if (genres.length!=0){
       query += `AND (`
       let i = 0;
@@ -379,7 +380,7 @@ const randomsongs = async function(req, res) {
         let random_songs = [];
         for (var i = 0; i < songs_required; i++){
           let rand = Math.floor(Math.random() * data.length);
-          //console.log(rand);
+
           random_songs.push(data[rand]);
         }
         console.log(random_songs);
@@ -401,13 +402,14 @@ const playlists = async function(req, res) {
 
   let liked = [];        
   if (req.body.liked_songs){
-  liked = req.body.liked_songs.split(",")
+  liked = JSON.stringify(req.body.liked_songs).replaceAll('"','').replaceAll("'","")
+          .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
   }
 
   for (let i = 0; i < liked.length-1; i++){
-  query += `${liked[i]},`
+  query += `"${liked[i]}",`
   }
-  query += `${liked.pop()}))w; `
+  query += `"${liked.pop()}"))w; `
 
   query += `
     SELECT *, COUNT(album_name) as counts, group_concat(track_uri separator ', ')
@@ -437,13 +439,14 @@ const playlists = async function(req, res) {
 
   let unliked = [];
   if (req.body.unliked_songs){
-    unliked = req.body.unliked_songs.split(",");
+    unliked = JSON.stringify(req.body.unliked_songs).replaceAll('"','').replaceAll("'","")
+  .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
   }                                 
 
   for (let i = 0; i < unliked.length-1; i++){
-      query += `${unliked[i]},`
+      query += `"${unliked[i]}",`
   }
-  query += `${unliked.pop()}`
+  query += `"${unliked.pop()}"`
 
   query += `))
       GROUP BY artist_name
@@ -465,6 +468,8 @@ const playlists = async function(req, res) {
           playlist.push(data[1][i]);
           console.log(data[i]);
         }
+        console.log("Results")
+        console.log(playlist);
         res.json({song_recs: playlist});
       }
     })
