@@ -326,13 +326,14 @@ const recentconcert = async function(req, res) {
 const randomsongs = async function(req, res) {
   //console.log("req", req);
   console.log("genres", req.body.genres);
-  const genres = req.body.genres;
+  let genres = [];
+  if (req.body.genres){
+    genres = JSON.stringify(req.body.genres).replaceAll('"','').replaceAll("'","")
+                .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
+  }
+  
   const songs_required = req.body.songs_required;
-  // if (req.body.genres.length > 0) {
-  //   genres = req.body.genres.split(",");
-  // }
 
-  //console.log(genres);
   let query = `
   SELECT
    a.image_url       AS album_image,
@@ -351,23 +352,22 @@ const randomsongs = async function(req, res) {
     AND
     (a.release_date < "${req.query.year_end}-12-31")`
 
-  if (genres){
-    query += `AND (`
-    let i = 0;
-    while (i < genres.length) {
-      console.log(genres[i]);
+    if (genres.length!=0){
+      query += `AND (`
+      let i = 0;
+      while (i < genres.length) {
+        console.log(genres[i]);
 
-      if (i!=genres.length-1)
-      {
-        query += ` (c.genres LIKE '%${genres[i]}%') OR`
-        i++;
-      }
-      else
-      {
-        query += ` (c.genres LIKE '%${genres[i]}%')`
-        i++;
-      }
-
+        if (i!=genres.length-1)
+        {
+          query += ` (c.genres LIKE '%${genres[i]}%') OR`
+          i++;
+        }
+        else
+        {
+          query += ` (c.genres LIKE '%${genres[i]}%')`
+          i++;
+        }
     }
     query += `) `
   }
@@ -384,7 +384,7 @@ const randomsongs = async function(req, res) {
         let random_songs = [];
         for (var i = 0; i < songs_required; i++){
           let rand = Math.floor(Math.random() * data.length);
-          //console.log(rand);
+
           random_songs.push(data[rand]);
         }
         console.log(random_songs);
@@ -396,59 +396,69 @@ const randomsongs = async function(req, res) {
 // POST /playlists
 const playlists = async function(req, res) {
 
-  let query = `WITH liked_songs AS
-         (SELECT Tracks.track_id, popularity, acousticness, danceability, energy, instrumentalness,
-                 track_key, liveness, loudness, speechiness, valence, tempo
-          FROM Tracks
-          JOIN TrackFeatures ON Tracks.track_id=TrackFeatures.track_id
-          WHERE Tracks.track_id IN (`
+  let query = `
+  SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
+  FROM (SELECT Tracks.track_id, popularity, acousticness, danceability, energy, instrumentalness,
+               track_key, liveness, loudness, speechiness, valence, tempo
+  FROM Tracks
+  JOIN TrackFeatures ON Tracks.track_id=TrackFeatures.track_id
+  WHERE Tracks.track_id IN (`
 
-  let liked = req.body.liked_songs;
+  let liked = [];        
+  if (req.body.liked_songs){
+  liked = JSON.stringify(req.body.liked_songs).replaceAll('"','').replaceAll("'","")
+          .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
+  }
 
   for (let i = 0; i < liked.length-1; i++){
-      query += `'${liked[i]}',`
+  query += `"${liked[i]}",`
   }
-  query += `'${liked.pop()}'))`
+  query += `"${liked.pop()}"))w; `
 
-  query += `SELECT @v1:=AVG(acousticness), @v2:=AVG(danceability), @v3:=AVG(tempo)
-  FROM liked_songs;
+  query += `
+    SELECT *, COUNT(album_name) as counts, group_concat(track_uri separator ', ')
+    FROM (
+    SELECT *
+    FROM
+        (SELECT T.name as track_name, T.track_id as track_uri, A.name as album_name,
+              C.name as artist_name, A.release_date, T.preview_url as track_preview_url,
+              A.image_url as album_image, TF.acousticness, TF.danceability, TF.tempo
+            FROM TrackFeatures TF
+            JOIN Tracks T
+              on TF.track_id = T.track_id
+            JOIN Albums A
+              on T.album_id = A.album_id
+            JOIN Creators C
+              on A.creator_id = C.creator_id
+            WHERE abs(TF.acousticness-@v1) < .25) x
+        WHERE abs(x.danceability-@v2) < .25) y
+        WHERE abs(y.tempo-@v3) < 10
+          AND artist_name NOT IN  (SELECT C.name
+                                    FROM Tracks
+                                    JOIN Albums A
+                                        on Tracks.album_id = A.album_id
+                                    JOIN Creators C
+                                        on A.creator_id = C.creator_id
+                                    WHERE Tracks.track_id IN (`
 
-  SELECT *, COUNT(album_name) as counts, group_concat(track_uri separator ', ')
-  FROM (
-  SELECT *
-  FROM
-      (SELECT T.name as track_name, T.track_id as track_uri, A.name as album_name,
-            C.name as artist_name, A.release_date, T.preview_url as track_preview_url,
-            A.image_url as album_image, TF.acousticness, TF.danceability, TF.tempo
-          FROM TrackFeatures TF
-          JOIN Tracks T
-            on TF.track_id = T.track_id
-          JOIN Albums A
-            on T.album_id = A.album_id
-          JOIN Creators C
-            on A.creator_id = C.creator_id
-          WHERE abs(TF.acousticness-@v1) < .5) x
-      WHERE abs(x.danceability-@v2) < .5) y
-      WHERE abs(y.tempo-@v3) < 100
-        AND artist_name NOT IN  (SELECT C.name
-                                  FROM Tracks
-                                  JOIN Albums A
-                                      on Tracks.album_id = A.album_id
-                                  JOIN Creators C
-                                      on A.creator_id = C.creator_id
-                                  WHERE Tracks.track_id IN (`
+  let unliked = [];
+  if (req.body.unliked_songs){
+    unliked = JSON.stringify(req.body.unliked_songs).replaceAll('"','').replaceAll("'","")
+  .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
+  }                                 
 
-  let unliked = req.body.unliked_songs;
   for (let i = 0; i < unliked.length-1; i++){
-      query += `'${unliked[i]}',`
+      query += `"${unliked[i]}",`
   }
-  query += `'${unliked.pop()}'`
+  query += `"${unliked.pop()}"`
 
   query += `))
       GROUP BY artist_name
       ORDER BY counts DESC
       LIMIT ${parseInt(req.body.songs_required)}
   `
+  
+  console.log(query)
 
   connection.query(query,
     (err, data) => {
@@ -462,6 +472,8 @@ const playlists = async function(req, res) {
           playlist.push(data[1][i]);
           console.log(data[i]);
         }
+        console.log("Results")
+        console.log(playlist);
         res.json({song_recs: playlist});
       }
     })
