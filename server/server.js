@@ -25,6 +25,8 @@ app.get('/recentconcert/:venue_id', routes.recentconcert);
 app.post('/randomsongs/' , routes.randomsongs);
 app.post('/playlists/', routes.playlists);
 app.get('/similaralbums/:album_id', routes.similaralbums);
+app.get('/randomvenue/', routes.randomvenue);
+app.get('/randomartist/', routes.randomartist);
 
 app.listen(config.server_port, () => {
     console.log(`Server running at http://${config.server_host}:${config.server_port}/`)

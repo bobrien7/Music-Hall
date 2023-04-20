@@ -511,6 +511,42 @@ const similaralbums = async function(req, res) {
     })
 }
 
+// GET /randomvenue/
+const randomvenue = async function(req, res) {
+  console.log(req.query);
+  const query = `SELECT * FROM Venue`
+
+  connection.query(query,
+    (err, data) => {
+      if (err || data.length === 0){
+        console.log(err);
+        res.json({});
+      }
+      else{
+        let random_venue = data[Math.floor(Math.random()*data.length)]
+        res.json(random_venue);
+      }
+  })
+}
+
+// GET /randomartist/
+const randomartist = async function(req, res) {
+  console.log(req.query);
+  const query = `SELECT * FROM Creators`
+
+  connection.query(query,
+    (err, data) => {
+      if (err || data.length === 0){
+        console.log(err);
+        res.json({});
+      }
+      else{
+        let random_creator = data[Math.floor(Math.random()*data.length)]
+        res.json(random_creator);
+      }
+  })
+}
+
 module.exports = {
     test,
     song,
@@ -524,4 +560,6 @@ module.exports = {
     randomsongs,
     playlists,
     similaralbums,
+    randomvenue,
+    randomartist
 }
