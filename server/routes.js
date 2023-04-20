@@ -238,8 +238,10 @@ const creatorsearch = async function(req, res) {
 
 // GET /venuetopcreator/
 const venuetopcreator = async function(req, res) {
-  console.log(req.params);
-  const query = `
+  const page = req.query.page;
+  const pageSize = req.query.page_size ?? 10;
+  const offset = (page - 1) * pageSize;
+  let query = `
   SELECT
     co.concert      AS concert_name,
     cr.name         AS creator_name,
@@ -253,6 +255,10 @@ const venuetopcreator = async function(req, res) {
   WHERE (v.venue_id = ${req.params.venue_id})
   GROUP BY cr.name
   ORDER BY count_of_concerts DESC`
+
+  if (page) {
+    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+  }
 
   connection.query(query,
     (err, data) => {
@@ -274,8 +280,11 @@ const venuetopcreator = async function(req, res) {
 
 // GET /recentconcert
 const recentconcert = async function(req, res) {
-  console.log(req.params);
-  const query = `
+  const page = req.query.page;
+  const pageSize = req.query.page_size ?? 10;
+  const offset = (page - 1) * pageSize;
+
+  let query = `
   SELECT
     cr.name,
     co.concert,
@@ -286,7 +295,11 @@ const recentconcert = async function(req, res) {
   JOIN Venue v
     ON co.venue_id = v.venue_id
   WHERE (v.venue_id = ${req.params.venue_id})
-  ORDER BY co.date DESC;`
+  ORDER BY co.date DESC`
+
+  if (page) {
+    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+  }
 
   connection.query(query,
     (err, data) => {
