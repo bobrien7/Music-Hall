@@ -51,7 +51,7 @@ const artist = async function(req, res) {
   //album_id : string, release_date : date, song_list : {track_name : string, duration : integer,
   //  track_preview_url : string, track_uri: string
   const query1 = `
-  SELECT A.album_id as album_id, A.release_date as release_date , T.name as track_name,
+  SELECT A.album_id as album_id, A.name as album_name, A.image_url as album_image, A.release_date as release_date , T.name as track_name,
          T.duration_ms as duration, T.preview_url as track_preview_url, T.track_id as track_uri, T.track_number as track_number
   FROM Creators
   JOIN Albums A
@@ -121,11 +121,15 @@ const artist = async function(req, res) {
                     let response = {...artist_info[0], top_song: top_song[0], album_list: []}
 
                     for (let i=0; i<track_list.length; i++){
-                        let index = response.album_list.findIndex(element=> 
+                        let index = response.album_list.findIndex(element=>
                                   element.album_id===track_list[i].album_id);
+
                         if (index < 0){
+
                           response.album_list.push(
                              {album_id:track_list[i].album_id,
+                              album_name:track_list[i].album_name,
+                              album_image:track_list[i].album_image,
                               release_date:track_list[i].release_date,
                               song_list:[{track_uri:track_list[i].track_uri,
                                           track_name:track_list[i].track_name,
@@ -514,7 +518,7 @@ const similaralbums = async function(req, res) {
 // GET /randomvenue/
 const randomvenue = async function(req, res) {
   console.log(req.query);
-  const query = `SELECT * FROM Venue`
+  const query = `SELECT venue_id FROM Venue`
 
   connection.query(query,
     (err, data) => {
@@ -532,7 +536,7 @@ const randomvenue = async function(req, res) {
 // GET /randomartist/
 const randomartist = async function(req, res) {
   console.log(req.query);
-  const query = `SELECT * FROM Creators`
+  const query = `SELECT creator_id FROM Creators`
 
   connection.query(query,
     (err, data) => {

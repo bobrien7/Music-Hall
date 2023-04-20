@@ -1,8 +1,29 @@
 import { NavLink } from "react-router-dom";
 import './NavBar.css';
 import logo from './assets/logo.png';
+import { useNavigate } from 'react-router-dom';
+
+const config = require('./config.json');
+
 
 function NavBar() {
+  const navigate = useNavigate();
+
+  const getRandArtist = () => {
+    fetch(`http://${config.server_host}:${config.server_port}/randomartist/`)
+      .then(res => res.json())
+      .then(data => {
+        navigate('/artist/' + data.creator_id);
+    });
+  }
+
+  const getRandVenue = () => {
+    fetch(`http://${config.server_host}:${config.server_port}/randomvenue/`)
+      .then(res => res.json())
+      .then(data => {
+        navigate('/venue/' + data.venue_id);
+    });
+  }
 
   return (
     <div>
@@ -37,15 +58,15 @@ function NavBar() {
 
           <NavLink
               className={({ isActive }) =>
-              isActive ? 'isactive navBox': 'inactive navBox'}
-              exact="true" to="/artist/1234">
+              'inactive navBox'}
+              exact="true" onClick={() => getRandArtist()}>
                 <div className="navIcon artistRand"></div>Random Artist
           </NavLink>
 
           <NavLink
               className={({ isActive }) =>
-              isActive ? 'isactive navBox': 'inactive navBox'}
-              exact="true" to="/venue">
+              'inactive navBox'}
+              exact="true" onClick={() => getRandVenue()}>
                 <div className="navIcon venueRand"></div>Random Venue
           </NavLink>
 

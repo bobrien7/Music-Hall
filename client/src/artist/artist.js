@@ -8,10 +8,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import defaultAlbum from '../assets/default_album.png';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const config = require('../config.json');
 
 function Artist(props) {
+    const [load, setLoad] = useState(true);
+    const [noArtist, setNoArtist] = useState(false);
     const params = useParams();
     const [link, setWikiLink] = useState("");
     const [summary, setSummary] = useState("Loading...");
@@ -36,35 +39,31 @@ function Artist(props) {
         ]}
     ]);
 
-    const [simAlbums, setSimAlbums] = useState([
-        [{
-        "album_name": "Loading...",
-        "album_image": "",
-        "album_artist": "",
-        "artist_id": ""},
-        {
-        "album": "Loading...",
-        "album_image": "",
-        "album_artist": "",
-        "artist_id": ""}],
-        []
-    ]);
+    const [simAlbums, setSimAlbums] = useState([]);
 
     useEffect(() => {
+        setLoad(true);
         fetch(`http://${config.server_host}:${config.server_port}/artist/${params.artist_id}`)
           .then(res => res.json())
           .then(data => {
-            console.log("data", data);
-            setWikiLink("https://en.wikipedia.org/wiki/" + data.artist_info.artist_name);
-            setSummary(data.artist_info.summary);
-            setTitle(data.artist_info.artist_name);
+            //console.log("data", data);
+            if (Object.keys(data).length === 0) {
+                setNoArtist(true);
+                setLoad(false);
+                return;
+            }
+            setWikiLink("https://en.wikipedia.org/wiki/" + data.artist_name);
+            let string = new DOMParser().parseFromString(data.summary, "text/html");
+            setSummary(string.firstChild.innerText.substring(0, 1000) + "...");
+            setTitle(data.artist_name);
             setTopSong(data.top_song);
             setAlbums(data.album_list);
+            setLoad(false);
         });
         let mainArr = [];
         for (let album in albums) {
             let arr = [];
-            fetch(`http://${config.server_host}:${config.server_port}/similaralbums/${album.album_id}`)
+            fetch(`http://${config.server_host}:${config.server_port}/similaralbums/${album.album_id}?number_of_albums=3`)
             .then(res => res.json())
             .then(resJson => {
                 for (let item in resJson.similar_albums) {
@@ -80,9 +79,28 @@ function Artist(props) {
         setSimAlbums([...mainArr]);
       }, [params.artist_id]);
 
+      useEffect(() => {
+        console.log("hit the effect");
+        if (simAlbums.length === albums.length) {
 
-    return (
-        <div className="main">
+        }
+      }, [simAlbums]);
+
+      const timeCalc = (song) => {
+        let zero = ((song.duration % 60000) / 1000).toFixed(0) < 10 ? '0' : '';
+        let string = '';
+        return (string + Math.floor(song.duration / 60000).toString() + ":" + ((song.duration % 60000) / 1000).toFixed(0).toString() + zero);
+      }
+
+      const renderPage = () => {
+        if (noArtist) {
+            return (
+            <div className="noArtist">
+                No artist with that ID exists! Try another ID.
+            </div>)
+        } else {
+            return (
+            <div>
             <div className="top">
                 <div className="text">
                     <h1>{title}</h1>
@@ -108,7 +126,7 @@ function Artist(props) {
                                 <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={album.album_image ? album.album_image : defaultAlbum} alt="album art"></img>
                                 <div className="accordionTitle">
                                     <p className="accordionMainTitle">{album.album_name ? album.album_name : "Loading..."}</p>
-                                    <p className="accordionSecondTitle">{album.release_date ? album.release_date : "Loading..."}</p>
+                                    <p className="accordionSecondTitle">{album.release_date ? album.release_date.substring(0, 4) : "Loading..."}</p>
                                 </div>
                             </div>
 
@@ -118,7 +136,7 @@ function Artist(props) {
                                     <div className="song" key={albumIndex}>
                                         <div className="songInfo">
                                             <p className="accordionMainTitle">{song.track_name}</p>
-                                            <p className="accordionSecondTitle">{"Duration: " + Math.floor(song.duration / 60000) + ":" + ((song.duration % 60000) / 1000).toFixed(0)}</p>
+                                            <p className="accordionSecondTitle">{"Duration: " + timeCalc(song)}</p>
                                         </div>
                                         <div className="songInfo">
                                             <audio className="musicAccordion" controls="controls">
@@ -154,6 +172,12 @@ function Artist(props) {
                 </div>
 
             </div>
+            </div>)}
+      }
+
+    return (
+        <div className="main">
+            {load ? <div className="loadContainer"><CircularProgress /></div> : renderPage()}
         </div>
     );
 }
