@@ -57,7 +57,10 @@ function Artist(props) {
             setSummary(string.firstChild.innerText.substring(0, 1000) + "...");
             setTitle(data.artist_name);
             setTopSong(data.top_song);
-            setAlbums(data.album_list);
+            let sorted = data.album_list.sort((a, b) => {
+                return a.release_date.localeCompare(b.release_date) * -1
+              });
+            setAlbums(sorted);
             setLoad(false);
         });
         let mainArr = [];
@@ -112,7 +115,7 @@ function Artist(props) {
                 </div>
             </div>
             <div className="bottom">
-                <h2>Albums</h2>
+                <h2 className="albumsTitle">Albums</h2>
                 <div className="listContainer">
                     {albums.map((album, index) => (
                         <div key={index}>

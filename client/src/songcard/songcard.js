@@ -1,17 +1,35 @@
 import './songcard.css';
 import defaultAlbum from '../assets/default_album.png';
+import { useEffect, useState, useRef } from "react";
 
 function SongCard(props) {
+    const [player, setPlayer] = useState("");
+    const [title, setTitle] = useState(null);
+    const [showArtist, setShowArtist] = useState(false);
+    const [album, setAlbum] = useState("");
+    const [song, setSong] = useState("");
+    const [albumTitle, setAlbumTitle] = useState("");
+    const [year, setYear] = useState("");
+    const [artist, setArtist] = useState("");
+    const music = useRef();
 
-    // pass in props (see artist.js for example)
-    let title = props.title;
-    let showArtist = props.artist;
-    let album = props.songInfo.album_image;
-    let song = props.songInfo.track_name;
-    let albumTitle = props.songInfo.album_name;
-    let player = props.songInfo.track_preview_url;
-    let year = props.songInfo.release_date.substring(0, 4);
-    let artist = props.songInfo.artist_name;
+    useEffect(() => {
+        setTitle(props.title);
+        setPlayer(props.songInfo.track_preview_url);
+        setShowArtist(props.artist);
+        setAlbum(props.songInfo.album_image);
+        setSong(props.songInfo.track_name);
+        setAlbumTitle(props.songInfo.album_name);
+        setYear(props.songInfo.release_date.substring(0, 4));
+        setArtist(props.songInfo.artist_name);
+    }, [props]);
+
+    useEffect(() => {
+        if (music.current) {
+            music.current.pause();
+            music.current.load();
+        }
+    }, [player]);
 
     return (
         <div className="base">
@@ -27,7 +45,7 @@ function SongCard(props) {
                     <h3>{song}</h3>
                     <h4>{showArtist ? artist : albumTitle}</h4>
                 </div>
-                <audio className="music" controls="controls">
+                <audio className="music" controls="controls" ref={music}>
                     <source src={player} type="audio/mpeg"/>
                 </audio>
             </div>
