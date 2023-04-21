@@ -8,9 +8,12 @@ const config = require('../config.json');
 
 function Venue() {
 
-    const [pageSize, setPageSize] = useState(10);
-    const [page, setPage] = useState(1);
+    const [pageSizeCreator, setPageSizeCreator] = useState(10);
+    const [pageCreator, setPageCreator] = useState(1);
     const [creatorData, setCreatorData] = useState([]);
+
+    const [pageSizeConcert, setPageSizeConcert] = useState(10);
+    const [pageConcert, setPageConcert] = useState(1);
     const [concertData, setConcertData] = useState([]);
 
     const columnsCreator = [
@@ -34,38 +37,67 @@ function Venue() {
 
     const columnsConcert = [
         {
-            field: 'concertName', 
+            field: 'concert', 
             headerName: 'Concert Name',
             width: 100
         },
         {
-            field: 'concertDate', 
+            field: 'date', 
             headerName: 'Date',
             width: 100
         }
     ]
 
-    const handleChangePage = (e, newPage) => {
-        return; // TODO
+    const handleChangePageConcert = (e, newPage) => {
+        if (newPage < pageConcert || concertData.length === pageSizeConcert) {
+            setPageConcert(newPage + 1);
+            const venue_id = document.URL.split("/").pop();
+            fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${pageConcert}&page_size=${pageSizeConcert}`)
+                .then(res => res.json())
+                .then(resJson => setConcertData(resJson));
+        }
     }
 
-    const handleChangePageSize = (e) => {
-        setPageSize(e.target.value);
-        setPage(1);
-    }
-
-    useEffect(() => {
+    const handleChangePageSizeConcert = (e) => {
+        setPageSizeConcert(e.target.value);
+        setPageConcert(1);
         const venue_id = document.URL.split("/").pop();
-        // fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}`)
-        //     .then(res => res.json())
-        //     .then(resJson => setCreatorData(resJson));
-        // console.log(creatorData);
+        fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${pageConcert}&page_size=${pageSizeConcert}`)
+            .then(res => res.json())
+            .then(resJson => setConcertData(resJson));
+    }
 
-        // fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}`)
-        //     .then(res => res.json())
-        //     .then(resJson => setConcertData(resJson));
-        // console.log(concertData);
-    })
+    const handleChangePageCreator = (e, newPage) => {
+        if (newPage < pageCreator || creatorData.length === pageSizeCreator) {
+            setPageCreator(newPage + 1);
+            const venue_id = document.URL.split("/").pop();
+            fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${pageCreator}&page_size=${pageSizeCreator}`)
+                .then(res => res.json())
+                .then(resJson => setCreatorData(resJson));
+        }
+    }
+
+    const handleChangePageSizeCreator = (e) => {
+        setPageSizeCreator(e.target.value);
+        setPageCreator(1);
+        const venue_id = document.URL.split("/").pop();
+        fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${pageCreator}&page_size=${pageSizeCreator}`)
+            .then(res => res.json())
+            .then(resJson => setCreatorData(resJson));
+    }
+
+    useEffect(() => {  // Run once on component load
+        const venue_id = document.URL.split("/").pop();
+        fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${pageCreator}&page_size=${pageSizeCreator}`)
+            .then(res => res.json())
+            .then(resJson => setCreatorData(resJson));
+        console.log(creatorData);
+
+        fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${pageConcert}&page_size=${pageSizeConcert}`)
+            .then(res => res.json())
+            .then(resJson => setConcertData(resJson));
+        console.log(concertData);
+    }, [])
 
     const defaultRenderCell = (col, row) => {
         return <div>
@@ -123,10 +155,13 @@ function Venue() {
                             <TablePagination
                                 rowsPerPageOptions={[5, 10, 25]}
                                 count={-1}
-                                rowsPerPage={pageSize}
-                                page={page - 1}
-                                onPageChange={handleChangePage}
-                                onRowsPerPageChange={handleChangePageSize}
+                                rowsPerPage={pageSizeCreator}
+                                page={pageCreator - 1}
+                                onPageChange={handleChangePageCreator}
+                                onRowsPerPageChange={handleChangePageSizeCreator}
+                                sx={{
+                                    color: "white"
+                                }}
                             />
                         </Table>
                     </TableContainer>
@@ -172,10 +207,13 @@ function Venue() {
                             <TablePagination
                                 rowsPerPageOptions={[5, 10, 25]}
                                 count={-1}
-                                rowsPerPage={pageSize}
-                                page={page - 1}
-                                onPageChange={handleChangePage}
-                                onRowsPerPageChange={handleChangePageSize}
+                                rowsPerPage={pageSizeConcert}
+                                page={pageConcert - 1}
+                                onPageChange={handleChangePageConcert}
+                                onRowsPerPageChange={handleChangePageSizeConcert}
+                                sx={{
+                                    color: "white"
+                                }}
                             />
                         </Table>
                     </TableContainer>

@@ -190,6 +190,9 @@ function Search() {
                                 page={page - 1}
                                 onPageChange={handleChangePage}
                                 onRowsPerPageChange={handleChangePageSize}
+                                sx={{
+                                    color: "white"
+                                }}
                             />
                         </Table>
                     </TableContainer>
