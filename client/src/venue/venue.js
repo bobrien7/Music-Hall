@@ -2,10 +2,13 @@ import { Grid } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 const config = require('../config.json');
 
-
 function Venue() {
+    const params = useParams();
+    console.log("test this! on page reload this should be available to you!", params.venue_id);
 
     const [pageSizeCreator, setPageSizeCreator] = useState(10);
     const [pageCreator, setPageCreator] = useState(1);
@@ -16,32 +19,32 @@ function Venue() {
     const [concertData, setConcertData] = useState([]);
 
     const columnsCreator = [
-        { 
-            field: 'creator_name', 
-            headerName: 'Creator name', 
+        {
+            field: 'creator_name',
+            headerName: 'Creator name',
             width: 300,
             renderCell: (row) => (<NavLink to={`/artist/${row.creator_id}`}>{row.creator_name}</NavLink>)
         },
-        { 
-            field: 'creator_popularity', 
-            headerName: 'Popularity', 
+        {
+            field: 'creator_popularity',
+            headerName: 'Popularity',
             width: 300
         },
-        { 
-            field: 'count_of_concerts', 
-            headerName: 'Total Concerts', 
+        {
+            field: 'count_of_concerts',
+            headerName: 'Total Concerts',
             width: 300
         }
     ];
 
     const columnsConcert = [
         {
-            field: 'concert', 
+            field: 'concert',
             headerName: 'Concert Name',
             width: 100
         },
         {
-            field: 'date', 
+            field: 'date',
             headerName: 'Date',
             width: 100
         }
@@ -107,7 +110,7 @@ function Venue() {
 
     return (
         <div>
-            <Grid 
+            <Grid
                 container
                 rowSpacing={2}
             >
@@ -122,8 +125,8 @@ function Venue() {
                         <Table>
                             <TableHead> {/* Top most popular artists */}
                                 <TableRow>
-                                    {columnsCreator.map(col => 
-                                        <TableCell 
+                                    {columnsCreator.map(col =>
+                                        <TableCell
                                             key={col.headerName}
                                             sx={{
                                                 color: "white",
@@ -139,8 +142,8 @@ function Venue() {
                                 {creatorData.map((row, idx) =>
                                     <TableRow key={idx}>
                                     {
-                                        columnsCreator.map(col => 
-                                            <TableCell 
+                                        columnsCreator.map(col =>
+                                            <TableCell
                                                 key={col.headerName}
                                                 sx={{
                                                     color: "white"
@@ -174,8 +177,8 @@ function Venue() {
                         <Table>
                             <TableHead> {/* Most recent concerts */}
                                 <TableRow>
-                                    {columnsConcert.map(col => 
-                                        <TableCell 
+                                    {columnsConcert.map(col =>
+                                        <TableCell
                                             key={col.headerName}
                                             sx={{
                                                 color: "white",
@@ -191,8 +194,8 @@ function Venue() {
                                 {concertData.map((row, idx) =>
                                     <TableRow key={idx}>
                                     {
-                                        columnsConcert.map(col => 
-                                            <TableCell 
+                                        columnsConcert.map(col =>
+                                            <TableCell
                                                 key={col.headerName}
                                                 sx={{
                                                     color: "white"
