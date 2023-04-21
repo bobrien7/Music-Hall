@@ -247,6 +247,7 @@ const venuetopcreator = async function(req, res) {
   const offset = (page - 1) * pageSize;
   let query = `
   SELECT
+    cr.creator_id   AS creator_id,
     co.concert      AS concert_name,
     cr.name         AS creator_name,
     cr.popularity   AS creator_popularity,

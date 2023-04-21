@@ -1,7 +1,6 @@
-import { Grid, Link } from '@mui/material';
+import { Grid } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { NavLink } from "react-router-dom";
-import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 const config = require('../config.json');
 
@@ -49,10 +48,11 @@ function Venue() {
     ]
 
     const handleChangePageConcert = (e, newPage) => {
+        console.log(newPage);
         if (newPage < pageConcert || concertData.length === pageSizeConcert) {
             setPageConcert(newPage + 1);
             const venue_id = document.URL.split("/").pop();
-            fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${pageConcert}&page_size=${pageSizeConcert}`)
+            fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${newPage + 1}&page_size=${pageSizeConcert}`)
                 .then(res => res.json())
                 .then(resJson => setConcertData(resJson));
         }
@@ -71,7 +71,7 @@ function Venue() {
         if (newPage < pageCreator || creatorData.length === pageSizeCreator) {
             setPageCreator(newPage + 1);
             const venue_id = document.URL.split("/").pop();
-            fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${pageCreator}&page_size=${pageSizeCreator}`)
+            fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${newPage + 1}&page_size=${pageSizeCreator}`)
                 .then(res => res.json())
                 .then(resJson => setCreatorData(resJson));
         }
