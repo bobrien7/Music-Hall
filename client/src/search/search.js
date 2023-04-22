@@ -1,4 +1,6 @@
 import { Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { grey } from '@mui/material/colors';
 import { NavLink } from "react-router-dom";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { useState } from 'react';
@@ -119,6 +121,17 @@ function Search() {
         </div>;
     }
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: grey[100],
+            },
+            secondary: {
+                main: grey[500],
+            }
+        }
+    })
+
     return (
         <div>
             <Grid 
@@ -136,18 +149,14 @@ function Search() {
                     <button onClick={() => handleSearch(document.getElementById("searchInputField").value)}>Search</button>
                 </Grid>
                 <Grid item xs={2}>
+                    <ThemeProvider theme={theme}>
                     <ToggleButtonGroup
                         value={searchType}
                         exclusive
-                        sx={{
-                            color: "white"
-                        }}
+                        color="primary"
                     >
                         <ToggleButton 
                             value="ARTIST"
-                            sx={{
-                                color: "white"
-                            }}
                             onClick={() => handleSearchTypeChange("ARTIST")}
                         >
                             <div color="white">Artists</div>
@@ -155,13 +164,11 @@ function Search() {
                         <ToggleButton 
                             value="CONCERT"
                             onClick={() => handleSearchTypeChange("CONCERT")}
-                            sx={{
-                                color: "white"
-                            }}
                         >
                             <div>Concerts</div>
                         </ToggleButton>
                     </ToggleButtonGroup>
+                    </ThemeProvider>
                 </Grid>
                 <Grid item xs={12}>
                     <TableContainer>
