@@ -177,7 +177,10 @@ const concert = async function(req, res) {
 // GET /concertsearch/?search="United States"
 const concertsearch = async function(req, res) {
   console.log(req.query);
-  const query = `
+  const page = req.query.page;
+  const pageSize = req.query.page_size ?? 10;
+  const offset = (page - 1) * pageSize;
+  let query = `
   SELECT
     v.venue_id                      AS venue_id,
     v.name                          AS venue_name,
@@ -190,6 +193,10 @@ const concertsearch = async function(req, res) {
         (v.location LIKE '%${req.query.search}%')
   GROUP BY v.venue_id
   ORDER BY number_of_concerts DESC`
+
+  if (page) {
+    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+  }
 
   connection.query(query,
     (err, data) => {
@@ -211,7 +218,10 @@ const concertsearch = async function(req, res) {
 // GET /creatorsearch/?search="Blues Brothers"
 const creatorsearch = async function(req, res) {
   console.log(req.query);
-  const query = `
+  const page = req.query.page;
+  const pageSize = req.query.page_size ?? 10;
+  const offset = (page - 1) * pageSize;
+  let query = `
   SELECT
     cr.creator_id                 AS creator_id,
     cr.name                       AS creator_name,
@@ -221,7 +231,11 @@ const creatorsearch = async function(req, res) {
   JOIN Creators cr
     ON co.creators_id = cr.creator_id
   WHERE (cr.name LIKE '%${req.query.search}%')
-  GROUP BY cr.creator_id;`
+  GROUP BY cr.creator_id`
+
+  if (page) {
+    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+  }
 
   connection.query(query,
     (err, data) => {
