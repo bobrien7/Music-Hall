@@ -13,6 +13,7 @@ function Venue() {
     const [pageSizeCreator, setPageSizeCreator] = useState(10);
     const [pageCreator, setPageCreator] = useState(1);
     const [creatorData, setCreatorData] = useState([]);
+    const [venueName, setVenueName] = useState();
 
     const [pageSizeConcert, setPageSizeConcert] = useState(10);
     const [pageConcert, setPageConcert] = useState(1);
@@ -91,11 +92,20 @@ function Venue() {
 
     useEffect(() => {  // Run once on component load
         const venue_id = document.URL.split("/").pop();
+        
+        // Load venue name
+        fetch(`http://${config.server_host}:${config.server_port}/venuename/${venue_id}`)
+            .then(res => res.json())
+            .then(resJson => setVenueName(resJson[0].name));
+        console.log(venueName);
+
+        // Load initial list of creators
         fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${pageCreator}&page_size=${pageSizeCreator}`)
             .then(res => res.json())
             .then(resJson => setCreatorData(resJson));
         console.log(creatorData);
 
+        // Load initial list of concerts
         fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${pageConcert}&page_size=${pageSizeConcert}`)
             .then(res => res.json())
             .then(resJson => setConcertData(resJson));
@@ -115,7 +125,7 @@ function Venue() {
                 rowSpacing={2}
             >
                 <Grid item xs={12}>
-                    <h1>Venue</h1>
+                    <h1>{venueName}</h1>
                 </Grid>
                 <Grid item xs={12}>
                     <h3>Top Creators</h3>
