@@ -75,11 +75,19 @@ function Search() {
         if (searchType === "CONCERT") {
             fetch(`http://${config.server_host}:${config.server_port}/concertsearch/?search=${search}&page=${1}&page_size=${pageSize}`)
                 .then(res => res.json())
-                .then(res_json => setData(res_json));
+                .then(res_json => {
+                    if (res_json.keys() !== []) {
+                        setData(res_json);
+                    }
+                });
         } else {
             fetch(`http://${config.server_host}:${config.server_port}/creatorsearch/?search=${search}&page=${1}&page_size=${pageSize}`)
                 .then(res => res.json())
-                .then(res_json => setData(res_json));
+                .then(res_json => {
+                    if (res_json.keys() !== []) {
+                        setData(res_json);
+                    }
+                });
         }
     }
 
@@ -140,7 +148,7 @@ function Search() {
                 alignItems={"center"}
             >
                 <Grid item xs={12}>
-                    <h1>Concerts & Artist Searchs</h1>
+                    <h1>Venue & Artist Search</h1>
                 </Grid>
                 <Grid item xs={8}>
                     <input type="text" id="searchInputField" placeholder="Enter text here..."/>
