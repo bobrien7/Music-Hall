@@ -120,6 +120,15 @@ function Search() {
     const handleChangePageSize = (e) => {
         setPageSize(e.target.value);
         setPage(1);
+        if (searchType === "CONCERT") {
+            fetch(`http://${config.server_host}:${config.server_port}/concertsearch/?search=${search}&page=${11}&page_size=${e.target.value}`)
+                .then(res => res.json())
+                .then(res_json => setData(res_json));
+        } else {
+            fetch(`http://${config.server_host}:${config.server_port}/creatorsearch/?search=${search}&page=${11}&page_size=${e.target.value}`)
+                .then(res => res.json())
+                .then(res_json => setData(res_json));
+        }
     }
 
     const defaultRenderCell = (col, row) => {

@@ -66,7 +66,7 @@ function Venue() {
         setPageSizeConcert(e.target.value);
         setPageConcert(1);
         const venue_id = document.URL.split("/").pop();
-        fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${pageConcert}&page_size=${pageSizeConcert}`)
+        fetch(`http://${config.server_host}:${config.server_port}/recentconcert/${venue_id}/?page=${1}&page_size=${e.target.value}`)
             .then(res => res.json())
             .then(resJson => setConcertData(resJson));
     }
@@ -85,7 +85,7 @@ function Venue() {
         setPageSizeCreator(e.target.value);
         setPageCreator(1);
         const venue_id = document.URL.split("/").pop();
-        fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${pageCreator}&page_size=${pageSizeCreator}`)
+        fetch(`http://${config.server_host}:${config.server_port}/venuetopcreator/${venue_id}/?page=${1}&page_size=${e.target.value}`)
             .then(res => res.json())
             .then(resJson => setCreatorData(resJson));
     }
