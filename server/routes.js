@@ -337,6 +337,27 @@ const recentconcert = async function(req, res) {
     })
 }
 
+// GET /venuename/:venue_id
+const venuename = async function(req, res) {
+  let query = `
+  SELECT
+    distinct name
+  FROM Venue
+  WHERE (venue_id = ${req.params.venue_id})`
+
+  connection.query(query,
+    (err, data) => {
+      if (err || data.length === 0){
+        console.log(err);
+        res.json({});
+      }
+      else {
+        console.log(data);
+        res.json(data);
+      }
+    })
+}
+
 // GET /randomsongs
 const randomsongs = async function(req, res) {
   //console.log("req", req);
@@ -588,6 +609,7 @@ module.exports = {
     creatorsearch,
     venuetopcreator,
     recentconcert,
+    venuename,
     randomsongs,
     playlists,
     similaralbums,
