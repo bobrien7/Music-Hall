@@ -10,6 +10,7 @@ function Search() {
     const [pageSize, setPageSize] = useState(10);
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
+    const [search, setSearch] = useState("")
     const [columns, setColumns] = useState([{ 
             field: 'venue_name', 
             headerName: 'Venue name', 
@@ -67,12 +68,14 @@ function Search() {
     ];
 
     const handleSearch = (search) => {
+        setPage(1); // New search, go back to first page
+        setSearch(search);
         if (searchType === "CONCERT") {
-            fetch(`http://${config.server_host}:${config.server_port}/concertsearch/?search=${search}`)
+            fetch(`http://${config.server_host}:${config.server_port}/concertsearch/?search=${search}&page=${1}&page_size=${pageSize}`)
                 .then(res => res.json())
                 .then(res_json => setData(res_json));
         } else {
-            fetch(`http://${config.server_host}:${config.server_port}/creatorsearch/?search=${search}`)
+            fetch(`http://${config.server_host}:${config.server_port}/creatorsearch/?search=${search}&page=${1}&page_size=${pageSize}`)
                 .then(res => res.json())
                 .then(res_json => setData(res_json));
         }
@@ -89,7 +92,19 @@ function Search() {
     }
 
     const handleChangePage = (e, newPage) => {
-        return; // TODO
+        console.log(newPage);
+        if (newPage < page || data.length === pageSize) {
+            setPage(newPage + 1);
+            if (searchType === "CONCERT") {
+                fetch(`http://${config.server_host}:${config.server_port}/concertsearch/?search=${search}&page=${newPage + 1}&page_size=${pageSize}`)
+                    .then(res => res.json())
+                    .then(res_json => setData(res_json));
+            } else {
+                fetch(`http://${config.server_host}:${config.server_port}/creatorsearch/?search=${search}&page=${newPage + 1}&page_size=${pageSize}`)
+                    .then(res => res.json())
+                    .then(res_json => setData(res_json));
+            }
+        }
     }
 
     const handleChangePageSize = (e) => {
