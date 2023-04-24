@@ -25,7 +25,7 @@ app.get('/recentconcert/:venue_id', routes.recentconcert);
 app.get('/venuename/:venue_id', routes.venuename);
 app.post('/randomsongs/' , routes.randomsongs);
 app.post('/playlists/', routes.playlists);
-app.get('/similaralbums/:album_id', routes.similaralbums);
+app.post('/similaralbums/', routes.similaralbums);
 app.get('/randomvenue/', routes.randomvenue);
 app.get('/randomartist/', routes.randomartist);
 

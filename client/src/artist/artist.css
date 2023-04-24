@@ -37,6 +37,16 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: 90%;
+}
+
+.accordionMainTitle2 {
+    font-size: 18px;
+    margin: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
 
 .accordionSecondTitle {
@@ -98,7 +108,7 @@
     justify-content: center;
     align-items: center;
     max-width: 270px;
-    min-width: 100px;
+    min-width: 50px;
     margin: 0px 20px;
 }
 
@@ -109,16 +119,31 @@
     flex-direction: column;
 }
 
+.simAlbums2 {
+    display: flex;
+    width: 85%;
+    margin: 20px 0px 0px 0px;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
 .simAlbumLink {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    width: 100%;
 }
 
 .textSimAlbums {
     width: 200px;
 }
+
+@media (max-width: 1150px) {
+    .textSimAlbums {
+        display: none;
+    }
+  }
 
 .simAlbumContainer {
     margin-top: 10px;

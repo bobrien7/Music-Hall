@@ -367,7 +367,7 @@ const randomsongs = async function(req, res) {
     genres = JSON.stringify(req.body.genres).replaceAll('"','').replaceAll("'","")
                 .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
   }
-  
+
   const songs_required = req.body.songs_required;
 
   let query = `
@@ -440,7 +440,7 @@ const playlists = async function(req, res) {
   JOIN TrackFeatures ON Tracks.track_id=TrackFeatures.track_id
   WHERE Tracks.track_id IN (`
 
-  let liked = [];        
+  let liked = [];
   if (req.body.liked_songs){
   liked = JSON.stringify(req.body.liked_songs).replaceAll('"','').replaceAll("'","")
           .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
@@ -481,7 +481,7 @@ const playlists = async function(req, res) {
   if (req.body.unliked_songs){
     unliked = JSON.stringify(req.body.unliked_songs).replaceAll('"','').replaceAll("'","")
   .replaceAll("[","").replaceAll("]","").replaceAll(" ","").split(",");
-  }                                 
+  }
 
   for (let i = 0; i < unliked.length-1; i++){
       query += `"${unliked[i]}",`
@@ -493,7 +493,7 @@ const playlists = async function(req, res) {
       ORDER BY counts DESC
       LIMIT ${parseInt(req.body.songs_required)}
   `
-  
+
   console.log(query)
 
   connection.query(query,
@@ -517,50 +517,67 @@ const playlists = async function(req, res) {
 
 // GET /similaralbums/:
 const similaralbums = async function(req, res) {
-  const query = `
-  SELECT @x1:=AVG(acousticness), @x2:=AVG(danceability), @x3:=AVG(energy), @x4:=AVG(instrumentalness),
-  @x5:=AVG(liveness), @x6:=AVG(speechiness), @x7:=AVG(valence), @x8:=AVG(tempo)
-  FROM Albums A
-  JOIN Tracks T
-  on A.album_id = T.album_id
-  JOIN TrackFeatures TF
-  on T.track_id = TF.track_id
-  WHERE A.album_id="${req.params.album_id}"
-  GROUP BY A.album_id;
+  const arr = req.body.album_ids;
+  //console.log(req);
+  let similar_albums = [];
+  for (let i = 0; i < arr.length; i++) {
+    const query = `
+    SELECT @x1:=AVG(acousticness), @x2:=AVG(danceability), @x3:=AVG(energy), @x4:=AVG(instrumentalness),
+    @x5:=AVG(liveness), @x6:=AVG(speechiness), @x7:=AVG(valence), @x8:=AVG(tempo)
+    FROM Albums A
+    JOIN Tracks T
+    on A.album_id = T.album_id
+    JOIN TrackFeatures TF
+    on T.track_id = TF.track_id
+    WHERE A.album_id="${arr[i]}"
+    GROUP BY A.album_id;
 
-  SELECT A.album_id, A.name, A.creator_id, abs(AVG(acousticness)-@x1) + abs(AVG(danceability)-@x2) +
-  abs(AVG(energy)-@x3) + abs(AVG(instrumentalness)-@x4) + abs(AVG(liveness)-@x5) +
-  abs(AVG(speechiness)-@x6) + abs(AVG(valence)-@x7) + 0.3 * abs(AVG(tempo)-@x8) as total_diff
-  FROM Albums A
-  JOIN Tracks T
-  on A.album_id = T.album_id
-  JOIN TrackFeatures TF
-  on T.track_id = TF.track_id
-  WHERE A.album_id!="${req.params.album_id}"
-  GROUP BY A.album_id
+    SELECT A.album_id, A.image_url, A.name AS album_name, A.creator_id, C.name, abs(AVG(acousticness)-@x1) + abs(AVG(danceability)-@x2) +
+    abs(AVG(energy)-@x3) + abs(AVG(instrumentalness)-@x4) + abs(AVG(liveness)-@x5) +
+    abs(AVG(speechiness)-@x6) + abs(AVG(valence)-@x7) + 0.3 * abs(AVG(tempo)-@x8) as total_diff
+    FROM Albums A
+    JOIN Tracks T
+    on A.album_id = T.album_id
+    JOIN TrackFeatures TF
+    on T.track_id = TF.track_id
+    JOIN Creators C
+    on A.creator_id = C.creator_id
+    WHERE A.album_id!="${arr[i]}"
+    GROUP BY A.album_id
 
-  ORDER BY total_diff
-  LIMIT ${parseInt(req.query.number_of_albums)}`;
+    ORDER BY total_diff
+    LIMIT ${parseInt(req.query.number_of_albums)}`;
 
-  connection.query(query,
-    (err, data) => {
-      if (err || data.length === 0){
-        console.log(err);
-        res.json({});
-      }
-      else{
-        let response = [];
-        for (var i = 1; i < data.length; i++){
-          // drop first two results. 1st is matching metrics and second is the album requested
-          response.push(data[i]);
+    connection.query(query,
+      (err, data) => {
+        if (err || data.length === 0){
+          console.log(err);
+          //res.json({});
+          similar_albums.push([]);
         }
-        let similar_albums = [];
-        for (let i = 0; i < response[0].length; i++) {
-          similar_albums.push(response[0][i].album_id);
+        else{
+          let response = [];
+          for (var i = 1; i < data.length; i++){
+            // drop first two results. 1st is matching metrics and second is the album requested
+            response.push(data[i]);
+          }
+          let sim_albums = [];
+          for (let j = 0; j < response[0].length; j++) {
+            let obj = {
+              album_name: response[0][j].album_name,
+              album_artist: response[0][j].name,
+              album_image: response[0][j].image_url,
+              artist_id: response[0][j].creator_id,
+            }
+            sim_albums.push(obj);
+          }
+          similar_albums.push(sim_albums);
         }
-        res.json({"similar_albums" : similar_albums});
-      }
-    })
+        if (similar_albums.length === arr.length) {
+          res.json({"similar_albums" : similar_albums});
+        }
+      })
+  }
 }
 
 // GET /randomvenue/
