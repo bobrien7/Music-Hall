@@ -243,7 +243,7 @@ function Playlist() {
                 <div className="buttons">
                     {Object.keys(genres).map((key, index) => {
                         return(
-                            <button key={index} className={genres[key]['value'] ? "active genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': genres[key]['search'], 'value': !genres[key]['value']}})}>{key}</button>
+                            <button key={index} className={genres[key]['value'] ? "activeButton genres" : "genres"} onClick={() => setGenres({...genres, [key]: {'search': genres[key]['search'], 'value': !genres[key]['value']}})}>{key}</button>
                         )
                     })}
 

@@ -1,4 +1,4 @@
-.active {
+.activeButton {
     background-color: var(--text-light) !important;
     color: var(--dark-accent);
     transition: all 0.25s;
