@@ -108,7 +108,7 @@ function Artist(props) {
                 <div className="text">
                     <h1>{title}</h1>
                     <p>{summary}</p>
-                    <a href={link}>Read More {'>'}</a>
+                    <a href={link} target="_blank">Read More {'>'}</a>
                 </div>
                 <div>
                     <SongCard songInfo={topSong} title="Top Song"/>

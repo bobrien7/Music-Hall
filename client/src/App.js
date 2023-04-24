@@ -26,13 +26,13 @@ function App() {
         <div className="contain-2">
           <div className="routePanel">
             <Routes>
-              <Route exact path="/" element={<Main />} />
+              <Route exact path="/" element={<Timeline />} />
               <Route exact path="/timeline" element={<Timeline />} />
               <Route exact path="/search" element={<Search />} />
               <Route path="/playlist" element={<Playlist />} />
               <Route path="/artist/:artist_id" element={<Artist/>} />
               <Route path="/venue/:venue_id" element={<Venue />} />
-              <Route path="*" element={<Main />} />
+              <Route path="*" element={<Timeline />} />
             </Routes>
           </div>
         </div>

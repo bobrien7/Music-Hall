@@ -3,6 +3,7 @@
   --dark-accent: #241C1C;
   --light-accent: #2D2626;
   --text-light: #FFFFFF;
+  --medium: #d7d2d0;
   --text-dark: #AFABAA;
   --green: #77D886;
   --red: #D87777;
@@ -123,7 +124,13 @@ button {
   cursor: pointer;
 }
 
-button:hover, button:active {
+button:hover {
+  background-color: var(--medium);
+  color: var(--dark-accent);
+  transition: all 0.25s;
+}
+
+button:active {
   background-color: var(--text-light);
   color: var(--dark-accent);
   transition: all 0.25s;

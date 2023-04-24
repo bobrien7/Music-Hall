@@ -86,7 +86,7 @@ function Playlist() {
             'search': 'synth'
         }
     });
-
+    let arr = [];
     const placeholderSong = {
         "track_name": "Loading...",
         "artist_name": "Loading...",
@@ -117,7 +117,7 @@ function Playlist() {
 
     const handleStart = () => {
         setLoad(true);
-        let arr = [];
+        arr = [];
         for (let key of Object.keys(genres)) {
             if (genres[key].value) {
                 arr.push(genres[key].search);
@@ -182,10 +182,30 @@ function Playlist() {
             })
             .then(res => res.json())
             .then(data => {
-                console.log("data", data);
-              setGivenSongList(data.song_recs);
-              setLoad(false);
-              setStart(true);
+                //console.log("data", data);
+                if (data.song_recs.length > 0) {
+                    setGivenSongList(data.song_recs);
+                    setLoad(false);
+                    setStart(true);
+                } else {
+                    fetch(`http://${config.server_host}:${config.server_port}/randomsongs/?year_start=${year[0]}&year_end=${year[1]}`, {
+                        method: "POST",
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            "songs_required": 15,
+                            "genres": arr
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                    setGivenSongList(data);
+                    setLoad(false);
+                    setStart(true);
+                });
+                }
           });
         }
     }

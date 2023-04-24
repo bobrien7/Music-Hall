@@ -8,7 +8,7 @@ const config = require('../config.json');
 
 function Venue() {
     const params = useParams();
-    console.log("test this! on page reload this should be available to you!", params.venue_id);
+    //console.log("test this! on page reload this should be available to you!", params.venue_id);
 
     const [pageSizeCreator, setPageSizeCreator] = useState(10);
     const [pageCreator, setPageCreator] = useState(1);
@@ -92,7 +92,7 @@ function Venue() {
 
     useEffect(() => {  // Run once on component load
         const venue_id = document.URL.split("/").pop();
-        
+
         // Load venue name
         fetch(`http://${config.server_host}:${config.server_port}/venuename/${venue_id}`)
             .then(res => res.json())

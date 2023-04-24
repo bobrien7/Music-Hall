@@ -1,5 +1,5 @@
 .active {
-    background-color: var(--text-light);
+    background-color: var(--text-light) !important;
     color: var(--dark-accent);
     transition: all 0.25s;
 }
@@ -239,6 +239,8 @@
 .accordionMainTitle {
     font-size: 18px;
     margin: 0px;
+    max-width: 500px;
+    width: 30vw;
 }
 
 .accordionSecondTitle {
