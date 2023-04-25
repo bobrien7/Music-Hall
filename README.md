@@ -1,6 +1,13 @@
 # cis550-sp23
-Feature, Not a Bug
+## Feature, Not a Bug
 
+## Instructions 
+* Open cis550-sp23 root folder in VS Code.
+* Go to Terminal on the top bar of VS Code and select New Terminal.
+* Shift + Left Click on the terminal and select Split Terminal.
+* In one terminal, type cd client and hit enter. Type npm install and wait for node_modules to install, then type npm start and hit enter. This will start up the frontend portion of this project.
+* In the other terminal, type cd server and hit enter. Type npm install and wait for node_modules to install, then npm start and hit enter. This will start up the backend portion of this project.
+* The frontend portion should open in browser automatically, but if not it can be found at the address "http://localhost:3000/".
 
 <img width="1435" alt="Screenshot 2023-04-20 at 8 30 58 PM" src="https://user-images.githubusercontent.com/57416165/233534541-2fd87f64-57be-4318-8384-568263c61825.png">
 
