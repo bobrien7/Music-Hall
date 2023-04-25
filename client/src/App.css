@@ -151,3 +151,13 @@ button:active {
 audio {
   width: 100%;
 }
+
+.nameDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameDisplay p {
+  margin-right: 10px;
+}

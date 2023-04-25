@@ -1,5 +1,6 @@
 const mysql = require('mysql')
 const config = require('./config.json')
+const bcrypt = require('bcrypt');
 
 const connection = mysql.createConnection({
   host: config.host,
@@ -616,6 +617,70 @@ const randomartist = async function(req, res) {
   })
 }
 
+// POST /login/
+const login = async function(req, res) {
+  console.log("login", req.body);
+  let email = req.body.email;
+
+  const query = `SELECT user_id, password FROM Users WHERE email = "${email}"`;
+
+  connection.query(query,
+    (err, data) => {
+      if (err || data.length === 0){
+        console.log(err);
+        res.json({result: 'email'});
+      }
+      else{
+        bcrypt.compare(data.password, req.body.password, (err, same) => {
+          if (same) {
+            res.json({result: 'ok', userId: data.user_id, name: data.first_name});
+          } else {
+            console.log(err);
+            res.json({result: 'password'});
+          }
+        });
+      }
+  })
+}
+
+// POST /signup/
+const signup = async function(req, res) {
+  console.log("signup", req.body);
+  let email = req.body.email;
+  let first_name = req.body.name;
+  let last_name = req.body.last_name;
+  const salt = await bcrypt.genSalt(10);
+  let password = await bcrypt.hash(req.body.password, salt);
+
+  //console.log("test encrypted", password);
+
+  const query = `SELECT email FROM Users WHERE email = "${email}"`;
+
+  connection.query(query,
+    (err, data) => {
+      if (err || data.length === 0){
+        // user doesn't already exist, continue
+      }
+      else{
+        res.json({});
+      }
+  })
+
+  const query2 = `INSERT INTO Users (first_name, last_name, email, password)
+  VALUES ('${first_name}', '${last_name}', '${email}', '${password}');`;
+
+  connection.query(query2,
+    (err, data) => {
+      if (err || data.length === 0){
+        console.log(err);
+        res.json({});
+      }
+      else{
+        res.json({result: 'ok'});
+      }
+  })
+}
+
 module.exports = {
     test,
     song,
@@ -631,5 +696,7 @@ module.exports = {
     playlists,
     similaralbums,
     randomvenue,
-    randomartist
+    randomartist,
+    login,
+    signup
 }

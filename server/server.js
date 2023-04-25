@@ -28,6 +28,8 @@ app.post('/playlists/', routes.playlists);
 app.post('/similaralbums/', routes.similaralbums);
 app.get('/randomvenue/', routes.randomvenue);
 app.get('/randomartist/', routes.randomartist);
+app.post('/login/', routes.login);
+app.post('/signup/', routes.signup);
 
 app.listen(config.server_port, () => {
     console.log(`Server running at http://${config.server_host}:${config.server_port}/`)
