@@ -40,7 +40,9 @@ function Artist(props) {
         ]}
     ]);
 
-    const [simAlbums, setSimAlbums] = useState([]);
+    //const [simAlbums, setSimAlbums] = useState([]);
+
+    const [simAlbums, setSimAlbums] = useState(new Map())
 
     useEffect(() => {
         fetch(`http://${config.server_host}:${config.server_port}/artist/${params.artist_id}`)
@@ -70,29 +72,23 @@ function Artist(props) {
         if (!ready) {
             setReady(true);
         } else {
-            let albumsArr = [];
             for (let album of albums) {
-                albumsArr.push(album.album_id);
-            }
-            console.log(albums, albumsArr)
-            fetch(`http://${config.server_host}:${config.server_port}/similaralbums/?number_of_albums=3`, {
-                method: "POST",
-                headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "album_ids": albumsArr
+                fetch(`http://${config.server_host}:${config.server_port}/similaralbums/?number_of_albums=3`, {
+                    method: "POST",
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "album_id": album.album_id
+                    })
                 })
-            })
-            .then(res => res.json())
-            .then(resJson => {
-                console.log("big test", resJson.similar_albums);
-                setSimAlbums(resJson.similar_albums);
-
-            });
+                .then(res => res.json())
+                .then(resJson => {
+                    setSimAlbums(new Map(simAlbums.set(album.album_id, resJson))); 
+                });
+            }
         }
-
       }, [load]);
 
       const timeCalc = (song) => {
@@ -154,7 +150,7 @@ function Artist(props) {
                                         </div>
                                     </div>
                                 ))}
-                                {simAlbums.length === 0 ? <div className="simAlbums2"><p className="accordionMainTitle">Similar Albums:</p><CircularProgress /></div> : simAlbumsLoading(index)}
+                                {simAlbums.get(album.album_id)==undefined ? <div className="simAlbums2"><p className="accordionMainTitle">Similar Albums:</p><CircularProgress /></div> : simAlbumsLoading(album.album_id)}
 
                             </AccordionDetails>
                         </Accordion>
@@ -168,12 +164,13 @@ function Artist(props) {
       }
 
       const simAlbumsLoading = (index) => {
-        if (simAlbums.length >= 0) {
+        if (simAlbums.get(index)!=undefined) {
             return (
                 <div className="simAlbums">
                 <p className="accordionMainTitle">Similar Albums:</p>
                 <div className="simAlbumContainer">
-                {simAlbums[index].map((alb, ind) => (
+                {console.log("TESTING",index)}
+                {simAlbums.get(index).map((alb, ind) => (
                     <div className="simAlbumBox" key={ind}>
                         <a className="simAlbumLink" href={"/artist/" + alb.artist_id}>
                         <img onError={(e) => e.target.src = defaultAlbum} className="albumAccordion" src={alb.album_image} alt="album art"></img>

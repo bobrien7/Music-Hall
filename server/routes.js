@@ -518,10 +518,9 @@ const playlists = async function(req, res) {
 
 // GET /similaralbums/:
 const similaralbums = async function(req, res) {
-  const arr = req.body.album_ids;
-  //console.log(req);
+  const arr = req.body.album_id;
+  console.log(req.body);
   let similar_albums = [];
-  for (let i = 0; i < arr.length; i++) {
     const query = `
     SELECT @x1:=AVG(acousticness), @x2:=AVG(danceability), @x3:=AVG(energy), @x4:=AVG(instrumentalness),
     @x5:=AVG(liveness), @x6:=AVG(speechiness), @x7:=AVG(valence), @x8:=AVG(tempo)
@@ -530,7 +529,7 @@ const similaralbums = async function(req, res) {
     on A.album_id = T.album_id
     JOIN TrackFeatures TF
     on T.track_id = TF.track_id
-    WHERE A.album_id="${arr[i]}"
+    WHERE A.album_id="${req.body.album_id}"
     GROUP BY A.album_id;
 
     SELECT A.album_id, A.image_url, A.name AS album_name, A.creator_id, C.name, abs(AVG(acousticness)-@x1) + abs(AVG(danceability)-@x2) +
@@ -543,12 +542,12 @@ const similaralbums = async function(req, res) {
     on T.track_id = TF.track_id
     JOIN Creators C
     on A.creator_id = C.creator_id
-    WHERE A.album_id!="${arr[i]}"
+    WHERE A.album_id!="${req.body.album_id}"
     GROUP BY A.album_id
 
     ORDER BY total_diff
     LIMIT ${parseInt(req.query.number_of_albums)}`;
-
+    console.log(query)
     connection.query(query,
       (err, data) => {
         if (err || data.length === 0){
@@ -556,12 +555,13 @@ const similaralbums = async function(req, res) {
           //res.json({});
           similar_albums.push([]);
         }
-        else{
+        else {
           let response = [];
           for (var i = 1; i < data.length; i++){
             // drop first two results. 1st is matching metrics and second is the album requested
             response.push(data[i]);
           }
+          console.log("Time2")
           let sim_albums = [];
           for (let j = 0; j < response[0].length; j++) {
             let obj = {
@@ -572,14 +572,11 @@ const similaralbums = async function(req, res) {
             }
             sim_albums.push(obj);
           }
-          similar_albums.push(sim_albums);
-        }
-        if (similar_albums.length === arr.length) {
-          res.json({"similar_albums" : similar_albums});
+          res.json(sim_albums)
         }
       })
   }
-}
+
 
 // GET /randomvenue/
 const randomvenue = async function(req, res) {
