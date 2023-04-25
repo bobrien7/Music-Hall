@@ -53,3 +53,9 @@ input:hover {
     height: 50%;
     width: 25%;
 }
+
+.list-div {
+    text-align: left;
+    width: 50%;
+    margin: auto;
+}
