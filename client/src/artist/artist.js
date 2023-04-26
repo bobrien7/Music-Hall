@@ -14,6 +14,7 @@ const config = require('../config.json');
 
 function Artist(props) {
     const [load, setLoad] = useState(true);
+    const [loadSimAlbumFor, setLoadSimAlbumFor] = useState(null);
     const [ready, setReady] = useState(false);
     const [noArtist, setNoArtist] = useState(false);
     const params = useParams();
@@ -72,24 +73,25 @@ function Artist(props) {
         if (!ready) {
             setReady(true);
         } else {
-            for (let album of albums) {
-                fetch(`http://${config.server_host}:${config.server_port}/similaralbums/?number_of_albums=3`, {
-                    method: "POST",
-                    headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        "album_id": album.album_id
-                    })
-                })
-                .then(res => res.json())
-                .then(resJson => {
-                    setSimAlbums(new Map(simAlbums.set(album.album_id, resJson))); 
-                });
+            if (simAlbums.has(loadSimAlbumFor.album_id)) {
+                return;
             }
+            fetch(`http://${config.server_host}:${config.server_port}/similaralbums/?number_of_albums=3`, {
+                method: "POST",
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "album_id": loadSimAlbumFor.album_id
+                })
+            })
+            .then(res => res.json())
+            .then(resJson => {
+                setSimAlbums(new Map(simAlbums.set(loadSimAlbumFor.album_id, resJson)));
+            });
         }
-      }, [load]);
+      }, [loadSimAlbumFor]);
 
       const timeCalc = (song) => {
         let zero = ((song.duration % 60000) / 1000).toFixed(0) < 10 ? '0' : '';
@@ -121,7 +123,7 @@ function Artist(props) {
                 <div className="listContainer">
                     {albums.map((album, index) => (
                         <div key={index}>
-                        <Accordion>
+                        <Accordion onChange={() => setLoadSimAlbumFor(album)}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1a-content"
@@ -150,7 +152,7 @@ function Artist(props) {
                                         </div>
                                     </div>
                                 ))}
-                                {simAlbums.get(album.album_id)==undefined ? <div className="simAlbums2"><p className="accordionMainTitle">Similar Albums:</p><CircularProgress /></div> : simAlbumsLoading(album.album_id)}
+                                {simAlbums.get(album.album_id)===undefined ? <div className="simAlbums2"><p className="accordionMainTitle">Similar Albums:</p><CircularProgress /></div> : simAlbumsLoading(album.album_id)}
 
                             </AccordionDetails>
                         </Accordion>
@@ -164,7 +166,7 @@ function Artist(props) {
       }
 
       const simAlbumsLoading = (index) => {
-        if (simAlbums.get(index)!=undefined) {
+        if (simAlbums.get(index)!==undefined) {
             return (
                 <div className="simAlbums">
                 <p className="accordionMainTitle">Similar Albums:</p>
