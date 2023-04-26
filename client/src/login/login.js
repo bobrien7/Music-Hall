@@ -103,6 +103,12 @@ function Login(props) {
                 setValidationErrors([]);
                 setHasSubmitted(false);
                 setSignUp(false);
+                let obj = {
+                    name: json.name,
+                    email: json.email,
+                    user_id: json.user_id
+                };
+                logIn(obj);
                 onClose();
             } else {
                 return alert(`Invalid username/password combination.`);
@@ -130,16 +136,14 @@ function Login(props) {
     };
 
     const fbResponse = (response) => {
-        console.log("fb login!", response);
-        // var decoded = jwt_decode(response.credential);
-        // //console.log(decoded);
-        // let obj = {
-        //     name: decoded.given_name,
-        //     email: decoded.email,
-        //     user_id: ''
-        // };
-        // logIn(obj);
-        // onClose();
+        //console.log("fb login!", response);
+        let obj = {
+            name: response.name,
+            email: response.email,
+            user_id: response.id
+        };
+        logIn(obj);
+        onClose();
     };
 
     return(

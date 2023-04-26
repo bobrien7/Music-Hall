@@ -616,10 +616,10 @@ const randomartist = async function(req, res) {
 
 // POST /login/
 const login = async function(req, res) {
-  console.log("login", req.body);
+  //console.log("login", req.body);
   let email = req.body.email;
 
-  const query = `SELECT user_id, password FROM Users WHERE email = "${email}"`;
+  const query = `SELECT * FROM Users WHERE email = "${email}"`;
 
   connection.query(query,
     (err, data) => {
@@ -628,11 +628,13 @@ const login = async function(req, res) {
         res.json({result: 'email'});
       }
       else{
-        bcrypt.compare(data.password, req.body.password, (err, same) => {
+        //console.log("test", data[0].password, req.body.password);
+        bcrypt.compare(req.body.password, data[0].password, (err, same) => {
+          //console.log("same", same);
           if (same) {
-            res.json({result: 'ok', userId: data.user_id, name: data.first_name});
+            res.json({result: 'ok', user_id: data[0].user_id, name: data[0].first_name, email: data[0].email});
           } else {
-            console.log(err);
+            console.log("login err", err);
             res.json({result: 'password'});
           }
         });
@@ -642,8 +644,10 @@ const login = async function(req, res) {
 
 // POST /signup/
 const signup = async function(req, res) {
-  console.log("signup", req.body);
   let email = req.body.email;
+  const query = `SELECT email FROM Users WHERE email = "${email}"`;
+
+  //console.log("signup", req.body);
   let first_name = req.body.name;
   let last_name = req.body.last_name;
   const salt = await bcrypt.genSalt(10);
@@ -651,29 +655,28 @@ const signup = async function(req, res) {
 
   //console.log("test encrypted", password);
 
-  const query = `SELECT email FROM Users WHERE email = "${email}"`;
-
-  connection.query(query,
-    (err, data) => {
-      if (err || data.length === 0){
-        // user doesn't already exist, continue
-      }
-      else{
-        res.json({});
-      }
-  })
-
   const query2 = `INSERT INTO Users (first_name, last_name, email, password)
   VALUES ('${first_name}', '${last_name}', '${email}', '${password}');`;
 
-  connection.query(query2,
+  connection.query(query,
     (err, data) => {
-      if (err || data.length === 0){
+      if (err) {
         console.log(err);
         res.json({});
-      }
-      else{
-        res.json({result: 'ok'});
+      } else if (data.length === 0) {
+        // user doesn't already exist
+        connection.query(query2,
+          (err, data) => {
+            if (err || data.length === 0){
+              console.log(err);
+              res.json({});
+            }
+            else{
+              res.json({result: 'ok'});
+            }
+        })
+      } else{
+        res.json({result: 'email'});
       }
   })
 }
