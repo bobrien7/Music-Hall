@@ -4,6 +4,7 @@ import { grey } from '@mui/material/colors';
 import { NavLink } from "react-router-dom";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 import { useState } from 'react';
+import './search.css';
 const config = require("../config.json");
 
 
@@ -13,18 +14,18 @@ function Search() {
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("")
-    const [columns, setColumns] = useState([{ 
-            field: 'venue_name', 
-            headerName: 'Venue name', 
-            width: 300, 
+    const [columns, setColumns] = useState([{
+            field: 'venue_name',
+            headerName: 'Venue name',
+            width: 300,
             renderCell: (row) => (<NavLink to={`/venue/${row.venue_id}`}>{row.venue_name}</NavLink>)
         },
-        { 
-            field: 'venue_location', 
+        {
+            field: 'venue_location',
             headerName: 'Location',
             width: 100
         },
-        { 
+        {
             field: 'number_of_concerts',
             headerName: 'Total Concerts',
             width: 100
@@ -32,18 +33,18 @@ function Search() {
     const [searchType, setSearchType] = useState("CONCERT");
 
     const columnsVenue = [
-        { 
-            field: 'venue_name', 
-            headerName: 'Venue name', 
-            width: 300, 
+        {
+            field: 'venue_name',
+            headerName: 'Venue name',
+            width: 300,
             renderCell: (row) => (<NavLink to={`/venue/${row.venue_id}`}>{row.venue_name}</NavLink>)
         },
-        { 
-            field: 'venue_location', 
+        {
+            field: 'venue_location',
             headerName: 'Location',
             width: 100
         },
-        { 
+        {
             field: 'number_of_concerts',
             headerName: 'Total Concerts',
             width: 100
@@ -51,18 +52,18 @@ function Search() {
     ];
 
     const columnsCreator = [
-        { 
-            field: 'creator_name', 
-            headerName: 'Creator name', 
+        {
+            field: 'creator_name',
+            headerName: 'Creator name',
             width: 300,
             renderCell: (row) => (<NavLink to={`/artist/${row.creator_id}`}>{row.creator_name}</NavLink>)
         },
-        { 
-            field: 'creator_popularity', 
+        {
+            field: 'creator_popularity',
             headerName: 'Popularity',
             width: 100
         },
-        { 
+        {
             field: 'count_of_concerts',
             headerName: 'Concert(s) Performed',
             width: 100
@@ -151,7 +152,7 @@ function Search() {
 
     return (
         <div>
-            <Grid 
+            <Grid
                 container
                 rowSpacing={2}
                 alignItems={"center"}
@@ -172,17 +173,17 @@ function Search() {
                         exclusive
                         color="primary"
                     >
-                        <ToggleButton 
+                        <ToggleButton
                             value="ARTIST"
                             onClick={() => handleSearchTypeChange("ARTIST")}
                         >
-                            <div color="white">Artists</div>
+                            <div className="white">Artists</div>
                         </ToggleButton>
-                        <ToggleButton 
+                        <ToggleButton
                             value="CONCERT"
                             onClick={() => handleSearchTypeChange("CONCERT")}
                         >
-                            <div>Concerts</div>
+                            <div className="white">Concerts</div>
                         </ToggleButton>
                     </ToggleButtonGroup>
                     </ThemeProvider>
@@ -192,8 +193,8 @@ function Search() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    {columns.map(col => 
-                                        <TableCell 
+                                    {columns.map(col =>
+                                        <TableCell
                                             key={col.headerName}
                                             sx={{
                                                 color: "white",
@@ -209,8 +210,8 @@ function Search() {
                                 {data.map((row, idx) =>
                                     <TableRow key={idx}>
                                     {
-                                        columns.map(col => 
-                                            <TableCell 
+                                        columns.map(col =>
+                                            <TableCell
                                                 key={col.headerName}
                                                 sx={{
                                                     color: "white"
