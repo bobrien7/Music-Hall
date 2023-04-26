@@ -148,6 +148,7 @@ function Timeline() {
     return (
         <div className="timelineParent">
             <h1>Timeline</h1>
+            <p>Select music genres and a time range to view a timeline of songs.</p>
             <Grid
                 container
                 rowSpacing={2}

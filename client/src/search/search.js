@@ -159,6 +159,7 @@ function Search() {
             >
                 <Grid item xs={12}>
                     <h1>Venue & Artist Search</h1>
+                    <p>Search for specific music artists or concert venues.</p>
                 </Grid>
                 <Grid item xs={8}>
                     <input type="text" id="searchInputField" placeholder="Enter text here..."/>
