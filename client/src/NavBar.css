@@ -17,7 +17,7 @@ a.active {
 .navBox {
     color: var(--text-dark);
     text-decoration: none;
-    padding: 15px;
+    padding: 15px 0px;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -73,7 +73,6 @@ a.active {
     width: 30px;
     background: var(--text-dark);
     mask-size: 30px;
-    margin-right: 25px;
 }
 
 .timeline {
@@ -94,4 +93,8 @@ a.active {
 
 .venueRand {
     mask-image: url('./assets/6613237_classic_concert_instrument_music_orchestra_icon.png');
+}
+
+.navWords {
+    margin-left: 20px;
 }

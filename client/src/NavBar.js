@@ -39,35 +39,35 @@ function NavBar() {
               className={({ isActive }) =>
               isActive ? 'isactive navBox': 'inactive navBox'}
               exact="true" to="/timeline">
-                <div className="navIcon timeline"></div>Timeline
+                <div className="navIcon timeline"></div><div className="navWords">Timeline</div>
           </NavLink>
 
           <NavLink
               className={({ isActive }) =>
               isActive ? 'isactive navBox': 'inactive navBox'}
               exact="true" to="/search">
-                <div className="navIcon search"></div>Search
+                <div className="navIcon search"></div><div className="navWords">Search</div>
           </NavLink>
 
           <NavLink
               className={({ isActive }) =>
               isActive ? 'isactive navBox': 'inactive navBox'}
               exact="true" to="/playlist">
-                <div className="navIcon playlist"></div>Playlist
+                <div className="navIcon playlist"></div><div className="navWords">Playlist</div>
           </NavLink>
 
           <NavLink
               className={({ isActive }) =>
               'inactive navBox'}
               exact="true" onClick={() => getRandArtist()}>
-                <div className="navIcon artistRand"></div>Random Artist
+                <div className="navIcon artistRand"></div><div className="navWords">Random Artist</div>
           </NavLink>
 
           <NavLink
               className={({ isActive }) =>
               'inactive navBox'}
               exact="true" onClick={() => getRandVenue()}>
-                <div className="navIcon venueRand"></div>Random Venue
+                <div className="navIcon venueRand"></div><div className="navWords">Random Venue</div>
           </NavLink>
 
         </div>
