@@ -190,13 +190,13 @@ const concertsearch = async function(req, res) {
   FROM Concerts c
   JOIN Venue v
     ON c.venue_id = v.venue_id
-  WHERE (v.name LIKE '%${req.query.search}%') OR
-        (v.location LIKE '%${req.query.search}%')
+  WHERE (v.name LIKE '%${mysql.escape(req.query.search).replaceAll("'", "")}%') OR
+        (v.location LIKE '%${mysql.escape(req.query.search).replaceAll("'", "")}%')
   GROUP BY v.venue_id
   ORDER BY number_of_concerts DESC`
 
   if (page) {
-    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+    query += ` LIMIT ${mysql.escape(pageSize).replaceAll("'", "")} OFFSET ${mysql.escape(offset).replaceAll("'", "")}`
   }
 
   connection.query(query,
@@ -231,11 +231,11 @@ const creatorsearch = async function(req, res) {
   FROM Concerts co
   JOIN Creators cr
     ON co.creators_id = cr.creator_id
-  WHERE (cr.name LIKE '%${req.query.search}%')
+  WHERE (cr.name LIKE '%${mysql.escape(req.query.search).replaceAll("'", "")}%')
   GROUP BY cr.creator_id`
 
   if (page) {
-    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+    query += ` LIMIT ${mysql.escape(pageSize).replaceAll("'", "")} OFFSET ${mysql.escape(offset).replaceAll("'", "")}`
   }
 
   connection.query(query,
@@ -277,7 +277,7 @@ const venuetopcreator = async function(req, res) {
   ORDER BY count_of_concerts DESC`
 
   if (page) {
-    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+    query += ` LIMIT ${mysql.escape(pageSize).replaceAll("'","")} OFFSET ${mysql.escape(offset).replaceAll("'","")}`
   }
 
   connection.query(query,
@@ -318,7 +318,7 @@ const recentconcert = async function(req, res) {
   ORDER BY co.date DESC`
 
   if (page) {
-    query += ` LIMIT ${pageSize} OFFSET ${offset}`
+    query += ` LIMIT ${mysql.escape(pageSize).replaceAll("'","")} OFFSET ${mysql.escape(offset).replaceAll("'","")}`
   }
 
   connection.query(query,
@@ -397,12 +397,12 @@ const randomsongs = async function(req, res) {
 
         if (i!=genres.length-1)
         {
-          query += ` (c.genres LIKE '%${genres[i]}%') OR`
+          query += ` (c.genres LIKE '%${mysql.escape(genres[i]).replaceAll("'", "")}%') OR`
           i++;
         }
         else
         {
-          query += ` (c.genres LIKE '%${genres[i]}%')`
+          query += ` (c.genres LIKE '%${mysql.escape(genres[i]).replaceAll("'", "")}%')`
           i++;
         }
     }
@@ -448,9 +448,9 @@ const playlists = async function(req, res) {
   }
 
   for (let i = 0; i < liked.length-1; i++){
-  query += `"${liked[i]}",`
+  query += `"${mysql.escape(liked[i])}",`
   }
-  query += `"${liked.pop()}"))w; `
+  query += `"${mysql.escape(liked.pop())}"))w; `
 
   query += `
     SELECT *, COUNT(album_name) as counts, group_concat(track_uri separator ', ')
@@ -485,14 +485,14 @@ const playlists = async function(req, res) {
   }
 
   for (let i = 0; i < unliked.length-1; i++){
-      query += `"${unliked[i]}",`
+      query += `"${mysql.escape(unliked[i])}",`
   }
-  query += `"${unliked.pop()}"`
+  query += `"${mysql.escape(unliked.pop())}"`
 
   query += `))
       GROUP BY artist_name
       ORDER BY counts DESC
-      LIMIT ${parseInt(req.body.songs_required)}
+      LIMIT ${parseInt(mysql.escape(req.body.songs_required))}
   `
 
   console.log(query)
@@ -619,7 +619,7 @@ const login = async function(req, res) {
   //console.log("login", req.body);
   let email = req.body.email;
 
-  const query = `SELECT * FROM Users WHERE email = "${email}"`;
+  const query = `SELECT * FROM Users WHERE email = "${mysql.escape(email).replaceAll("'","")}"`;
 
   connection.query(query,
     (err, data) => {
@@ -656,7 +656,10 @@ const signup = async function(req, res) {
   //console.log("test encrypted", password);
 
   const query2 = `INSERT INTO Users (first_name, last_name, email, password)
-  VALUES ('${first_name}', '${last_name}', '${email}', '${password}');`;
+  VALUES ('${mysql.escape(first_name).replaceAll("'","")}', 
+          '${mysql.escape(last_name).replaceAll("'","")}', 
+          '${mysql.escape(email).replaceAll("'","")}', 
+          '${mysql.escape(password).replaceAll("'","")}');`;
 
   connection.query(query,
     (err, data) => {
