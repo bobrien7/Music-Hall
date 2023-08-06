@@ -2,14 +2,6 @@
 ## Music Hall Application
 This web app has a playlist recommendation engine, allows searching on songs based on genre and release year, and can play 30 second song samples.
 
-## Instructions
-* Open cis550-sp23 root folder in VS Code.
-* Go to Terminal on the top bar of VS Code and select New Terminal.
-* Shift + Left Click on the terminal and select Split Terminal.
-* In one terminal, type "cd client" and hit enter. Type "npm install --legacy-peer-deps" and wait for node_modules to install, then type "npm start" and hit enter. This will start up the frontend portion of this project.
-* In the other terminal, type "cd server" and hit enter. Type "npm install" and wait for node_modules to install, then "npm start" and hit enter. This will start up the backend portion of this project.
-* The frontend portion should open in browser automatically, but if not it can be found at the address "http://localhost:3000/".
-
 <img width="1435" alt="Screenshot 2023-04-20 at 8 30 58 PM" src="https://user-images.githubusercontent.com/57416165/233534541-2fd87f64-57be-4318-8384-568263c61825.png">
 
 
@@ -24,3 +16,11 @@ This web app has a playlist recommendation engine, allows searching on songs bas
 <img width="1255" alt="Screenshot 2023-04-25 at 5 43 16 PM" src="https://user-images.githubusercontent.com/57416165/234437701-6bffc523-7b20-4d06-af54-6b20756ed6ef.png">
 
 <img width="1255" alt="Screenshot 2023-04-25 at 6 00 43 PM" src="https://user-images.githubusercontent.com/57416165/234439599-df10150b-6c30-4ff6-a96c-bbe41198b6cc.png">
+
+## Instructions
+* Open cis550-sp23 root folder in VS Code.
+* Go to Terminal on the top bar of VS Code and select New Terminal.
+* Shift + Left Click on the terminal and select Split Terminal.
+* In one terminal, type "cd client" and hit enter. Type "npm install --legacy-peer-deps" and wait for node_modules to install, then type "npm start" and hit enter. This will start up the frontend portion of this project.
+* In the other terminal, type "cd server" and hit enter. Type "npm install" and wait for node_modules to install, then "npm start" and hit enter. This will start up the backend portion of this project.
+* The frontend portion should open in browser automatically, but if not it can be found at the address "http://localhost:3000/".
