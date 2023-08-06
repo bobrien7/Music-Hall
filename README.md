@@ -1,5 +1,6 @@
 # cis550-sp23
-## Feature, Not a Bug
+## Music Hall Application
+This web app has a playlist recommendation engine, allows searching on songs based on genre and release year, and can play 30 second song samples.
 
 ## Instructions
 * Open cis550-sp23 root folder in VS Code.
